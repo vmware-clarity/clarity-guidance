@@ -1,0 +1,11 @@
+@use '@cds/core/tokens/tokens.scss';
+
+:host {
+  display: flex;
+}
+
+.cip-number {
+  display: inline-block;
+  min-width: tokens.$cds-global-space-9;
+  text-align: right;
+}

@@ -1,0 +1,94 @@
+@use '@cds/core/tokens/tokens.scss';
+
+// accessible light theme derived from prism-solarizedlight.css
+// I found compliant colors using https://app.contrast-finder.org/.
+:root {
+  --code-highlight-background: #{tokens.$cds-global-color-white};
+  --code-highlight-base1: #6d797a; // solarizedlight: #93a1a1
+  --code-highlight-base01: #586e75; // solarizedlight: #586e75
+  --code-highlight-blue: #267cb9; // solarizedlight: #268bd2
+  --code-highlight-cyan: #298478; // solarizedlight: #2aa198
+  --code-highlight-green: #767c17; // solarizedlight: #859900
+  --code-highlight-yellow: #887626; // solarizedlight: #b58900
+  --code-highlight-orange: #9d6e04; // solarizedlight: #cb4b16
+}
+
+// accessible dark theme derived from prism-solarizedlight.css
+// I found compliant colors using https://app.contrast-finder.org/.
+[cds-theme~='dark'] {
+  --code-highlight-background: #{tokens.$cds-global-color-black};
+  --code-highlight-base1: #6d797a; // solarizedlight: #93a1a1
+  --code-highlight-base01: #517a8a; // solarizedlight: #586e75
+  --code-highlight-blue: #268bd2; // solarizedlight: #268bd2
+  --code-highlight-cyan: #2aa198; // solarizedlight: #2aa198
+  --code-highlight-green: #859900; // solarizedlight: #859900
+  --code-highlight-yellow: #b58900; // solarizedlight: #b58900
+  --code-highlight-orange: #cb4b16; // solarizedlight: #cb4b16
+}
+
+pre {
+  background: var(--code-highlight-background) !important;
+  padding: tokens.$cds-global-space-6;
+  overflow-x: auto;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--code-highlight-base1);
+}
+
+.token.punctuation {
+  color: var(--code-highlight-base01);
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--code-highlight-blue);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.url,
+.token.inserted {
+  color: var(--code-highlight-cyan);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: var(--code-highlight-green);
+}
+
+.token.function,
+.token.class-name {
+  color: var(--code-highlight-yellow);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--code-highlight-orange);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}

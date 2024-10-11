@@ -1,0 +1,7 @@
+<clr-vertical-nav [clr-nav-level]="1">
+  @for (cipPage of cipPages; track cipPage.number) {
+    <a clrVerticalNavLink [routerLink]="['/', cipPage.number]" [routerLinkActive]="'active'">
+      <span class="cip-number">{{ cipPage.number }}.</span> {{ cipPage.title }}
+    </a>
+  }
+</clr-vertical-nav>

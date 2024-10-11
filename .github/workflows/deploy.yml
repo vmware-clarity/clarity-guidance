@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - 'main'
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: '.guiance.clarity.design-app/.nvmrc'
+      - name: Install Dependencies
+        working-directory: .guiance.clarity.design-app
+        run: npm ci
+      - name: Build
+        working-directory: .guiance.clarity.design-app
+        run: npm run build
+      - name: Deploy
+        working-directory: .guiance.clarity.design-app
+        run: npx netlify-cli deploy --site clarity-guidance --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
