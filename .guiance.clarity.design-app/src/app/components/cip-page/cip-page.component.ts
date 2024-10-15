@@ -7,10 +7,10 @@ import { Component, Input } from '@angular/core';
   standalone: true,
 })
 export class CipPageComponent {
-  @Input() filename: string | undefined;
-  @Input() title: string | undefined;
-  @Input() number: number | undefined;
-  @Input() state: string | undefined;
-  @Input() created: string | undefined;
-  @Input() updated: string | undefined;
+  @Input({ required: true }) filename: string | undefined;
+  @Input({ required: true }) title: string | undefined;
+  @Input({ required: true }) number: number | undefined;
+  @Input({ required: true }) state: string | undefined;
+  @Input({ required: true }) created: string | undefined;
+  @Input({ required: true }) updated: string | undefined;
 }
