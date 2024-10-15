@@ -11,10 +11,10 @@
     "build": "ng build",
     "lint": "npm-run-all lint:*",
     "lint:prettier": "prettier . --check",
-    "lint:eslint": "ng lint",
+    "lint:eslint": "eslint .",
     "lint-fix": "npm-run-all lint-fix:*",
     "lint-fix:prettier": "prettier . --write",
-    "lint-fix:eslint": "ng lint --fix"
+    "lint-fix:eslint": "eslint . --fix"
   },
   "private": true,
   "dependencies": {

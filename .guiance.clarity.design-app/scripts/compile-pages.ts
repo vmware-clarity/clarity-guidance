@@ -1,12 +1,11 @@
-import fs from 'fs';
-import { glob } from 'glob';
-import path from 'path';
-
 import domino from 'domino';
 import parseFrontMatter from 'front-matter';
+import fs from 'fs';
+import { glob } from 'glob';
 import { marked } from 'marked';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 import { markedHighlight } from 'marked-highlight';
+import path from 'path';
 import prismjs from 'prismjs';
 
 // add languages for code highlighting
