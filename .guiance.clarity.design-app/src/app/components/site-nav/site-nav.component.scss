@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.site-nav {
+  width: 15rem;
+}
+
 .cip-number {
   display: inline-block;
   min-width: tokens.$cds-global-space-9;
