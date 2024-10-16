@@ -1,33 +1,28 @@
 @use '@cds/core/tokens/tokens.scss';
 
-// accessible light theme derived from prism-solarizedlight.css
-// I found compliant colors using https://app.contrast-finder.org/.
-:root {
-  --code-highlight-background: #{tokens.$cds-global-color-white};
-  --code-highlight-base1: #6d797a; // solarizedlight: #93a1a1
-  --code-highlight-base01: #586e75; // solarizedlight: #586e75
-  --code-highlight-blue: #267cb9; // solarizedlight: #268bd2
-  --code-highlight-cyan: #298478; // solarizedlight: #2aa198
-  --code-highlight-green: #767c17; // solarizedlight: #859900
-  --code-highlight-yellow: #887626; // solarizedlight: #b58900
-  --code-highlight-orange: #9d6e04; // solarizedlight: #cb4b16
+[cds-theme] {
+  --code-highlight-background: #{tokens.$cds-alias-object-container-background};
+  --code-highlight-base1: #{tokens.$cds-global-color-construction-600};
+  --code-highlight-base01: #{tokens.$cds-global-color-construction-700};
+  --code-highlight-blue: #{tokens.$cds-global-color-blue-700};
+  --code-highlight-cyan: #{tokens.$cds-global-color-jade-700};
+  --code-highlight-green: #{tokens.$cds-global-color-lime-800};
+  --code-highlight-yellow: #{tokens.$cds-global-color-yellow-800};
+  --code-highlight-orange: #{tokens.$cds-global-color-ochre-800};
 }
 
-// accessible dark theme derived from prism-solarizedlight.css
-// I found compliant colors using https://app.contrast-finder.org/.
 [cds-theme~='dark'] {
-  --code-highlight-background: #{tokens.$cds-global-color-black};
-  --code-highlight-base1: #6d797a; // solarizedlight: #93a1a1
-  --code-highlight-base01: #517a8a; // solarizedlight: #586e75
-  --code-highlight-blue: #268bd2; // solarizedlight: #268bd2
-  --code-highlight-cyan: #2aa198; // solarizedlight: #2aa198
-  --code-highlight-green: #859900; // solarizedlight: #859900
-  --code-highlight-yellow: #b58900; // solarizedlight: #b58900
-  --code-highlight-orange: #cb4b16; // solarizedlight: #cb4b16
+  --code-highlight-base1: #{tokens.$cds-global-color-construction-400};
+  --code-highlight-base01: #{tokens.$cds-global-color-construction-300};
+  --code-highlight-blue: #{tokens.$cds-global-color-blue-500};
+  --code-highlight-cyan: #{tokens.$cds-global-color-jade-500};
+  --code-highlight-green: #{tokens.$cds-global-color-lime-600};
+  --code-highlight-yellow: #{tokens.$cds-global-color-yellow-600};
+  --code-highlight-orange: #{tokens.$cds-global-color-tangerine-400};
 }
 
 pre {
-  background: var(--code-highlight-background) !important;
+  background: var(--code-highlight-background);
   padding: tokens.$cds-global-space-6;
   overflow-x: auto;
 

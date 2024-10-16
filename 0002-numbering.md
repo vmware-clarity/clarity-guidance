@@ -27,6 +27,18 @@ Currently recognized blocks of guidance numbers are:
 - *1-99*: reserved for meta-guidance (generally process-related)
 - *100-199*: component design guidance
 
+```ts
+import { bootstrapApplication } from '@angular/platform-browser';
+
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
+
+bootstrapApplication(AppComponent, appConfig).catch(err => console.error(err));
+
+let foo = true;
+let pattern = /asdf/;
+```
+
 ## Changelog
 
 - **2024-10-14**: initial version
