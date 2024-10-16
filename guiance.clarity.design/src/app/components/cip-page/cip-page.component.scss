@@ -11,6 +11,12 @@
   }
 }
 
+.page-content {
+  @media screen and (min-width: map-get(clr-variables.$clr-grid-breakpoints, md)) {
+    width: calc(100% - 15rem);
+  }
+}
+
 .page-sidebar {
   margin-top: tokens.$cds-global-layout-space-lg;
   flex-grow: 1;
