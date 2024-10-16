@@ -11,8 +11,8 @@
 }
 
 [cds-theme~='dark'] {
-  --code-highlight-base1: #{tokens.$cds-global-color-construction-400};
-  --code-highlight-base01: #{tokens.$cds-global-color-construction-300};
+  --code-highlight-base1: #{tokens.$cds-global-color-construction-300};
+  --code-highlight-base01: #{tokens.$cds-global-color-construction-200};
   --code-highlight-blue: #{tokens.$cds-global-color-blue-500};
   --code-highlight-cyan: #{tokens.$cds-global-color-jade-500};
   --code-highlight-green: #{tokens.$cds-global-color-lime-600};
