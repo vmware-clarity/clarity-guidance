@@ -1,0 +1,51 @@
+@use '@cds/core/tokens/tokens.scss';
+@use '@clr/ui/src/utils/variables/variables' as clr-variables;
+
+:host {
+  display: flex;
+  gap: tokens.$cds-global-layout-space-md;
+  flex-direction: column;
+}
+
+.page-sidebar {
+  margin-top: tokens.$cds-global-layout-space-lg;
+  flex-grow: 1;
+
+  &__attributes {
+    text-align: left;
+
+    th {
+      padding-right: tokens.$cds-global-layout-space-sm;
+    }
+  }
+
+  &__actions {
+    margin-top: tokens.$cds-global-layout-space-lg;
+
+    .btn {
+      display: block;
+      text-align: left;
+    }
+  }
+}
+
+@media screen and (min-width: map-get(clr-variables.$clr-grid-breakpoints, md)) {
+  :host {
+    flex-direction: row;
+  }
+
+  .page-content {
+    width: calc(100% - 15rem);
+  }
+
+  .page-sidebar {
+    margin-top: 0;
+    max-width: 15rem;
+
+    // sticky positioning
+    position: sticky;
+    top: 0;
+    height: 80vh;
+    overflow: auto;
+  }
+}

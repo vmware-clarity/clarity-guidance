@@ -1,0 +1,88 @@
+@use '@cds/core/tokens/tokens.scss';
+
+:root {
+  --code-highlight-base1: #{tokens.$cds-global-color-construction-600};
+  --code-highlight-base01: #{tokens.$cds-global-color-construction-700};
+  --code-highlight-blue: #{tokens.$cds-global-color-blue-700};
+  --code-highlight-cyan: #{tokens.$cds-global-color-jade-700};
+  --code-highlight-green: #{tokens.$cds-global-color-lime-800};
+  --code-highlight-yellow: #{tokens.$cds-global-color-yellow-800};
+  --code-highlight-orange: #{tokens.$cds-global-color-ochre-800};
+}
+
+[cds-theme~='dark'] {
+  --code-highlight-base1: #{tokens.$cds-global-color-construction-300};
+  --code-highlight-base01: #{tokens.$cds-global-color-construction-200};
+  --code-highlight-blue: #{tokens.$cds-global-color-blue-500};
+  --code-highlight-cyan: #{tokens.$cds-global-color-jade-500};
+  --code-highlight-green: #{tokens.$cds-global-color-lime-600};
+  --code-highlight-yellow: #{tokens.$cds-global-color-yellow-600};
+  --code-highlight-orange: #{tokens.$cds-global-color-tangerine-400};
+}
+
+pre {
+  background: tokens.$cds-alias-object-container-background;
+  padding: tokens.$cds-global-space-6;
+  overflow-x: auto;
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: var(--code-highlight-base1);
+  }
+
+  .token.punctuation {
+    color: var(--code-highlight-base01);
+  }
+
+  .token.namespace {
+    opacity: 0.7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: var(--code-highlight-blue);
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.url,
+  .token.inserted {
+    color: var(--code-highlight-cyan);
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: var(--code-highlight-green);
+  }
+
+  .token.function,
+  .token.class-name {
+    color: var(--code-highlight-yellow);
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: var(--code-highlight-orange);
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
+}
