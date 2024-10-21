@@ -24,12 +24,12 @@ In general, the team will simply use the next available number.
 
 Currently recognized blocks of guidance numbers are:
 
-- **1-99**: reserved for meta-guidance (generally process-related)
-- **100-199**: general design system guidance and patterns (fonts, icons, spacing)
-- **1000-1999**: designer guidance
-- **2000-2999**: developer guidance
-- **3000-4999**: design Patterns
-- **5000-5999**: guidance for other libraries/components/patterns used in VCF to align with Clarity (e.g. VMW-NGX)
+- **1-99**: Reserved for Meta-Guidance (generally process-related)
+- **100-199**: General Design System Guidance and Patterns (fonts, icons, spacing)
+- **1000-1999**: Designer Guidance
+- **2000-2999**: Developer Guidance
+- **3000-4999**: Design Patterns
+- **5000-5999**: Guidance for other libraries/components/patterns used in VCF to align with Clarity (e.g. VMW-NGX)
 
 ## Changelog
 
