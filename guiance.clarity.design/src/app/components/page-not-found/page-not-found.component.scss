@@ -1,0 +1,22 @@
+@use '@cds/core/tokens/tokens.scss';
+
+main {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: tokens.$cds-global-space-9;
+}
+
+img.logo {
+  width: 100%;
+  max-width: 20rem;
+  text-align: center;
+  opacity: 0.28;
+}
+
+.error-code {
+  font-size: 3rem;
+  font-weight: 200;
+  line-height: 1em;
+  opacity: 0.5;
+  margin-top: 0;
+}
