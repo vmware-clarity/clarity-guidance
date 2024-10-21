@@ -1,0 +1,13 @@
+@use '@cds/core/tokens/tokens.scss';
+
+.clarity-logo {
+  background-image: url(/images/clarity-logo.svg);
+  margin-right: tokens.$cds-global-layout-space-sm;
+  height: tokens.$cds-global-space-11;
+  width: tokens.$cds-global-space-11;
+}
+
+.branding {
+  // fix an @clr/ui bug that cuts of the text
+  max-width: unset !important;
+}
