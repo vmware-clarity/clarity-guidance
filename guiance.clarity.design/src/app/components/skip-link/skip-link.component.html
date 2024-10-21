@@ -1,0 +1,9 @@
+<button
+  class="btn btn-warning btn-sm skip-link"
+  [class.clr-sr-only]="hideSkipLink"
+  (click)="skipToContent()"
+  (focus)="hideSkipLink = false"
+  (blur)="hideSkipLink = true"
+>
+  Skip to content
+</button>
