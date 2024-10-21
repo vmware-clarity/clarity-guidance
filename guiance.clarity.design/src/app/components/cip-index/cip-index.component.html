@@ -1,0 +1,29 @@
+@for (category of cipIndex.categories; track category) {
+  <h2 cds-text="title" cds-layout="m-t:xl">{{ category | titlecase }}</h2>
+
+  <table class="cip-listing table" cds-layout="m-t:lg">
+    <thead>
+      <tr>
+        <th class="cip-listing__number">Number</th>
+        <th class="cip-listing__title">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (page of cipIndex.pages[category]; track page.number) {
+        <tr>
+          <td class="cip-listing__number">{{ page.number }}</td>
+          <td class="cip-listing__title">
+            <h3 cds-text="section" cds-layout="display:inline">
+              <a [routerLink]="['/', page.number]">{{ page.title }}</a>
+            </h3>
+            @if (page.state === 'draft') {
+              <span class="badge badge-danger">Draft</span>
+            } @else if (page.state === 'review') {
+              <span class="badge badge-warning">In Review</span>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
