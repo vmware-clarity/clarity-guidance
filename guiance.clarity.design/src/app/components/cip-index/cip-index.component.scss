@@ -1,0 +1,15 @@
+@use '@cds/core/tokens/tokens.scss';
+
+.cip-listing {
+  table-layout: fixed;
+
+  &__number {
+    text-align: right;
+    width: tokens.$cds-global-space-14;
+  }
+
+  &__title {
+    display: flex;
+    gap: tokens.$cds-global-space-6;
+  }
+}
