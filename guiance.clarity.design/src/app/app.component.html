@@ -1,0 +1,22 @@
+<clr-main-container>
+  <app-skip-link></app-skip-link>
+  <clr-header role="banner" class="header-1" #header>
+    <div class="branding">
+      <a [routerLink]="'/'" [routerLinkActive]="'active'">
+        <span class="clarity-logo"></span>
+        <span class="title">Clarity Guidance</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      @if (header.openNavLevel !== 1) {
+        <app-theme-toggle></app-theme-toggle>
+      }
+    </div>
+  </clr-header>
+  <div class="content-container">
+    <app-site-nav></app-site-nav>
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</clr-main-container>
