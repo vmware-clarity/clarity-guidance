@@ -1,0 +1,64 @@
+<article class="page-content">
+  <ng-content></ng-content>
+</article>
+
+<aside class="page-sidebar">
+  <div class="card" cds-layout="m-t:none">
+    <div class="card-header">
+      {{ title }}
+    </div>
+    <div class="card-block">
+      <table class="page-sidebar__attributes">
+        <tr>
+          <th cds-text="semibold">Number</th>
+          <td>{{ number }}</td>
+        </tr>
+        @if (state) {
+          <tr>
+            <th cds-text="semibold">State</th>
+            <td>{{ state }}</td>
+          </tr>
+        }
+        @if (created) {
+          <tr>
+            <th cds-text="semibold">Created</th>
+            <td>{{ created }}</td>
+          </tr>
+        }
+        @if (updated) {
+          <tr>
+            <th cds-text="semibold">Updated</th>
+            <td>{{ updated }}</td>
+          </tr>
+        }
+      </table>
+    </div>
+  </div>
+
+  <div class="page-sidebar__actions">
+    <a
+      class="btn btn-link"
+      target="_blank"
+      rel="noopener"
+      href="https://github.com/vmware-clarity/clarity-guidance/issues"
+    >
+      File a Bug
+    </a>
+    <a
+      class="btn btn-link"
+      target="_blank"
+      rel="noopener"
+      href="https://github.com/vmware-clarity/clarity-guidance/blob/main/{{ filename }}.md"
+    >
+      View Source
+    </a>
+    <a
+      class="btn btn-link"
+      target="_blank"
+      rel="noopener"
+      href="https://github.com/vmware-clarity/clarity-guidance/edit/main/{{ filename }}.md"
+    >
+      Edit This Page
+    </a>
+  </div>
+</aside>
