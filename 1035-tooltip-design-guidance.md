@@ -1,8 +1,8 @@
 ---
 category: component design guidance
 state: draft
-created:2024-10-18
-updated:2024-10-21
+created: 2024-10-18
+updated: 2024-10-21
 ---
 
 # Tooltip Component
