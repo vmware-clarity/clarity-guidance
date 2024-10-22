@@ -15,7 +15,7 @@ Commonly found in [Forms](https://clarity.design/documentation/forms) and consis
 
 - **Should** use `Compact` layout in places with limited vertical space, and information density is needed; otherwise the `Vertical` or `Horizontal` layouts are recommended.
 - Use appropriate states for file picker. [States supported for file picker](https://clarity.design/documentation/file-picker#states).
-- Recommended to use helper text to tell users which format the file input will accept, i.e., PNG, JPG, PDF, etc.
+- **Should** use helper text to tell users which format the file input will accept, i.e., PNG, JPG, PDF, etc.
 - **Should** follow the [forms pattern guidelines](https://clarity.design/documentation/forms).
 
 ## Changelog
