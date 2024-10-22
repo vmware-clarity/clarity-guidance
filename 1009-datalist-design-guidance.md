@@ -2,12 +2,12 @@
 category: component design guidance
 state: draft
 created: 2024-10-16
-updated: 2024-10-21
+updated: 2024-10-22
 ---
 
 # Datalist Component
 
-The [Datalist](https://clarity.design/documentation/datalist) is a type of list that becomes contextualized through the selection of extensive pre-defined filters.
+The [datalist](https://clarity.design/documentation/datalist) is a type of list that becomes contextualized through the selection of extensive pre-defined filters.
 
 ## Guidance
 
@@ -15,9 +15,7 @@ The [Datalist](https://clarity.design/documentation/datalist) is a type of list 
 - **Must** use a datalist when you have a pre-defined list of options, but the user needs to input a custom value.
 - **Should** use a datalist when there are more than 13 options.
 - Use `error` and `success` states for a datalist to provide real-time feedback immediately after a user's input.
-- Use appropriate [Datalist states](https://clarity.design/documentation/datalist#states).
-- Datalists are available in `Vertical`, `Horizontal`, and `Compact` layout. Use appropriate [Datalist layout](https://clarity.design/documentation/datalist#layouts) variants.
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-22**: Initial guidance
