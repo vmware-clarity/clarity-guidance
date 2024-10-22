@@ -23,7 +23,8 @@ The [label](https://clarity.design/documentation/label) component shows concise 
 ## Style and Color
 
 - **Must** choose colors for the label based on [Clarity color palette](https://clarity.design/documentation/color).
-- **Must** avoid using too many colors within the same context. Displaying too many colors may distract the user from the core of your application and the information it presents.
+- **Should not** use too many colors within the same context. Displaying too many colors may distract the user from the core of your application and the information it presents.
+- **Must not** use color alone to convey information.
 - It is recommended to reserve red, yellow, and green to display state or status.
 
 
