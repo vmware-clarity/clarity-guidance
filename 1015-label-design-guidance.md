@@ -2,12 +2,12 @@
 category: component design guidance
 state: draft
 created: 2024-10-15
-updated: 2024-10-21
+updated: 2024-10-22
 ---
 
 # Label Design Guidance
 
-The [label](https://clarity.design/documentation/label) component shows concise metadata in a compact format.
+ [Label](https://clarity.design/documentation/label) component shows concise metadata in a compact format.
 
 ## Guidance
 
