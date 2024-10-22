@@ -2,25 +2,25 @@
 category: component design guidance
 state: draft
 created: 2024-10-15
-updated: 2024-10-18
+updated: 2024-10-22
 ---
 
 # Button Component
 
-[Button](https://clarity.design/documentation/button) component allows users to trigger actions or events with a single click.
+The [button](https://clarity.design/documentation/button) component allows users to trigger actions or events with a single click.
 
 ## Guidance
 
-Clarity supports `Solid`, `Outline` and `Flat` buttons. They are provided to give visual distinction between the priority or hierarchy of the buttons in the application.
+Clarity supports `solid`, `outline` and `flat` buttons. They are provided to give visual distinction between the priority or hierarchy of the buttons in the application.
 
 ### Button Types
 
-- **Must** use `Solid` buttons for the primary action that the application is suggesting that the user take.
-- **Must** use `Outline` buttons to indicate a secondary action that complements a primary action.
-- **Should** use `Outline`buttons to reduce visual noise when there are many actions of equal importance on the page.
-- **Should** use `Flat` buttons when a user is expected to take an action within the page.
-- **Should** use a link (or anchor element) in place of a Button to navigate the user to a different page.
-- **Should** use a `Flat` button for some tertiary action in the page.
+- **Must** use `solid` buttons for the primary action that the application is suggesting that the user take.
+- **Must** use `outline` buttons to indicate a secondary action that complements a primary action.
+- **Should** use `outline`buttons to reduce visual noise when there are many actions of equal importance on the page.
+- **Should** use `flat` buttons when a user is expected to take an action within the page.
+- **Should** use a link (or anchor element) in place of a button to navigate the user to a different page.
+- **Should** use a `flat` button for some tertiary action in the page.
  
 ### Button Placement
 
@@ -34,17 +34,17 @@ Clarity supports `Solid`, `Outline` and `Flat` buttons. They are provided to giv
 
 ### Button Size
 
-Clarity offers two button sizes : `Default` and `Compact` 
+Clarity offers two button sizes : `default` and `compact` 
 
-- **Should** use `Compact` buttons where smaller buttons are needed to de-emphasize calls to action. Specially when multiple actions of equal importance are available.
+- **Should** use `compact` buttons where smaller buttons are needed to de-emphasize calls to action. Specially when multiple actions of equal importance are available.
 
 ### Button with Icons
 
-- **Must** NOT use two icons in the same button.
+- **Must not** use two icons in the same button.
 - **Should** include text besides the icons that clearly indicates what the button will do.
 - **Should** place icons to the left or right of the button text.
 - **Should** use only an icon with no text, if you have space constraints on the page.
-- Use Icons inside buttons to provide the call to action with a visual indicator.
+- Use icons inside buttons to provide the call to action with a visual indicator.
 
 ### Button with Badges
 
@@ -53,14 +53,14 @@ Clarity offers two button sizes : `Default` and `Compact`
 
 ### Button Interactions & States
 
-Buttons have built-in loading and disabled states. There are three sub-states within the loading state: `loading`, `error`, and `success`.
+Buttons have built-in loading and disabled states. There are three sub-states within the loading state: loading, error, and success.
 
-- **Must** use a `disabled` button when the action is unavailable or if the user task is incomplete.
-- **Should** use a `loading` state to indicate that the application is working on the corresponding action.
-- **Should** use an `error` state to indicate that the action has failed to complete.
-- **Should** use a `success` state to indicate that the action has completed successfully.
-- All three states (`loading`, `error`, and `success`) **should** prevent further execution of the call to action.
+- **Must** use a disabled button when the action is unavailable or if the user task is incomplete.
+- **Should** use a loading state to indicate that the application is working on the corresponding action.
+- **Should** use an error state to indicate that the action has failed to complete.
+- **Should** use a success state to indicate that the action has completed successfully.
+- All three states (loading, error, and success) **should** prevent further execution of the call to action.
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-22**: Initial guidance
