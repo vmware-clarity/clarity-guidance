@@ -2,19 +2,19 @@
 category: component design guidance
 state: draft
 created: 2024-10-18
-updated: 2024-10-21
+updated: 2024-10-22
 ---
 
 # Login Page Component
 
-The [Login Page](https://clarity.design/documentation/login) is a predefined form for applications that require authentication.
+The [login page](https://clarity.design/documentation/login) is a predefined form for applications that require authentication.
 
 ## Guidance
 
-- **Must** use Login Page component for authentication flows to maintain consistency across the applications.
-- **Must** NOT use an asterick (`*`) in the input fields of a Login Page.
-- The username/password validation message **must** NOT call out whether the error occurred in the user name or password field.
+- **Must** use login page component for authentication flows to maintain consistency across the applications.
+- **Must not** use an asterisk (`*`) in the input fields of a login page.
+- The username/password validation message **must not** call out whether the error occurred in the username or password field.
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-22**: Initial guidance
