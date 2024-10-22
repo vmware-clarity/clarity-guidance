@@ -7,7 +7,7 @@ updated: 2024-10-21
 
 # Label Design Guidance
 
-[Label](https://clarity.design/documentation/label) component show concise metadata in a compact format.
+The [label](https://clarity.design/documentation/label) component shows concise metadata in a compact format.
 
 ## Guidance
 
