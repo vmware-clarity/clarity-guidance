@@ -28,7 +28,7 @@ There are two types of layouts, `horizontal` and `vertical`.
 - **Must** use a `horizontal` layout when a workflow has three to five steps.
 - **Must** use a `horizontal` layout when all steps can be displayed without wrapping.
 - **Must** use a `vertical` layout when a workflow has more than five steps.
-- **Must** use a `vertical` layout when timestamps are optional.
+- **May** use a `vertical` layout when timestamps are optional.
 
 ### Timeline States
 
