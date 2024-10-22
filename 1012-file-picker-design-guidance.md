@@ -11,7 +11,6 @@ The [file picker](https://clarity.design/documentation/file-picker) component al
 
 ## Guidance
 
-Commonly found in [Forms](https://clarity.design/documentation/forms) and consists of a label, a button and an optional helper message. File picker component is available in `Vertical`, `Horizontal`, and `Compact` layouts.
 
 - **Should** use `Compact` layout in places with limited vertical space, and information density is needed; otherwise the `Vertical` or `Horizontal` layouts are recommended.
 - Use appropriate [file picker states](https://clarity.design/documentation/file-picker#states).
