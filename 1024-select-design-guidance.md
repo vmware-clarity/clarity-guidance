@@ -2,7 +2,7 @@
 category: component design guidance
 state: draft
 created: 2024-10-16
-updated: 2024-10-21
+updated: 2024-10-22
 ---
 
 # Select Component
@@ -12,13 +12,12 @@ updated: 2024-10-21
 ## Guidance
 
 - **Must** use when a user doesn't need to see the list of options until they click to view the list.
-- **Must** NOT use if you have fewer than 6 options. Consider using the `radio` component instead, if there is enough space.
-- **Should** have a default option pre-selected whenever possible or a placeholder instead. Do NOT leave the select field empty.
+- **Must not** use if you have fewer than 6 options. Consider using a [radio](https://clarity.design/documentation/radio) component instead.
+- **Must** have a default option pre-selected or have a placeholder. Do not leave the select field empty.
 - **Should** avoid having multiple lines of text in select field option. If the text is too long for one line, add an ellipsis (…).
-- Use labels to describe what the data in the select field is all about.
-- Use appropriate [states](https://clarity.design/documentation/select#states) for Select component.
-- Select component is available in multiple [layouts](https://clarity.design/documentation/select#layouts) variants.
+- **Should** use labels to describe what the data in the select field is all about.
+- **Should** use appropriate [select states](https://clarity.design/documentation/select#states).
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-22**: Initial guidance
