@@ -20,16 +20,16 @@ updated: 2024-10-22
 
 ## Content Guidelines
 
-- **Must** avoid cross-linking between tabs.
+- **Must not** have cross-linking between tabs.
 - Content in each tab **should** be independent of the content in other tabs.
 - **Should** keep similar content in the same view. Don't force users to navigate back and forth to compare data.
 - **May** consider dividing long content into subsections within the tab.
 
 ## Label Guidelines
 
-- **Must** avoid generic labels such as General or Advanced.
-- **Must** Use title case capitalization.
-- **Must** avoid using icons in labels.
+- **Must not** use generic labels such as General or Advanced.
+- **Must not** use title case capitalization.
+- **Must not** use icons in labels.
 - **Must** show a clear relationship between the tabs.
 - **Should** favor nouns over verbs, for example, Settings, Permissions, and Performance.
 
