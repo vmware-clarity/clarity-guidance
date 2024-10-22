@@ -17,7 +17,7 @@ The [label](https://clarity.design/documentation/label) component shows concise 
 - **Should** use parenthesis for any additional metadata, if required in the same label.
 - **Should** use [clickable labels](https://clarity.design/documentation/label#clicking-labels) to perform an action related to that label.
 - **May** use a close icon at the right-most side of a label to dismiss it unless the label itself is clickable.
-- **Should** use labels and [badges](https://clarity.design/documentation/badge) together to show a count relating to the metadata displayed in the label.
+- If there is a count or other number related to the metadata displayed in the label, a badge **must** be used.
 
 
 ## Style and Color
