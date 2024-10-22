@@ -2,22 +2,21 @@
 category: component design guidance
 state: draft
 created: 2024-10-15
-updated: 2024-10-21
+updated: 2024-10-22
 ---
 
 # Checkbox Component
 
-[Checkbox](https://clarity.design/documentation/checkbox) component is a form element that allows users to select one or more options from a multiple-choice list.
+The [Checkbox](https://clarity.design/documentation/checkbox) component allows the user to select one or more options from a multiple-choice list.
 
 ## Guidance
 
 - **Must** be used to choose single or multiple options within a list of choices.
-- **Must** NOT be used for mutually exclusive options, use `Radio` instead.
-- **Should** NOT use checkbox for binary choices Outside a form, use `Toggle` instead.
+- **Must not** be used for mutually exclusive options. Use a [radio](https://clarity.design/documentation/radio) instead.
+- **Should not** use checkbox for binary choices Outside a form. Use a [toggle-switch](https://clarity.design/documentation/toggle-switch) instead.
 - **Should** keep the label of the checkbox to a single line.
-- Use appropriate [states](https://clarity.design/documentation/checkbox#states) for checkbox component.
-- Checkbox component is available in multiple [layouts](https://clarity.design/documentation/checkbox#layouts) variants.
+- **Should** use appropriate [checkbox states](https://clarity.design/documentation/checkbox#states).
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-22**: Initial guidance
