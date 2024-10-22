@@ -7,7 +7,7 @@ updated: 2024-10-21
 
 # File Picker Design Guidance
 
-[File Picker](https://clarity.design/documentation/file-picker) component allow users to select one or more files to upload.
+The [file picker](https://clarity.design/documentation/file-picker) component allows users to select one or more files to upload.
 
 ## Guidance
 
