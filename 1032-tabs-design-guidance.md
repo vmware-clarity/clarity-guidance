@@ -31,7 +31,7 @@ updated: 2024-10-21
 - **Must** Use title-style capitalization.
 - **Must** avoid using icons in labels.
 - **Must** show a clear relationship between the tabs.
-- **Should** favour nouns over verbs, for example, Settings, Permissions, and Performance.
+- **Should** favor nouns over verbs, for example, Settings, Permissions, and Performance.
 
 
 ## Changelog
