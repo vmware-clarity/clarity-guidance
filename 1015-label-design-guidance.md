@@ -13,7 +13,7 @@ The [label](https://clarity.design/documentation/label) component shows concise 
 
 - **Must** keep labels short and concise.
 - **Must not** use all capital letters in labels. Using all capital letters might make the user think the label is a button and conflates the use case for labels with actions and buttons.
-- **Must** NOT use multiple lines of text within a single label.
+- **Must not** use multiple lines of text within a single label.
 - **Should** use parenthesis for any additional metadata, if required in the same label.
 - **Should** use [clickable labels](https://clarity.design/documentation/label#clicking-labels) to perform an action related to that label.
 - **Should** use a close icon at the right-most side of a label to dismiss it.
