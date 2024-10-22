@@ -1,0 +1,22 @@
+{
+  "name": "CIP - widget",
+  "id": "1428329485388722780",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "permissions": [ "teamlibrary" ],
+  "documentAccess": "dynamic-page",
+  "editorType": [
+    "figma"
+  ],
+  "containsWidget": true,
+  "widgetApi": "1.0.0",
+  "ui": "ui.html",
+  "networkAccess": {
+    "allowedDomains": [
+      "https://unpkg.com",
+      "https://guidance.clarity.design"
+    ]
+  }
+}

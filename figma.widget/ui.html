@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://unpkg.com/@cds/core/global.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/@cds/core/styles/theme.dark.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
+
+
+<body cds-theme="light">
+    <div class="content-area" style="padding: 0 16px" >
+        <div>
+            <button class="btn btn-sm" id="showToastButton">CIP Home PAge</button>
+            <button class="btn btn-sm" id="checkViolations">Check Violations</button>
+            <button class="btn btn-sm" id="detachedNodes">detached nodes</button>
+            <button class="btn btn-danger btn-sm" id="closeButton">Close</button>
+        </div>
+        <div id="showViolation" class="clr-row" style="display: none;">
+            <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+                <div class="card">
+                    <div class="card-header">Header</div>
+                    <div class="card-block">
+                        <div class="card-title">Block</div>
+                        <div class="card-text">
+                            Card content can contain text, links, images, data visualizations, lists and more.
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-link">Fix Violation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+      const showToastButton = document.getElementById("showToastButton");
+      showToastButton.onclick = () => {
+          console.log(parent);
+        parent.postMessage({ pluginMessage: { type: "showToast" } }, "*");
+      };
+
+      const closeButton = document.getElementById("closeButton");
+      closeButton.onclick = () => {
+        parent.postMessage({ pluginMessage: { type: "close" } }, "*");
+      };
+
+      const violationsCheckButton = document.getElementById("checkViolations");
+      violationsCheckButton.onclick = () => {
+          const showViolationCard = document.getElementById("showViolation");
+          showViolationCard.style.display = "none";
+
+          parent.postMessage({ pluginMessage: { type: "checkViolations" } }, "*");
+      };
+
+      const detachedNodesCheckButton = document.getElementById("detachedNodes");
+      detachedNodesCheckButton.onclick = () => {
+          const showViolationCard = document.getElementById("showViolation");
+          showViolationCard.style.display = "none";
+
+          parent.postMessage({ pluginMessage: { type: "find-select-detached-nodes" } }, "*");
+      };
+
+      window.onmessage = msg => {
+          console.log(msg)
+        if (msg.type === "message" && msg.data.pluginMessage.type === "violations") {
+            console.log(msg.data.pluginMessage.data);
+
+            const data = msg.data.pluginMessage.data
+
+            const showViolationCard = document.getElementById("showViolation");
+            showViolationCard.querySelector('.card-header').innerHTML = data.key;
+            showViolationCard.querySelector('.card-title').innerHTML = data.rule;
+            showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
+
+            console.log(showViolationCard);
+
+            showViolationCard.style.display = "block";
+        }
+      }
+    </script>
+</body>
