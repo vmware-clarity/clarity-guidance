@@ -2,7 +2,7 @@
 category: component design guidance
 state: draft
 created: 2024-10-18
-updated: 2024-10-21
+updated: 2024-10-22
 ---
 
 # Tabs Design Guidance
@@ -12,11 +12,11 @@ updated: 2024-10-21
 ## Guidance
 
 - **Must** place tabs in a single, non-scrollable row, above their content.
-- **Must** avoid using tabs in cards and modals.
-- **Must** avoid using more than seven tabs and limit labels to one or two words to ensure that all tabs appear in the container. You may use [tab overflow](https://clarity.design/documentation/tabs/code#overflow-tabs) when the tab group is larger than its containing space or if you need to preserve space.
+- **Must not** use tabs in cards and modals.
+- **Must not** use more than seven tabs and limit labels to one or two words to ensure that all tabs appear in the container. **May** use [tab overflow](https://clarity.design/documentation/tabs/code#overflow-tabs) when the tab group is larger than its containing space or if you need to preserve space.
 - **Must not** use tabs to break user interactions into a series of steps. Serial workflows are best presented in a [stepper](https://clarity.design/documentation/stepper) or [wizard](https://clarity.design/documentation/wizard). 
 - **Should** use tabs for alternate views within a vertical nav or main content area.
-- **Should** use [Vertical Tabs](https://clarity.design/documentation/tabs/code#vertical-tabs) for vertical alignment.
+- **Should** use [vertical tabs](https://clarity.design/documentation/tabs/code#vertical-tabs) for vertical alignment.
 
 ## Content Guidelines
 
@@ -28,7 +28,7 @@ updated: 2024-10-21
 ## Label Guidelines
 
 - **Must** avoid generic labels such as General or Advanced.
-- **Must** Use title-style capitalization.
+- **Must** Use title case capitalization.
 - **Must** avoid using icons in labels.
 - **Must** show a clear relationship between the tabs.
 - **Should** favor nouns over verbs, for example, Settings, Permissions, and Performance.
