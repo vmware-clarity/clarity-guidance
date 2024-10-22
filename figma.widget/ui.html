@@ -14,12 +14,10 @@
         <div id="showViolation" class="clr-row" style="display: none;">
             <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
                 <div class="card">
-                    <div class="card-header">Header</div>
+                    <div class="card-header"></div>
                     <div class="card-block">
-                        <div class="card-title">Block</div>
-                        <div class="card-text">
-                            Card content can contain text, links, images, data visualizations, lists and more.
-                        </div>
+                        <div class="card-title"></div>
+                        <div class="card-text"></div>
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-sm btn-link">Fix Violation</button>
@@ -60,20 +58,43 @@
 
       window.onmessage = msg => {
           console.log(msg)
-        if (msg.type === "message" && msg.data.pluginMessage.type === "violations") {
-            console.log(msg.data.pluginMessage.data);
+          if (msg.type !== "message") {
+              return;
+          }
 
-            const data = msg.data.pluginMessage.data
+          const showViolationCard = document.getElementById("showViolation");
+          if (msg.data.pluginMessage.type === "violations") {
+              console.log(msg.data.pluginMessage.data);
 
-            const showViolationCard = document.getElementById("showViolation");
-            showViolationCard.querySelector('.card-header').innerHTML = data.key;
-            showViolationCard.querySelector('.card-title').innerHTML = data.rule;
-            showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
+              const data = msg.data.pluginMessage.data
 
-            console.log(showViolationCard);
+              showViolationCard.querySelector('.card-header').innerHTML = `<a class="card-link" target="_blank" href="https://42--clarity-guidance.netlify.app/${data.key}">CIP - ${data.key}</a>`;
+              showViolationCard.querySelector('.card-title').innerHTML = data.rule;
+              showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
 
-            showViolationCard.style.display = "block";
-        }
+              console.log(showViolationCard);
+
+              showViolationCard.style.display = "block";
+          }
+
+          if (msg.data.pluginMessage.type === "change") {
+              console.log(msg.data.pluginMessage.data);
+
+              const data = msg.data.pluginMessage.data;
+
+              if(data.hide) {
+                  showViolationCard.style.display = "none";
+                  return;
+              }
+
+              showViolationCard.querySelector('.card-header').innerHTML = `<a target="_blank" class="card-link" href="https://42--clarity-guidance.netlify.app/${data.key}">CIP - ${data.key}</a>`;
+              showViolationCard.querySelector('.card-title').innerHTML = data.rule;
+              showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
+
+              console.log(showViolationCard);
+
+              showViolationCard.style.display = "block";
+          }
       }
     </script>
 </body>
