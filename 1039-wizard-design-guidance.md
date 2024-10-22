@@ -2,7 +2,7 @@
 category: component design guidance
 state: draft
 created: 2024-10-17
-updated: 2024-10-21
+updated: 2024-10-22
 ---
 
 # Wizard Component
@@ -28,4 +28,4 @@ The [wizard](https://clarity.design/documentation/wizard) component guides the u
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-22**: Initial guidance
