@@ -5,7 +5,7 @@ created: 2024-10-15
 updated: 2024-10-22
 ---
 
-# Card Component
+# Card Design Guidance
 
 [Cards](https://clarity.design/documentation/card) are containers around a related grouping of content and actions.
 
