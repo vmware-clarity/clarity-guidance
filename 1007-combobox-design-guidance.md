@@ -5,7 +5,7 @@ created: 2024-10-16
 updated: 2024-10-22
 ---
 
-# Combobox Component
+# Combobox Design Guidance
 
 The [combobox](https://clarity.design/documentation/combobox) is a complex component that uses a text input box and a drop-down list. The user can enter text into the input to filter the set of predefined options in the drop-down.
 
