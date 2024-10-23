@@ -5,9 +5,9 @@ created: 2024-10-16
 updated: 2024-10-22
 ---
 
-# Radio Component
+# Radio Design Guidance
 
-[Radio](https://clarity.design/documentation/radio) component is a form element that allow the user to select one of the options in the list.
+A [radio](https://clarity.design/documentation/radio) control is a form element that allow the user to select one of the options in a group.
 
 ## Guidance
 
