@@ -5,7 +5,7 @@ created: 2024-10-16
 updated: 2024-10-22
 ---
 
-# Stepper Component
+# Stepper Design Guidance
 
 The [stepper](https://clarity.design/documentation/stepper) is an accordion-like component that structures multi-step processes into two or more expanding panels that break up complex workflows.
 
