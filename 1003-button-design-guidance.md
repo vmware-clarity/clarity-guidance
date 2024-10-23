@@ -5,26 +5,26 @@ created: 2024-10-15
 updated: 2024-10-22
 ---
 
-# Button Component
+# Button Design Guidance
 
 The [button](https://clarity.design/documentation/button) component allows users to trigger actions or events with a single click.
 
 ## Guidance
 
-Clarity supports `solid`, `outline` and `flat` buttons. They are provided to give visual distinction between the priority or hierarchy of the buttons in the application.
+Clarity supports solid, outline and flat buttons. These types are provided to give visual distinction between the priority or hierarchy of the buttons in the application.
 
 ### Button Types
 
-- **Must** use `solid` buttons for the primary action that the application is suggesting that the user take.
-- **Must** use `outline` buttons to indicate a secondary action that complements a primary action.
-- **Should** use `outline`buttons to reduce visual noise when there are many actions of equal importance on the page.
-- **Should** use `flat` buttons when a user is expected to take an action within the page.
+- **Must** use solid buttons for the primary action that the application is suggesting that the user take.
+- **Must** use outline buttons to indicate a secondary action that complements a primary action.
+- **Should** use outline buttons to reduce visual noise when there are many actions of equal importance on the page.
+- **Should** use flat buttons when a user is expected to take an action within the page.
 - **Should** use a link (or anchor element) in place of a button to navigate the user to a different page.
-- **Should** use a `flat` button for some tertiary action in the page.
- 
+- **Should** use a flat button for some tertiary action in the page.
+
 ### Button Placement
 
-- **Should** be positioned to help increase their visibility. Clarity follows [two distinct patterns](https://clarity.design/documentation/button#placement) : `Z Pattern` & `F Pattern`.
+- **Should** be positioned to help increase their visibility. Clarity follows [Z-pattern and F-pattern](https://clarity.design/documentation/button#placement) for button placement. Use Z-pattern within constrained containers such as modals, and use F-pattern within unconstrained content such as a form on the page itself.
 
 ### Button Typography
 
@@ -34,16 +34,16 @@ Clarity supports `solid`, `outline` and `flat` buttons. They are provided to giv
 
 ### Button Size
 
-Clarity offers two button sizes : `default` and `compact` 
+Clarity offers two button sizes : default and compact
 
-- **Should** use `compact` buttons where smaller buttons are needed to de-emphasize calls to action. Specially when multiple actions of equal importance are available.
+- **Should** use compact buttons where smaller buttons are needed to de-emphasize calls to action. Specially when multiple actions of equal importance are available.
 
 ### Button with Icons
 
 - **Must not** use two icons in the same button.
 - **Should** include text besides the icons that clearly indicates what the button will do.
 - **Should** place icons to the left or right of the button text.
-- **Should** use only an icon with no text, if you have space constraints on the page.
+- **May** use only an icon with no text if you have space constraints on the page, but an accessible name _must_ be provided and _should_ be called out in the design.
 - Use icons inside buttons to provide the call to action with a visual indicator.
 
 ### Button with Badges
