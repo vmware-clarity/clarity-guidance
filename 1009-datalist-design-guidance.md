@@ -5,7 +5,7 @@ created: 2024-10-16
 updated: 2024-10-22
 ---
 
-# Datalist Component
+# Datalist Design Guidance
 
 The [datalist](https://clarity.design/documentation/datalist) is a type of list that becomes contextualized through the selection of extensive pre-defined filters.
 
