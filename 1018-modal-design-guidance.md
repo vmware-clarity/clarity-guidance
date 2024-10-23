@@ -5,7 +5,7 @@ created: 2024-10-17
 updated: 2024-10-22
 ---
 
-# Modal Component
+# Modal Design Guidance
 
 [Modal](https://clarity.design/documentation/modal) component informs the users about a task and can contain information that requires immediate attention.
 
