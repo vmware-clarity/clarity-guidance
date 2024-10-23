@@ -5,7 +5,7 @@ created: 2024-10-15
 updated: 2024-10-22
 ---
 
-# Accordion Component
+# Accordion Design Guidance
 
 An [accordion](https://clarity.design/documentation/accordion) is a collection of vertically stacked sections with multiple content panels.
 
@@ -22,7 +22,7 @@ An [accordion](https://clarity.design/documentation/accordion) is a collection o
 
 - The accordion header **must not** contain clickable elements.
 - The accordion header **should** include only a title and brief info (if needed).
-- Accordions **may** be nested up to 2 levels.
+- Accordions **must not** be nested more than 2 levels.
 
 ## Changelog
 
