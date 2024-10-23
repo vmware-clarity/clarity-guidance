@@ -20,7 +20,7 @@
                         <div class="card-text"></div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-link">Fix Violation</button>
+                        <button class="btn btn-sm btn-link" id="fix-detached-nodes">Fix Violation</button>
                     </div>
                 </div>
             </div>
@@ -54,6 +54,14 @@
           showViolationCard.style.display = "none";
 
           parent.postMessage({ pluginMessage: { type: "find-select-detached-nodes" } }, "*");
+      };
+
+      const fixDetachedNodesCheckButton = document.getElementById("fix-detached-nodes");
+      fixDetachedNodesCheckButton.onclick = () => {
+          const showViolationCard = document.getElementById("showViolation");
+          showViolationCard.style.display = "none";
+
+          parent.postMessage({ pluginMessage: { type: "fix-detached-nodes" } }, "*");
       };
 
       window.onmessage = msg => {
