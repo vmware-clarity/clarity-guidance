@@ -5,17 +5,17 @@ created: 2024-10-22
 updated: 2024-10-22
 ---
 
-# Table Component
+# Table Design Guidance
 
-[Table](https://clarity.design/documentation/table) is a component that use rows and columns to display information in a grid view.
+The [table](https://clarity.design/documentation/table) is a component that use rows and columns to display information in a grid view.
 
 ## Guidance
 
-- **Must** use the table component wherever you need to present static data in a tabular format.
-- **Must** alternatively choose [datagrid](https://clarity.design/documentation/datagrid) for advanced features like sorting, filtering, pagination, or perform batch operations on the structured data.
-- **Should** choose borderless table, when you want to present it in clean and minimalistic appearance.
-- **Should** use compact tables when the vertical space is limited. This variant reduces the row height.
-- **May** choose vertical tables when you do not need a header. Left most cells in the table can be a data or header cell.
+- Design teams **must** use the table component wherever static data needs to be presented in a tabular format. This ensures consistency and alignment with the design system.
+- Design teams **must** alternatively use the [datagrid](https://clarity.design/documentation/datagrid) for advanced features such as sorting, filtering, pagination, or performing batch operations on structured data. This ensures functionality aligns with user needs and the design system.
+- Design teams **should** use a borderless table when presenting data with a clean and minimalistic appearance. This helps maintain a streamlined visual style while keeping the focus on the content.
+- Design teams **should** use compact tables when vertical space is limited, as this variant reduces row height and ensures better use of available space.
+- Design teams **may** use vertical tables when a header is not needed. The leftmost cells in the table can function as either data or header cells, depending on the context.
 
 ## Changelog
 
