@@ -5,7 +5,7 @@ created: 2024-10-17
 updated: 2024-10-22
 ---
 
-# Treeview Component
+# Tree View Design Guidance
 
 The [tree view](https://clarity.design/documentation/tree-view) component presents a hierarchical list of items that have a parent-child relationship where children can be toggled into view by expanding or collapsing their parent item.
 
