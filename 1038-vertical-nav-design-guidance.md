@@ -5,7 +5,7 @@ created: 2024-10-18
 updated: 2024-10-21
 ---
 
-# Vertical Nav Component
+# Vertical Nav Design Guidance
 
 The [vertical nav](https://clarity.design/documentation/vertical-nav) component provides vertically-aligned navigation links. It can fit as many navigation links as needed by scrolling when the content exceeds the viewport.
 
@@ -22,7 +22,6 @@ The [vertical nav](https://clarity.design/documentation/vertical-nav) component 
 - **Must** apply icons to top-level navigation items. *Must not** apply icons to child links.  
 - **Must** place icons to the left of the top navigation labels.
 - **Should** use icons to describe navigation items which are helpful when the navigation is collapsed.
-
 - **Must** use semi-bold font weight for top-level navigation items.
 - **Must** use a caret on the right-hand side to expand and collapse navigation groups.
 - **Must** use normal font weight for child links.
