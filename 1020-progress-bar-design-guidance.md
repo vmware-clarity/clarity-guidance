@@ -7,15 +7,15 @@ updated: 2024-10-22
 
 # Progress Bar Component
 
-[Progress Bar](https://clarity.design/documentation/progress) is a linear indicator that shows the progress of an ongoing, user-initiated process. Progress bars are designed for use in the [main content area](https://clarity.design/documentation/app-layout), [header](https://clarity.design/documentation/header), [cards](https://clarity.design/documentation/card), and [modals](https://clarity.design/documentation/modal).
+A [progress bar](https://clarity.design/documentation/progress) is a linear indicator that shows the progress of an ongoing, user-initiated process. Progress bars are designed for use in the [main content area](https://clarity.design/documentation/app-layout), [header](https://clarity.design/documentation/header), [cards](https://clarity.design/documentation/card), and [modals](https://clarity.design/documentation/modal).
 
 ## Guidance
 
 ### Determinate Progress Bar
 
-- **Must** use "Determinate progress bar" when the process has a known duration. Please see examples below:
-    - File downloads or uploads
-    - A series of configuration steps that happen during an initialization process.
+- **Must** use "determinate progress bar" when the process has a known duration. Examples:
+    - file downloads or uploads
+    - a series of configuration steps that happen during an initialization process
 - **Must** explain what the progress bar is showing and why it might take time. For example, if you're uploading a file, provide the file name and size.
 - **Must** avoid changing styles of the progress bar for the purpose of state switch.  e.g. Green to indicate Success is not recommended. Sight impaired users may not read the additional meaning without additional information such as a text label or icon.
 - **Should** ensure that users can easily spot the progress bar, regardless of the device or interface.
