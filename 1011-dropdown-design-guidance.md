@@ -5,7 +5,7 @@ created: 2024-10-15
 updated: 2024-10-21
 ---
 
-# Dropdown Component
+# Dropdown Design Guidance
 
 The [dropdown](https://clarity.design/documentation/dropdown) component allows the user to choose an option or action from a contextual list. The trigger of the dropdown is usually a button.
 
@@ -21,7 +21,7 @@ The [dropdown](https://clarity.design/documentation/dropdown) component allows t
 ## Content Guidelines
 
 - **Must** keep the description of the dropdown options as short as possible to improve readability.
-- Phrase the label that clearly indicate the dropdown action.
+- **Should** phrase the label that clearly indicate the dropdown action.
 
 
 ## Changelog
