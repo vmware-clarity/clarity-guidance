@@ -5,7 +5,7 @@ created: 2024-10-18
 updated: 2024-10-22
 ---
 
-# Stack View Component
+# Stack View Design Guidance
 
 The [stack view](https://clarity.design/documentation/stack-view) component displays key/value pairs, which users can expand to show more detail.
 
@@ -19,7 +19,7 @@ The [stack view](https://clarity.design/documentation/stack-view) component disp
 ### Stack View Value Editing
 
 - An editable stack view **must** have an edit button above the stack view to the right.
-- An editable stack view **must** open in a modal on clicking the edit button.
+- An editable stack view **must** open a modal on clicking the edit button.
 
 ### Stack View Labels
 
