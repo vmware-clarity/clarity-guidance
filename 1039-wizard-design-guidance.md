@@ -5,7 +5,7 @@ created: 2024-10-17
 updated: 2024-10-22
 ---
 
-# Wizard Component
+# Wizard Design Guidance
 
 The [wizard](https://clarity.design/documentation/wizard) component guides the user through a set of predefined steps. Wizards can help users focus on only the input needed for each step and decrease the chance of errors.
 
