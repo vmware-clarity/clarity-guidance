@@ -5,7 +5,7 @@ created: 2024-10-17
 updated: 2024-10-22
 ---
 
-# Signpost Component
+# Signpost Design Guidance
 
 [Signposts](https://clarity.design/documentation/signpost) are displayed in a popover dialog box and contain contextual help or information.
 
