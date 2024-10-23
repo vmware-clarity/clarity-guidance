@@ -5,7 +5,7 @@ created: 2024-10-16
 updated: 2024-10-22
 ---
 
-# Progress Bar Component
+# Progress Bar Design Guidance
 
 A [progress bar](https://clarity.design/documentation/progress) is a linear indicator that shows the progress of an ongoing, user-initiated process. Progress bars are designed for use in the [main content area](https://clarity.design/documentation/app-layout), [header](https://clarity.design/documentation/header), [cards](https://clarity.design/documentation/card), and [modals](https://clarity.design/documentation/modal).
 
