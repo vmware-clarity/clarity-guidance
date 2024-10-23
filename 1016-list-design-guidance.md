@@ -5,7 +5,7 @@ created: 2024-10-16
 updated: 2024-10-21
 ---
 
-# List Component
+# List Design Guidance
 
 [List](https://clarity.design/documentation/list) show vertical groups of items and can be nested to show hierarchy.
 
