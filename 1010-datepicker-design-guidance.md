@@ -5,9 +5,9 @@ created: 2024-10-15
 updated: 2024-10-22
 ---
 
-# Datepicker Component
+# Date Picker Design Guidance
 
-[Datepicker](https://clarity.design/documentation/datepicker) component allows users to choose and input a date by manually typing the date into the input field or by using a calendar popover.
+The [datepicker](https://clarity.design/documentation/datepicker) component allows users to choose and input a date by manually typing the date into the input field or by using a calendar popover.
 
 ## Guidance
 
