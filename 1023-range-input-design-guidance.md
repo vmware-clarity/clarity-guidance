@@ -7,7 +7,7 @@ updated: 2024-10-22
 
 # Range Input Design Guidance
 
-[Range Input](https://clarity.design/documentation/range) consists of a slider that can be moved to represent some value between the minimum and maximum values. It allows the user to select a value when the precise value chosen is not considered necessary.
+A [range Input](https://clarity.design/documentation/range) consists of a slider that can be moved to represent some value between the minimum and maximum values. It allows the user to select a value when the precise value chosen is not considered necessary.
 
 ## Guidance
 
