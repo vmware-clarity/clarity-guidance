@@ -5,9 +5,9 @@ created: 2024-10-16
 updated: 2024-10-22
 ---
 
-# Select Component
+# Select Design Guidance
 
-[Select](https://clarity.design/documentation/select) component allows users to choose one or multiple item(s) from a list of options.
+A [select](https://clarity.design/documentation/select) control allows users to choose one or multiple items from a list of options.
 
 ## Guidance
 
