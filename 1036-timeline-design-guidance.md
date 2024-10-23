@@ -5,7 +5,7 @@ created: 2024-10-17
 updated: 2024-10-22
 ---
 
-# Timeline Component
+# Timeline Design Guidance
 
 The [timeline](https://clarity.design/documentation/timeline) component is a visual indicator that shows progress through a workflow. It can also guide the user through specific processes or pre-defined steps.
 
@@ -23,12 +23,12 @@ For more guidance on multi-step process workflows, see the [Multi-Step Workflow 
 
 ### Timeline Layouts
 
-There are two types of layouts, `horizontal` and `vertical`.
+There are two types of layouts: horizontal and vertical.
 
-- **Must** use a `horizontal` layout when a workflow has three to five steps.
-- **Must** use a `horizontal` layout when all steps can be displayed without wrapping.
-- **Must** use a `vertical` layout when a workflow has more than five steps.
-- **May** use a `vertical` layout when timestamps are optional.
+- **Must** use a horizontal layout when a workflow has three to five steps.
+- **Must** use a horizontal layout when all steps can be displayed without wrapping.
+- **Must** use a vertical layout when a workflow has more than five steps.
+- **May** use a vertical layout when timestamps are optional.
 
 ### Timeline States
 
