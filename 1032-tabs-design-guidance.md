@@ -28,7 +28,7 @@ updated: 2024-10-22
 ## Label Guidelines
 
 - **Must not** use generic labels such as General or Advanced.
-- **Must not** use title case capitalization.
+- **Must** use title case capitalization.
 - **Must not** use icons in labels.
 - **Must** show a clear relationship between the tabs.
 - **Should** favor nouns over verbs, for example, Settings, Permissions, and Performance.
