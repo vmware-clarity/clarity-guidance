@@ -5,7 +5,7 @@ const {useEffect, Text} = widget
 
 function Widget() {
     useEffect(() => {
-        figma.ui.onmessage = (msg) => {
+        figma.ui.onmessage = async (msg) => {
             if (msg.type === 'showToast') {
                 figma.notify('Hello - CIP - widget')
             }
@@ -23,7 +23,6 @@ function Widget() {
                         return value;
                     }
                 }).map(color => {
-                    console.log(color)
                     return JSON.stringify(color.color);
                 });
 
@@ -67,32 +66,29 @@ function Widget() {
             }
 
 
-            if(msg.type === 'fix-detached-nodes') {
+            if (msg.type === 'fix-detached-nodes') {
                 const detachedNodes = figma.currentPage.findAll(node => {
                     return !!node.detachedInfo;
                 });
 
-                console.log(detachedNodes[0]);
-
                 if (detachedNodes.length > 0) {
-                    detachedNodes.forEach(node => {
-                        node.detachedInfo.componentKey;
+                    const newNodes: InstanceNode[] = [];
 
-                        figma.importComponentByKeyAsync(node.detachedInfo.componentKey).then(async x => {
-                            console.log(x);
+                    for (let i = 0; i < detachedNodes.length; i++) {
+                        const node = detachedNodes[i];
+                        const result = await figma.importComponentByKeyAsync(node.detachedInfo.componentKey);
 
-                            console.log(node.parent?.children);
+                        const instance = result.createInstance();
+                        newNodes.push(instance);
 
-                            const instance = x.createInstance();
+                        instance.x = node.x
+                        instance.y = node.y
+                        node.parent?.appendChild(instance);
 
-                            instance.x = node.x
-                            instance.y = node.y
-                            node.parent?.insertChild(3, instance);
+                        node.remove();
+                    }
 
-                            node.remove();
-                        })
-
-                    })
+                    figma.currentPage.selection = newNodes;
                 }
             }
 
@@ -226,30 +222,55 @@ figma.currentPage.on("nodechange", _event => {
                     });
                 }
             });
+
+            if (nodeSelection.length > 0) {
+                figma.notify('CIP - widget: Hardcoded values found.');
+                figma.ui.postMessage({
+                    type: "change",
+                    data: {
+                        key: "1001",
+                        recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
+                        rule: `1 or more components violate NO hard coded HEX values. ${nodeSelection}`
+                    }
+                });
+
+                figma.currentPage.selection = nodeSelection;
+            } else {
+                figma.ui.postMessage({
+                    type: "change",
+                    data: {
+                        hide: true
+                    }
+                });
+            }
         }
 
+
+        if (nodeChange.type === "DELETE" && nodeChange.node.type === "INSTANCE") {
+            const detachedNodes = figma.currentPage.findAll(node => {
+                return !!node.detachedInfo;
+            });
+
+            if (detachedNodes.length > 0) {
+                figma.ui.postMessage({
+                    type: "change",
+                    data: {
+                        key: "1002",
+                        recommendation: "Recommendation: Reattach Clarity components.",
+                        rule: `${detachedNodes.length} detached Clarity components found and selected.`
+                    }
+                });
+
+                figma.currentPage.selection = detachedNodes;
+            } else {
+                figma.ui.postMessage({
+                    type: "change",
+                    data: {
+                        hide: true
+                    }
+                });
+            }
+        }
     }))
-
-    if (nodeSelection.length > 0) {
-        figma.notify('CIP - widget: Hardcoded values found.');
-        figma.ui.postMessage({
-            type: "change",
-            data: {
-                key: "1001",
-                recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
-                rule: `1 or more components violate NO hard coded HEX values. ${nodeSelection}`
-            }
-        });
-
-
-        figma.currentPage.selection = nodeSelection;
-    } else {
-        figma.ui.postMessage({
-            type: "change",
-            data: {
-                hide: true
-            }
-        });
-    }
 
 });

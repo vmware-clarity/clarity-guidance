@@ -19,8 +19,8 @@
                         <div class="card-title"></div>
                         <div class="card-text"></div>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-sm btn-link" id="fix-detached-nodes">Fix Violation</button>
+                    <div id="violationFooter" class="card-footer">
+                        <button class="btn btn-sm btn-link" id="fix-detached-nodes">Fix Detachments</button>
                     </div>
                 </div>
             </div>
@@ -44,6 +44,8 @@
       violationsCheckButton.onclick = () => {
           const showViolationCard = document.getElementById("showViolation");
           showViolationCard.style.display = "none";
+          const violationFooter = document.getElementById("violationFooter");
+          violationFooter.style.display = "none";
 
           parent.postMessage({ pluginMessage: { type: "checkViolations" } }, "*");
       };
@@ -52,6 +54,8 @@
       detachedNodesCheckButton.onclick = () => {
           const showViolationCard = document.getElementById("showViolation");
           showViolationCard.style.display = "none";
+          const violationFooter = document.getElementById("violationFooter");
+          violationFooter.style.display = "none";
 
           parent.postMessage({ pluginMessage: { type: "find-select-detached-nodes" } }, "*");
       };
@@ -71,6 +75,7 @@
           }
 
           const showViolationCard = document.getElementById("showViolation");
+          const violationFooter = document.getElementById("violationFooter");
           if (msg.data.pluginMessage.type === "violations") {
               console.log(msg.data.pluginMessage.data);
 
@@ -83,6 +88,10 @@
               console.log(showViolationCard);
 
               showViolationCard.style.display = "block";
+
+              if (data.key === "1002") {
+                  violationFooter.style.display = "block";
+              }
           }
 
           if (msg.data.pluginMessage.type === "change") {
@@ -92,6 +101,7 @@
 
               if(data.hide) {
                   showViolationCard.style.display = "none";
+                  violationFooter.style.display = "none";
                   return;
               }
 
@@ -102,6 +112,10 @@
               console.log(showViolationCard);
 
               showViolationCard.style.display = "block";
+
+              if (data.key === "1002") {
+                  violationFooter.style.display = "block";
+              }
           }
       }
     </script>
