@@ -6,8 +6,8 @@
 <body cds-theme="light">
     <div class="content-area" style="padding: 0 16px" >
         <div>
-            <button class="btn btn-sm" id="showToastButton">CIP Home PAge</button>
-            <button class="btn btn-sm" id="checkViolations">Check Violations</button>
+            <a class="btn btn-sm" target="_blank" href="https://guidance.clarity.design" id="showToastButton">CIP Home PAge</a>
+            <button class="btn btn-sm" id="checkViolations">No Hex Values</button>
             <button class="btn btn-sm" id="detachedNodes">detached nodes</button>
             <button class="btn btn-danger btn-sm" id="closeButton">Close</button>
         </div>
@@ -19,8 +19,11 @@
                         <div class="card-title"></div>
                         <div class="card-text"></div>
                     </div>
-                    <div id="violationFooter" class="card-footer">
+                    <div id="violationFooter-detached" class="card-footer">
                         <button class="btn btn-sm btn-link" id="fix-detached-nodes">Fix Detachments</button>
+                    </div>
+                    <div id="violationFooter-hex-colors" class="card-footer">
+                        <button class="btn btn-sm btn-link" id="select-hardcoded-hex-color">Select hard coded hex node</button>
                     </div>
                 </div>
             </div>
@@ -44,8 +47,10 @@
       violationsCheckButton.onclick = () => {
           const showViolationCard = document.getElementById("showViolation");
           showViolationCard.style.display = "none";
-          const violationFooter = document.getElementById("violationFooter");
-          violationFooter.style.display = "none";
+          const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
+          violationFooterHexColors.style.display = "none";
+          const violationFooterDetached = document.getElementById("violationFooter-detached");
+          violationFooterDetached.style.display = "none";
 
           parent.postMessage({ pluginMessage: { type: "checkViolations" } }, "*");
       };
@@ -54,8 +59,10 @@
       detachedNodesCheckButton.onclick = () => {
           const showViolationCard = document.getElementById("showViolation");
           showViolationCard.style.display = "none";
-          const violationFooter = document.getElementById("violationFooter");
-          violationFooter.style.display = "none";
+          const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
+          violationFooterHexColors.style.display = "none";
+          const violationFooterDetached = document.getElementById("violationFooter-detached");
+          violationFooterDetached.style.display = "none";
 
           parent.postMessage({ pluginMessage: { type: "find-select-detached-nodes" } }, "*");
       };
@@ -68,6 +75,14 @@
           parent.postMessage({ pluginMessage: { type: "fix-detached-nodes" } }, "*");
       };
 
+      const selectHardcodedHexColorsButton = document.getElementById("select-hardcoded-hex-color");
+      selectHardcodedHexColorsButton.onclick = () => {
+          const showViolationCard = document.getElementById("showViolation");
+          showViolationCard.style.display = "none";
+
+          parent.postMessage({ pluginMessage: { type: "select-hardcoded-hex-color" } }, "*");
+      };
+
       window.onmessage = msg => {
           console.log(msg)
           if (msg.type !== "message") {
@@ -75,7 +90,8 @@
           }
 
           const showViolationCard = document.getElementById("showViolation");
-          const violationFooter = document.getElementById("violationFooter");
+          const violationFooterDetached = document.getElementById("violationFooter-detached");
+          const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
           if (msg.data.pluginMessage.type === "violations") {
               console.log(msg.data.pluginMessage.data);
 
@@ -90,7 +106,11 @@
               showViolationCard.style.display = "block";
 
               if (data.key === "1002") {
-                  violationFooter.style.display = "block";
+                  violationFooterDetached.style.display = "block";
+              }
+
+              if (data.key === "1001") {
+                  violationFooterHexColors.style.display = "block";
               }
           }
 
@@ -101,7 +121,8 @@
 
               if(data.hide) {
                   showViolationCard.style.display = "none";
-                  violationFooter.style.display = "none";
+                  violationFooterDetached.style.display = "none";
+                  violationFooterHexColors.style.display = "none";
                   return;
               }
 
@@ -114,7 +135,11 @@
               showViolationCard.style.display = "block";
 
               if (data.key === "1002") {
-                  violationFooter.style.display = "block";
+                  violationFooterDetached.style.display = "block";
+              }
+
+              if (data.key === "1001") {
+                  violationFooterHexColors.style.display = "block";
               }
           }
       }

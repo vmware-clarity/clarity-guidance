@@ -6,17 +6,55 @@ const {useEffect, Text} = widget
 function Widget() {
     useEffect(() => {
         figma.ui.onmessage = async (msg) => {
-            if (msg.type === 'showToast') {
-                figma.notify('Hello - CIP - widget')
+            console.log(msg)
+
+            if (msg.type === 'find-icons') {
+                // let count = 0;
+                const iconIds = figma.currentPage.findAll(node => {
+
+                    if (node.type === 'INSTANCE') {
+                        // console.log('node name', node.name);
+                        // console.log(node.name);
+                        const children = node.findChildren(child => {
+                            // if(node.name === 'Action 2') console.log(child);
+                            return (child.type === 'VECTOR' || child.type === 'BOOLEAN_OPERATION') && child.name === 'icon';
+
+                        });
+
+                        console.log(children);
+
+                        // node.getMainComponentAsync().then(value => {
+                        //
+                        //     console.log(value?.name);
+                        //     console.log(value?.key);
+                        //     // value?.getInstancesAsync().then(value1 => {
+                        //     //     console.log(value1);
+                        //     // });
+                        // });
+                        // count++;
+
+                        return children.length > 0;
+                    }
+
+                    return false;
+                }).map(node =>{
+                    return node.id;
+                });
+
+                figma.ui.postMessage({
+                    type: "found-icons",
+                    data: iconIds
+                });
             }
 
-            console.log(msg)
 
             if (msg.type === 'checkViolations') {
                 figma.notify('CIP - widget: Violations checking...');
                 const origSelection = figma.currentPage.selection;
 
-                figma.currentPage.selection = figma.currentPage.children;
+                figma.currentPage.selection = figma.currentPage.findAll(node => {
+                    return node.type === 'INSTANCE';
+                });
 
                 const wrongColors = figma.getSelectionColors()?.paints.filter(value => {
                     if (!value?.boundVariables?.color?.id) {
@@ -31,14 +69,33 @@ function Widget() {
                 figma.currentPage.selection = origSelection;
                 figma.notify('CIP - widget: Violations Check completed.');
 
-                figma.ui.postMessage({
-                    type: "violations",
-                    data: {
-                        key: "1001",
-                        recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
-                        rule: `1 or more components violate NO hard coded HEX values. ${wrongColors}`
-                    }
+                if(wrongColors?.length) {
+                    figma.ui.postMessage({
+                        type: "violations",
+                        data: {
+                            key: "1001",
+                            recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
+                            rule: `${wrongColors.length} color violate NO hard coded HEX values. ${wrongColors}`
+                        }
+                    });
+                }
+            }
+
+
+            if (msg.type === 'select-hardcoded-hex-color') {
+                const hardcodedNodes = figma.currentPage.findAll(node => {
+                    return node.type === 'INSTANCE'
+                        && (
+                            (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
+                            || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
+                        );
                 });
+
+                console.log(hardcodedNodes);
+
+                if (hardcodedNodes.length > 0) {
+                    figma.currentPage.selection = hardcodedNodes;
+                }
             }
 
             if (msg.type === 'find-select-detached-nodes') {
@@ -106,9 +163,49 @@ function Widget() {
                 // Use async callbacks or return a promise to keep the Iframe window
                 // opened. Resolving the promise, closing the Iframe window, or calling
                 // "figma.closePlugin()" will terminate the code.
-                () =>
-                    new Promise(() => {
+                () => {
+                    return new Promise(() => {
                         figma.showUI(__html__, {width: 560, height: 720});
+
+                        // let count = 0;
+                        // const iconIds = figma.currentPage.findAll(node => {
+                        //
+                        //     if (node.type === 'INSTANCE' && count < 20) {
+                        //         // console.log('node name', node.name);
+                        //         // console.log(node.name);
+                        //           const children = node.findChildren(child => {
+                        //             // if(node.name === 'Action 2') console.log(child);
+                        //             return (child.type === 'VECTOR' || child.type === 'BOOLEAN_OPERATION') && child.name === 'icon';
+                        //
+                        //         });
+                        //
+                        //         console.log(children);
+                        //
+                        //
+                        //         count++;
+                        //
+                        //         if (children.length) {
+                        //             node.getMainComponentAsync().then(value => {
+                        //
+                        //                 console.log(value?.name);
+                        //                 // console.log(value?.key);
+                        //                 // console.log(value?.description);
+                        //                 console.log(value?.getPluginDataKeys());
+                        //                 // value?.getInstancesAsync().then(value1 => {
+                        //                 //     console.log(value1);
+                        //                 // });
+                        //             });
+                        //
+                        //             return true;
+                        //         }
+                        //
+                        //         return false;
+                        //     }
+                        //
+                        //     return false;
+                        // }).map(node =>{
+                        //     return node.id;
+                        // });
 
                         // const libraries = await getLibraries();
                         // figma.teamLibrary.getVariablesInLibraryCollectionAsync('4e51a576a29398c8363ef381ee4e45edec9b0672').then(a => {
@@ -155,7 +252,8 @@ function Widget() {
                         //     }
                         //     return false;
                         // });
-                    })
+                    });
+                }
             }
         >
             Open Clarity Design Guidance
