@@ -7,15 +7,15 @@ updated: 2024-10-21
 
 # File Picker Design Guidance
 
-The [file picker](https://clarity.design/documentation/file-picker) component allows users to select one or more files to upload.
+The [file picker](https://clarity.design/documentation/file-picker) component enables users to select one or more files for upload, providing a straightforward interface for managing file selection.
 
 ## Guidance
 
 
-- **Should** use compact layout in places with limited vertical space, and information density is needed; otherwise the vertical or horizontal layouts are recommended.
-- Use appropriate [file picker states](https://clarity.design/documentation/file-picker#states).
-- **Should** use helper text to tell users which format the file input will accept, i.e., PNG, JPG, PDF, etc.
-- **Should** follow the [forms pattern guidelines](https://clarity.design/documentation/forms).
+- Design teams **should** use a compact layout in areas with limited vertical space where higher information density is needed; otherwise, vertical or horizontal layouts are recommended for better clarity and usability.
+- Design teams **should** use the appropriate [file picker states](https://clarity.design/documentation/file-picker#states) to provide clear feedback to users about their file selection and upload process, helping users make informed decisions and navigate the interaction effectively.
+- Design teams **should** use helper text to inform users about the accepted file formats for input, such as PNG, JPG, or PDF, ensuring users understand their options before uploading files.
+- Design teams **should** follow the [forms pattern guidelines](https://clarity.design/documentation/forms) to ensure consistency and clarity in the design of file picker components within the overall application.
 
 ## Changelog
 
