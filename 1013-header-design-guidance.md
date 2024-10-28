@@ -11,16 +11,16 @@ A page [Header](https://clarity.design/documentation/header) component defines t
 
 ## Guidance
 
-- **Must** use one header per page and **must** be at the start of the page.
-- **Must not** use at the top of a smaller container like a popup or dialog.
-- **Must not** overload with too many items. Use maximum of four items in top-level navigation.
-- **Should** use [search](https://clarity.design/documentation/header#search) feature based on search's prominence and its utility within the application.
+- Design teams **must** use one header per page, and it must be positioned at the start of the page to provide a consistent layout and enhance user navigation.
+- Design teams **must not** use a header at the top of smaller containers, such as popups or dialogs, to avoid confusion and maintain a clear distinction between page-level and contextual navigation.
+- Design teams **must not** overload the header with too many items; a maximum of four items should be used in the top-level navigation to ensure clarity and ease of use for users.
+- Design teams **should** incorporate the [search](https://clarity.design/documentation/header#search) feature, taking into account its importance and usefulness within the application to improve user efficiency and navigation.
 - **Should** use right-side action area of header for global actions and top-level navigational items that are important, yet visited less frequently.
 
 ## Content Guidelines
 
-- **Must not** use vague headings. Use short and concise heading for navigation items.
-- **Should** pair icons with text when the provided text gives additional context specific to the user. For example, the user's name.
+- Design teams **must not** use headings that do not clearly convey their meaning or purpose. Instead, they should ensure that all headings are short and concise, providing users with clear context for navigation.
+- Design teams **should** pair icons with text when the text adds relevant context for the user, such as the user's name, to enhance clarity and understanding.
 
 ## Changelog
 
