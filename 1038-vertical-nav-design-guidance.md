@@ -7,28 +7,28 @@ updated: 2024-10-21
 
 # Vertical Nav Design Guidance
 
-The [vertical nav](https://clarity.design/documentation/vertical-nav) component provides vertically-aligned navigation links. It can fit as many navigation links as needed by scrolling when the content exceeds the viewport.
+The [vertical nav](https://clarity.design/documentation/vertical-nav) component offers vertically-aligned navigation links. It accommodates as many links as needed, allowing users to scroll when the content exceeds the viewport.
 
 
 ## Guidance
 
-- **Must** use to collapse and expand the navigation to free up space for the content area.
-- **Must** use dividers and groups to separate logical clusters of navigation items.
-- **Must not** use vertical navigation with a header and a sub navigation menu. Having too many places for navigation will be confusing for users.
+- Design teams **must** use the vertical nav to collapse and expand the navigation, allowing users to maximize content space and maintain focus on the task at hand.
+- Design teams **must** use dividers and groups to separate logical clusters of navigation items, enhancing clarity and helping users quickly locate related links.
+- Design teams **must not** use vertical navigation with a header and a sub-navigation menu, as this creates too many navigation points and can confuse users. Keeping navigation straightforward improves usability and clarity.
 
 ## Nav Icons
 
-- **Must** maintain consistency across using icons on navigation items. Avoid using icons to some of top navigation items and not to others.
-- **Must** apply icons to top-level navigation items. *Must not** apply icons to child links.  
-- **Must** place icons to the left of the top navigation labels.
-- **Should** use icons to describe navigation items which are helpful when the navigation is collapsed.
-- **Must** use semi-bold font weight for top-level navigation items.
-- **Must** use a caret on the right-hand side to expand and collapse navigation groups.
-- **Must** use normal font weight for child links.
+- Design teams **must** maintain consistency in applying icons to top-level navigation items. Avoid using icons for some top navigation items while leaving others without, as this can create confusion and disrupt the user's navigation experience.
+- Design teams **must** apply icons consistently to top-level navigation items to enhance visual recognition and understanding.  Design teams **must not** apply icons to child links, as this can clutter the interface and create unnecessary complexity for users.
+- Design teams **must** place icons to the left of the top navigation labels to ensure a consistent layout and improve the overall usability of the navigation.
+- Design teams **should** use icons to describe navigation items, as they provide helpful context when the navigation is collapsed, enhancing user understanding and navigation efficiency.
+- Design teams **must** use semi-bold font weight for top-level navigation items, as this aligns with Clarity's design principles by creating a clear visual hierarchy and improving readability.
+- Design teams must use a caret on the right-hand side to expand and collapse navigation groups, providing users with clear visual indicators of available actions.
+- Design teams **must** use normal font weight for child links to ensure they are visually distinct from top-level navigation items and maintain a clear hierarchy. This approach aligns with Clarity's design principles by enhancing readability and usability.
 
 ## Content Guidelines
 
-- **Must** use short and concise label for navigation items in order to prevent an ellipsis from being required. Lengthy labels are trimmed and followed by an ellipsis.
+- Design teams **must** use short and concise labels for navigation items to prevent the need for an ellipsis. Lengthy labels are trimmed and followed by an ellipsis, which can reduce clarity and usability.
 
 ## Changelog
 
