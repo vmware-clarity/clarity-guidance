@@ -11,9 +11,9 @@ The [textarea](https://clarity.design/documentation/textarea) component enables 
 
 ## Guidance
 
-- **Must** use a textarea when the expected user input may be more than a single line. If only a single line is expected, use an [input](https://clarity.design/documentation/input) instead.
-- **Should** provide a clear and concise visible label for context.
-- **Should not** be a substitute for a proper label element. It **may** be used to show an example of the type of data that should be entered into a form, but it **should not** be used in place of helper text.
+- Design teams **must** use a textarea when the expected user input spans multiple lines. If only a single line is needed, use an [input](https://clarity.design/documentation/input) instead. This ensures the field aligns with user expectations and encourages appropriate input behavior.
+- Design teams **should** provide a clear and concise visible label for context, ensuring users understand what input is expected and reducing the chance of errors.
+- Design teams **must not** use a textarea as a substitute for a proper label element. Labels are essential for accessibility and ensure users clearly understand the purpose of the field. A textarea **may** be used to show an example of the expected input but should not replace helper text intended to guide the user.
 
 
 ## Changelog
