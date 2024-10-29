@@ -3,43 +3,41 @@
 const {widget} = figma
 const {useEffect, Text} = widget
 
+const iconIdsKey ='iconIds';
+
 function Widget() {
     useEffect(() => {
         figma.ui.onmessage = async (msg) => {
             console.log(msg)
 
             if (msg.type === 'find-icons') {
-                // let count = 0;
-                const iconIds = figma.currentPage.findAll(node => {
+                const keys = await figma.clientStorage.keysAsync()
+                let iconIds: string[];
 
-                    if (node.type === 'INSTANCE') {
-                        // console.log('node name', node.name);
-                        // console.log(node.name);
-                        const children = node.findChildren(child => {
-                            // if(node.name === 'Action 2') console.log(child);
-                            return (child.type === 'VECTOR' || child.type === 'BOOLEAN_OPERATION') && child.name === 'icon';
+                console.log(keys)
+                console.log(keys.includes(iconIdsKey))
 
-                        });
+                if (!keys.includes(iconIdsKey)) {
+                    iconIds = figma.currentPage.findAll(node => {
+                        if (node.type === 'INSTANCE') {
+                            const children = node.findChildren(child => {
+                                // if(node.name === 'Action 2') console.log(child);
+                                return (child.type === 'VECTOR' || child.type === 'BOOLEAN_OPERATION') && child.name === 'icon';
 
-                        console.log(children);
+                            });
 
-                        // node.getMainComponentAsync().then(value => {
-                        //
-                        //     console.log(value?.name);
-                        //     console.log(value?.key);
-                        //     // value?.getInstancesAsync().then(value1 => {
-                        //     //     console.log(value1);
-                        //     // });
-                        // });
-                        // count++;
+                            return children.length > 0;
+                        }
 
-                        return children.length > 0;
-                    }
+                        return false;
+                    }).map(node => {
+                        return node.id;
+                    });
 
-                    return false;
-                }).map(node =>{
-                    return node.id;
-                });
+                    await figma.clientStorage.setAsync(iconIdsKey, iconIds);
+                } else {
+                    iconIds = await figma.clientStorage.getAsync(iconIdsKey);
+                }
 
                 figma.ui.postMessage({
                     type: "found-icons",
@@ -47,6 +45,19 @@ function Widget() {
                 });
             }
 
+            if (msg.type === 'select-next-icon') {
+                const found = figma.currentPage.findAll(node => {
+                    return node.id === msg.iconId;
+                });
+
+                if (found.length > 0) {
+                    figma.currentPage.selection = found;
+                }
+
+                const iconIds = await figma.clientStorage.getAsync(iconIdsKey);
+                iconIds.pop();
+                await figma.clientStorage.setAsync(iconIdsKey, iconIds);
+            }
 
             if (msg.type === 'checkViolations') {
                 figma.notify('CIP - widget: Violations checking...');
@@ -80,7 +91,6 @@ function Widget() {
                     });
                 }
             }
-
 
             if (msg.type === 'select-hardcoded-hex-color') {
                 const hardcodedNodes = figma.currentPage.findAll(node => {
@@ -121,7 +131,6 @@ function Widget() {
                     figma.notify('CIP - widget: No detached nodes found.');
                 }
             }
-
 
             if (msg.type === 'fix-detached-nodes') {
                 const detachedNodes = figma.currentPage.findAll(node => {

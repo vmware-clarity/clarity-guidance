@@ -9,6 +9,7 @@
             <a class="btn btn-sm" target="_blank" href="https://guidance.clarity.design" id="showToastButton">CIP Home PAge</a>
             <button class="btn btn-sm" id="checkViolations">No Hex Values</button>
             <button class="btn btn-sm" id="detachedNodes">detached nodes</button>
+            <button class="btn btn-sm" id="find-icons">find icons</button>
             <button class="btn btn-danger btn-sm" id="closeButton">Close</button>
         </div>
         <div id="showViolation" class="clr-row" style="display: none;">
@@ -29,9 +30,26 @@
             </div>
         </div>
 
+        <div id="icons-for-change" class="clr-row" style="display: none;">
+            <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+                <div class="card">
+                    <div class="card-header">Icon selection</div>
+                    <div class="card-block">
+                        <div class="card-title">Icon IDs</div>
+                        <div class="card-text"></div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-link" id="select-next-icon">Select next icon</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
+      let iconsForChange = [];
+
       const showToastButton = document.getElementById("showToastButton");
       showToastButton.onclick = () => {
           console.log(parent);
@@ -81,6 +99,24 @@
           showViolationCard.style.display = "none";
 
           parent.postMessage({ pluginMessage: { type: "select-hardcoded-hex-color" } }, "*");
+      };
+
+      const findIconsButton = document.getElementById("find-icons");
+      findIconsButton.onclick = () => {
+          const showViolationCard = document.getElementById("showViolation");
+          const showIconsForChangeCard = document.getElementById("icons-for-change");
+          showViolationCard.style.display = "none";
+          showIconsForChangeCard.style.display = "none";
+
+          parent.postMessage({ pluginMessage: { type: "find-icons" } }, "*");
+      };
+
+      const selectNextIconButton = document.getElementById("select-next-icon");
+      selectNextIconButton.onclick = () => {
+          parent.postMessage({ pluginMessage: { type: "select-next-icon", iconId: iconsForChange.pop() } }, "*");
+
+          const showIconsForChangeCard = document.getElementById("icons-for-change");
+          showIconsForChangeCard.querySelector('.card-text').innerHTML =  iconsForChange.length.toString();
       };
 
       window.onmessage = msg => {
@@ -141,6 +177,15 @@
               if (data.key === "1001") {
                   violationFooterHexColors.style.display = "block";
               }
+          }
+
+          if (msg.data.pluginMessage.type === "found-icons") {
+              iconsForChange = msg.data.pluginMessage.data;
+
+              const showIconsForChangeCard = document.getElementById("icons-for-change");
+              showIconsForChangeCard.querySelector('.card-text').innerHTML = iconsForChange.length.toString();
+
+              showIconsForChangeCard.style.display = "block";
           }
       }
     </script>
