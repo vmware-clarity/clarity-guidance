@@ -11,13 +11,9 @@ function Widget() {
             console.log(msg)
 
             if (msg.type === 'find-icons') {
-                const keys = await figma.clientStorage.keysAsync()
-                let iconIds: string[];
+                let iconIds = await figma.clientStorage.getAsync(iconIdsKey);
 
-                console.log(keys)
-                console.log(keys.includes(iconIdsKey))
-
-                if (!keys.includes(iconIdsKey)) {
+                if (!iconIds || iconIds.length === 0) {
                     iconIds = figma.currentPage.findAll(node => {
                         if (node.type === 'INSTANCE') {
                             const children = node.findChildren(child => {
@@ -35,8 +31,6 @@ function Widget() {
                     });
 
                     await figma.clientStorage.setAsync(iconIdsKey, iconIds);
-                } else {
-                    iconIds = await figma.clientStorage.getAsync(iconIdsKey);
                 }
 
                 figma.ui.postMessage({
