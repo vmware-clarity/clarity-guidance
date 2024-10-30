@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-18
-updated: 2024-10-22
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Tooltip Design Guidance
@@ -26,4 +26,4 @@ The [tooltip](https://clarity.design/documentation/tooltip) component provides a
 
 ## Changelog
 
-- **2024-10-22**: Initial guidance
+- **2024-10-30**: Initial guidance
