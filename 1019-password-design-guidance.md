@@ -1,8 +1,8 @@
 ---
 category: component design guidance
 state: draft
-created: 2024-10-22
-updated: 2024-10-22
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Password Design Guidance
@@ -19,4 +19,4 @@ A [password](https://clarity.design/documentation/password) component is an inpu
 
 ## Changelog
 
-- **2024-10-22**: Initial guidance
+- **2024-10-30**: Initial guidance
