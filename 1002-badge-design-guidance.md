@@ -7,17 +7,17 @@ updated: 2024-10-21
 
 # Badge Design Guidance
 
-[Badge](https://clarity.design/documentation/badge) component is a dynamic status modifier to other components that indicate the number of instances of that component.
+The [badge](https://clarity.design/documentation/badge) component serves as a dynamic status modifier for other components, indicating the number of instances related to that component and providing users with quick, contextual information.
 
 ## Guidance
 
-- **Must** use badge to highlight the count, while a [label](https://clarity.design/documentation/label) can be used to display metadata, which is usually text content. A label can contain a badge.
-- **Must** pair badge with a [label](https://clarity.design/documentation/label) or text that conveys the information.
-- **Must** use 99+ instead of the number, if number is over 99.
+- Design teams **must** use a badge to highlight the count of items, while a [label](https://clarity.design/documentation/label) should be used for metadata, typically as text content. A label can also contain a badge for added context. This approach enhances visual clarity, separates contexts, ensures relevance, and improves accessibility for users.
+- Design teams **must** pair a badge with a [label](https://clarity.design/documentation/label) or text that conveys the relevant information. This ensures users understand the context of the badge, enhancing clarity and usability.
+- Design teams **must** use "99+" instead of displaying the actual number when the count exceeds 99. This keeps the interface clean and avoids overwhelming users with large numbers.
 
 ## Accessibility Guidelines
 
-- **Should** use a variety of colours for different badges. 
+- Design teams should use a variety of colors for different badges to provide clear visual distinctions, enhancing usability and helping users quickly identify different statuses or categories.
 
 ## Changelog
 
