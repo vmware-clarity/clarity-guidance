@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-15
-updated: 2024-10-22
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Checkbox Design Guidance
@@ -19,4 +19,4 @@ The [checkbox](https://clarity.design/documentation/checkbox) control enables us
 
 ## Changelog
 
-- **2024-10-22**: Initial guidance
+- **2024-10-30**: Initial guidance
