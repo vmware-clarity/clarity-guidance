@@ -11,8 +11,6 @@ The [timeline](https://clarity.design/documentation/timeline) component is a vis
 
 ## Guidance
 
-### Timeline Usage
-
 - Design teams **must** use a timeline when showcasing a list of events that are relevant to the user in chronological order to increase user awareness of the sequence of events.
 - Design teams **must** use a timeline when users need an overview of a workflow and want to see where they are in the process. This helps users understand their progress and what steps are still ahead.
 - Design teams **must** use a timeline when displaying more complex content in each step to help users navigate through the information clearly and understand the relationships between steps.
@@ -21,7 +19,7 @@ The [timeline](https://clarity.design/documentation/timeline) component is a vis
 
 For more guidance on multi-step process workflows, see the [Multi-Step Workflow Pattern](https://clarity.design/documentation/multi-step-workflow).
 
-### Timeline Layouts
+### Layouts
 
 Timelines have two types of layouts: horizontal and vertical.
 
@@ -30,7 +28,7 @@ Timelines have two types of layouts: horizontal and vertical.
 - Design teams **must** use a vertical layout when a workflow has more than five steps to ensure clarity and prevent overwhelming users with too much information at once.
 - Design teams **may** use a vertical layout when timestamps are optional, allowing for a cleaner design while still effectively presenting the workflow.
 
-### Timeline States
+### Step States
 
 - Design teams **must** ensure each step in a timeline has one of five visual states: complete, current step, not started, processing, or error, to clearly indicate progress and status to users.
 - Design teams **must** use a spinner when loading or performing an action (e.g., in the processing state) to provide users with visual feedback and indicate that their request is being processed.
@@ -38,7 +36,7 @@ Timelines have two types of layouts: horizontal and vertical.
 - Design teams **should** display the error message under the error icon in the error state to provide users with clear information about the issue.
 - Design teams **must not** use tooltips to display error messages, as this can hinder accessibility for users who rely on screen readers or keyboard navigation. Instead, error messages should be displayed visibly within the interface to ensure all users can access and understand the information.
 
-### Timeline Step
+## Content Guidelines
 
 - Design teams **should** use a step description to provide additional information and guidance to users, helping them understand what is required at each stage of the process.
 
