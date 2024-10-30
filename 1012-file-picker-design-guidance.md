@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-15
-updated: 2024-10-21
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # File Picker Design Guidance
@@ -18,4 +18,4 @@ The [file picker](https://clarity.design/documentation/file-picker) component en
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-30**: Initial guidance
