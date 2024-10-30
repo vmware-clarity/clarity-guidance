@@ -16,7 +16,7 @@ updated: 2024-10-30
 - Design teams **must** use separate cards for distinct topics. This helps to clearly differentiate content and actions, improving organization and enhancing user comprehension.
 - Design teams **must** use a card to present high-level information and guide users toward related actions and details. This facilitates quick understanding and encourages user engagement with the content.
 - Design teams **must** use clickable cards when a card is intended to initiate an action. This clearly indicates to users that the card is interactive and provides a pathway to further engagement.
-- Design teams may include content such as text, images, dropdown menus, media blocks, lists, and list groups inside cards. This flexibility allows for a rich presentation of information and actions within a single, cohesive space.
+- Design teams **may** include content such as text, images, dropdown menus, media blocks, lists, and list groups inside cards. This flexibility allows for a rich presentation of information and actions within a single, cohesive space.
 
 ### Anatomy
 

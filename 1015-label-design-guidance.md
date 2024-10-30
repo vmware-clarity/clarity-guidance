@@ -12,7 +12,7 @@ updated: 2024-10-30
 ## Guidance
 
 - Design teams **must** keep labels short and concise to ensure they are easy to read and quickly understood.
-- Design teams **must not** use all capital letters in labels. Using all caps can confuse users, making them think the label is a button or actionable element. This also impacts readability and accessibility, as screen readers may interpret all caps differently, and users with cognitive impairments may find it harder to read.
+- Design teams **must not** use all capital letters in labels. Using all caps can confuse users, making them think the label is a button or actionable element. This also impacts readability and accessibility, as screen readers might interpret all caps differently, and users with cognitive impairments might find it harder to read.
 - Design teams **must not** use multiple lines of text within a single label to keep the interface clear and easy to scan.
 - Design teams **should** use parentheses for any additional metadata required within the same label to keep the information organized and easy to read.
 - Design teams **should** use [clickable labels](https://clarity.design/documentation/label#clicking-labels) to perform actions related to the label, providing a more intuitive user experience.

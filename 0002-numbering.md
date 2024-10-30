@@ -17,7 +17,7 @@ The Clarity team is responsible for assigning a number to each CIP when it is ac
 Importantly, *all* CIPs have numbers, not just approved ones. The [CIP Index](/) clearly clearly delineates which CIPs
 are approved and binding and which are under discussion.
 
-The team may decide to reserve a specific of numbers for grouping CIPs. Beyond this, numbers are assigned arbitrarily.
+The team **may** decide to reserve a specific of numbers for grouping CIPs. Beyond this, numbers are assigned arbitrarily.
 In general, the team will simply use the next available number.
 
 ## CIP Blocks

@@ -15,7 +15,7 @@ The [alert](https://clarity.design/documentation/alert) component displays banne
 
 App-level alerts support only error, warning, and info statuses. This ensures that users can quickly understand the nature of the message and take appropriate action.
 
-- Design teams must use app-level alerts exclusively for the global context of an application to maintain clarity and prevent confusion with local alerts.
+- Design teams **must** use app-level alerts exclusively for the global context of an application to maintain clarity and prevent confusion with local alerts.
 - Design teams **must** place alerts at the top of all content to ensure they are immediately visible to users. 
 - Design teams **must not** use alerts to convey the success of an operation, as this can dilute their effectiveness in communicating important information.
 - Design teams **must** ensure that alerts for communicating operation success appear in context or as notification messages to provide clear and immediate feedback to users regarding their actions.
@@ -24,7 +24,7 @@ App-level alerts support only error, warning, and info statuses. This ensures th
 
 Standard alerts support error, warning, info, and success statuses.
 
-- Design teams **may** use lightweight alerts in places where vertical space is scarce and information density is needed; otherwise, the default size should be used.
+- Design teams **may** use lightweight alerts in places where vertical space is scarce and information density is needed; otherwise, the default size **should** be used.
 - Design Teams **must** ensure that alerts reflect the user's context within the application, as this helps users quickly understand the relevance of the message and take appropriate action.
 
 ### Lightweight Alerts

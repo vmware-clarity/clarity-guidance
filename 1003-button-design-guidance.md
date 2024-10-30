@@ -28,7 +28,7 @@ Clarity offers solid, outline, and flat buttons to create visual distinction amo
 
 ### Button Typography
 
-- Design teams **should** ensure that the text inside buttons is always uppercase to clearly distinguish them from other content on the page. However, it’s important to remain flexible and consider accessibility needs, as some users, particularly those with dyslexia or visual impairments, may find uppercase text more challenging to read.
+- Design teams **should** ensure that the text inside buttons is always uppercase to clearly distinguish them from other content on the page. However, it’s important to remain flexible and consider accessibility needs, as some users, particularly those with dyslexia or visual impairments, might find uppercase text more challenging to read.
 - Design teams **should not** use more than three words inside a button to prevent the text from wrapping to the next line, which can disrupt the button’s visual clarity and usability.
 - Design teams **should** use descriptive language on buttons to clearly convey their intent, ensuring users can easily understand the action associated with the button.
 
@@ -57,7 +57,7 @@ Buttons have built-in loading and disabled states. There are three sub-states wi
 
 - Design teams **should** use badges within buttons to display the number of associated items, providing users with quick and relevant information about the action.
 - Design teams **should** use a loading state to show that the application is processing the action, helping users understand that their request is being handled.
-- Design teams **should** use an error state to indicate that an action has failed to complete, helping users understand that their request was not successful and may require further action.
+- Design teams **should** use an error state to indicate that an action has failed to complete, helping users understand that their request was not successful and might require further action.
 - Design teams **should** use a success state to indicate that the action has completed successfully, providing clear feedback to users that their request was processed as expected.
 - Design teams **should** ensure that all three states (loading, error, and success) prevent further execution of the call to action, thereby avoiding confusion and ensuring users are aware that their previous action is still being processed or has already been completed.
 

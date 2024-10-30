@@ -17,7 +17,7 @@ There are three types of lists: unordered, ordered, and unstyled. Each type serv
 - Design teams **must** use an unordered list when the order of items does not matter. This enhances clarity for users, visually organizes information, and ensures accessibility by conveying the correct structure to assistive technologies.
 - Design teams **must** use an ordered list when conveying priority, hierarchy, or sequence among list items. This helps users understand the relationship and importance of each item in the context.
 - Design teams **must** use an unstyled list when styling is unnecessary, as it allows for a clean presentation of information without adding visual distractions, improving comprehension and clarity.
-- Lists can be nested, allowing different types of lists to be mixed within nested groupings. This enables a more complex hierarchy and organization of information, helping users to better understand relationships between items.
+- Lists **may** be nested, allowing different types of lists to be mixed within nested groupings. This enables a more complex hierarchy and organization of information, helping users to better understand relationships between items.
 
 ## Changelog
 
