@@ -11,8 +11,6 @@ The [wizard](https://clarity.design/documentation/wizard) component guides users
 
 ## Guidance
 
-### Wizard Usage
-
 - Design teams **must** have at least two steps in a wizard to provide a meaningful guided experience for users.
 - Design teams **must not** include long or complex content in each step of the wizard, as this can overwhelm users and hinder their progress. Each step should be clear and concise.
 - Design teams **must not** use a wizard in conjunction with an additional modal, as this can lead to lost context and block accessibility for keyboard users. It’s important to maintain a clear and intuitive interface.
@@ -20,7 +18,7 @@ The [wizard](https://clarity.design/documentation/wizard) component guides users
 - Design teams **should** use a wizard when the content is self-sufficient and does not require access to other parts of the app, as wizards can block access to necessary areas for completing the process.
 - Design teams **may** use a wizard to guide users through a defined step-by-step process, helping to ensure clarity and improve user understanding.
 
-### Wizard Anatomy
+## Content Guidelines
 
 - Design teams **must** ensure the wizard title describes the overall workflow to provide users with clear context about the steps they are about to take.
 - Design teams **must** ensure the content title is similar to its step title to maintain consistency and help users easily follow along with the workflow.
