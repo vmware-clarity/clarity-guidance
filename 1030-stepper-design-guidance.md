@@ -11,7 +11,7 @@ The [stepper](https://clarity.design/documentation/stepper) is an accordion-like
 
 ## Guidance
 
-### Stepper Usage
+### Usage
 
 - Design teams **must** use a stepper when users need to see the forms in line with the rest of the page content, as this approach helps maintain context and flow, reducing cognitive load during multi-step processes.
 - Design teams **must** use a stepper when users require more detail than step titles to understand the process, as this provides necessary context and guidance for completing each step effectively.
@@ -21,7 +21,7 @@ The [stepper](https://clarity.design/documentation/stepper) is an accordion-like
 - Design teams **should** use a stepper when there are more than two steps, as this helps users navigate through the process more effectively and understand their progress.
 - Design teams **may** use a stepper for complex and lengthy workflows that might not fit within one viewport, allowing users to manage the process in smaller, more digestible sections.
 
-### Stepper Anatomy
+### Anatomy
 
 - Design teams **must not** include overly long content in each step, as this can overwhelm users and make it difficult to focus on the task at hand. Each step should present information clearly and concisely.
 - The stepper panel header **should** contain a title and a description for the step, providing users with clear context and guidance on what is required at that stage of the process.
