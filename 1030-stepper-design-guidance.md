@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-16
-updated: 2024-10-22
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Stepper Design Guidance
@@ -28,4 +28,4 @@ The [stepper](https://clarity.design/documentation/stepper) is an accordion-like
 
 ## Changelog
 
-- **2024-10-22**: Initial guidance
+- **2024-10-30**: Initial guidance
