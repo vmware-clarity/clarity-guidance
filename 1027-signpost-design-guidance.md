@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-17
-updated: 2024-10-22
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Signpost Design Guidance
@@ -23,4 +23,4 @@ updated: 2024-10-22
 
 ## Changelog
 
-- **2024-10-22**: Initial guidance
+- **2024-10-30**: Initial guidance
