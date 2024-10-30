@@ -1,8 +1,8 @@
 ---
 category: component design guidance
 state: draft
-created: 2024-10-21
-updated: 2024-10-21
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Alert Design Guidance
@@ -52,4 +52,4 @@ Standard alerts support error, warning, info, and success statuses.
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-30**: Initial guidance
