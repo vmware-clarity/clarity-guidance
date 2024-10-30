@@ -12,7 +12,7 @@ A [radio button](https://clarity.design/documentation/radio) is a form element t
 ## Guidance
 
 - Design teams **must** use radio buttons when only one item can be selected from a list.
-- *Design teams **must not** leave all radio buttons unselected. They should mark the first item or the most preferred item as selected by default.
+- Design teams **must not** leave all radio buttons unselected. They should mark the first item or the most preferred item as selected by default.
 - Design teams **must** use radio buttons when the list includes at least two mutually exclusive options.
 - Design teams **must not** use radio buttons when more than six options are available. They should consider using a [select](https://clarity.design/documentation/select) component instead.
 - Design teams **must not** use radio buttons for functionality like “accepting terms of service” or similar. They should use a [checkbox](https://clarity.design/documentation/checkbox) instead.  
