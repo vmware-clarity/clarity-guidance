@@ -20,7 +20,6 @@ A [form](https://clarity.design/documentation/forms) is a collection of related 
 - Design teams **should** use [radio buttons](https://clarity.design/documentation/radio), [checkboxes](https://clarity.design/documentation/checkbox), or [select boxes](https://clarity.design/documentation/select) for inputs with three or more options. Options **should** be placed vertically in one column to facilitate easier scanning and selection. This layout also enhances accessibility by improving keyboard navigation and ensuring clear communication with screen readers.
 - Design teams **should** use [radio buttons](https://clarity.design/documentation/radio) or [checkboxes](https://clarity.design/documentation/checkbox) when users need to compare options directly within the form, as this keeps all selections visible. Use [select boxes](https://clarity.design/documentation/select) when there are more than six options that do not need to be compared, as this helps manage space and simplifies the interface.
 
-
 ### Horizontal Layout
 
 - Design teams **should** choose a horizontal layout when vertical space is limited, as this approach allows users to view all options at once, reducing scrolling and improving accessibility for quick selections.
