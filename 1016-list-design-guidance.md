@@ -13,8 +13,6 @@ A [list](https://clarity.design/documentation/list) displays vertical groups of 
 
 There are three types of lists: unordered, ordered, and unstyled. Each type serves a different purpose in organizing and presenting information.
 
-### List Usage
-
 - Design teams **must** use a list to group related items and organize them vertically for clarity and easy navigation.
 - Design teams **must** use an unordered list when the order of items does not matter. This enhances clarity for users, visually organizes information, and ensures accessibility by conveying the correct structure to assistive technologies.
 - Design teams **must** use an ordered list when conveying priority, hierarchy, or sequence among list items. This helps users understand the relationship and importance of each item in the context.
