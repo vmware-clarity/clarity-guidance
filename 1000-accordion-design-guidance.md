@@ -18,7 +18,7 @@ An [accordion](https://clarity.design/documentation/accordion) is a collection o
 - The accordion header **must** be coincise and convey the nature of the content.
 - **Should** use accordions to present secondary information or to provide an overview of a page's content.
 
-### Accessibility 
+## Accessibility 
 
 - The accordion header **must not** contain clickable elements.
 - The accordion header **should** include only a title and brief info (if needed).
