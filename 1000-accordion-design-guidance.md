@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-15
-updated: 2024-10-22
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Accordion Design Guidance
@@ -26,4 +26,4 @@ An [accordion](https://clarity.design/documentation/accordion) is a user interfa
 
 ## Changelog
 
-- **2024-10-22**: Initial guidance
+- **2024-10-30**: Initial guidance
