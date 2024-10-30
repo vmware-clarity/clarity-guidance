@@ -7,22 +7,22 @@ updated: 2024-10-22
 
 # Modal Design Guidance
 
-[Modal](https://clarity.design/documentation/modal) component informs the users about a task and can contain information that requires immediate attention.
+The [modal](https://clarity.design/documentation/modal) component informs users about a task and presents information that requires immediate attention, ensuring that critical messages are clearly conveyed.
 
 ## Guidance
 
-- **Must** use when you want to grab user's attention for an important message, such as errors that prevent a user from completing an action or actions that can't be reversed.
-- **Must** use to show additional information without losing the context of the parent page.
-- **Must** use to break down a complex workflow into a series of less complicated steps.
-- **Must** test responsiveness before picking the size of the modal. Different [Modal sizes](https://clarity.design/documentation/modal#sizes) are available in the pattern. Default being medium.
-- **Must not** use for non-essential information that is not related to the current workflow.
-- **Must not** use for complex workflows that require additional information not contained within the modal.
-- **Must not** use modal over modal. Context becomes confusing when modals are stacked. Before you decide to stack modals, do the following actions:
-    - Seek alternatives to the second modal such as inline expansion within the first one.
-    - Seek alternatives to the use of modals in that scenario and explore alternatives such as inline task completion.
-- **Should** have user dismissable modals. Taking any actions to either cancel or proceed should eventually dismiss the modal.
-    - Please note that the modals are the highest priority notification, since they disrupt user task flows, they **should** be reserved for critical events that require user action.
-    - By default, Clarity modals are not dismissed when clicking on the background overlay. This prevents losing information or data. An option to override is available.
+- Design teams **must** use modals when it is necessary to grab the user's attention for important messages, such as errors that prevent users from completing an action or actions that cannot be reversed.
+- Design teams **must** use modals to show additional information without losing the context of the parent page. This helps users keep track of what they were doing while also providing important details, making it easier for them to make informed decisions.
+- Design teams **must** use modals to break down a complex workflow into a series of simpler steps. This approach makes it easier for users to follow along and complete tasks without feeling overwhelmed by too much information at once.
+- Design teams **must** test the responsiveness of modals before selecting their size. Different [modal sizes](https://clarity.design/documentation/modal#sizes) are available, with medium being the default. This ensures the modal functions well across various screen sizes and devices.
+- Design teams **must not** use modals for non-essential information that is unrelated to the current workflow, as this can distract users and disrupt their focus on important tasks.
+- Design teams **must not** use modals for complex workflows that require additional information not included within the modal, as this can confuse users and hinder their ability to complete tasks effectively.
+- Design teams **must not** use modals over other modals, as stacking them can create confusion about context. Before considering stacked modals, teams should take the following actions:
+    - Seek alternatives to the second modal, such as using inline expansion within the first one. This approach helps maintain context and clarity for users.
+    - Seek alternatives to the use of modals in that scenario and explore options like inline task completion. This method keeps users engaged with the main content and allows them to complete tasks without unnecessary interruptions.
+- Design teams **should** ensure that modals are user-dismissable. Actions taken to either cancel or proceed should allow users to dismiss the modal, ensuring a smooth and intuitive user experience.
+    - Design teams **should** reserve modals for critical events that require user action, as they are the highest priority notification. Since modals disrupt user task flows, it's important to use them judiciously to avoid overwhelming users.
+    - By default, design teams **should** ensure that Clarity modals do not dismiss when clicking on the background overlay to prevent the loss of information or data. An option to override this behavior is available if needed. It's important to provide clear options to close the modal through buttons or accessible controls, ensuring that users relying on keyboard navigation and assistive technologies can easily dismiss the modal without confusion.
 
 ## Changelog
 
