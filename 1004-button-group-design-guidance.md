@@ -11,7 +11,7 @@ The [button group](https://clarity.design/documentation/button-group) component 
 
 ## Guidance
 
-Button groups follow the standard [button](https://clarity.design/documentation/button) design guidelines. All options related to classes and sizes applicable to buttons also apply to button groups, ensuring consistency in design and functionality.
+Button groups follow the standard [button design guidance](/1003). All options related to classes and sizes applicable to buttons also apply to button groups, ensuring consistency in design and functionality.
 
 ### Button Group Types
 
