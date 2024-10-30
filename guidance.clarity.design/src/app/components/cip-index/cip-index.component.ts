@@ -15,7 +15,7 @@ export class CipIndexComponent {
   protected readonly cipIndex = getCipIndex();
 }
 
-function getCipIndex() {
+export function getCipIndex() {
   const categories: string[] = [];
   const pages: Record<string, typeof cipPages> = {};
 
