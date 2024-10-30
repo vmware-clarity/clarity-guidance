@@ -23,7 +23,6 @@ The [dropdown](https://clarity.design/documentation/dropdown) component allows u
 - Design teams **must** keep the descriptions of dropdown options as short as possible to enhance readability and ensure users can quickly understand their choices.
 - Design teams **should** phrase the label to clearly indicate the dropdown action, helping users understand what to expect when interacting with the dropdown.
 
-
 ## Changelog
 
 - **2024-10-21**: Initial guidance
