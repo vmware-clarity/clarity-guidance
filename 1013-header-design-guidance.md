@@ -7,7 +7,7 @@ updated: 2024-10-21
 
 # Header Design Guidance
 
-A page [header](https://clarity.design/documentation/header) component defines the top of a page. Provides a consistent place for branding, navigation, search, and access to global application actions like settings and notifications.
+The page [header](https://clarity.design/documentation/header) component defines the top of a page. Provides a consistent place for branding, navigation, search, and access to global application actions like settings and notifications.
 
 ## Guidance
 
