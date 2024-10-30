@@ -7,16 +7,16 @@ updated: 2024-10-22
 
 # Radio Design Guidance
 
-A [radio](https://clarity.design/documentation/radio) control is a form element that allow the user to select one of the options in a group.
+A [radio](https://clarity.design/documentation/radio) control is a form element that allows users to select one option from a group, ensuring clear choice among mutually exclusive options.```
 
 ## Guidance
 
-- **Must** use when only one item can be selected from a list.
-- **Must not** leave all radio buttons unselcted. Mark the first item or most preferred item as selected.
-- **Must** use when the list includes at least two mutually exclusive options.
-- **Must not** use when more than 6 options are available to choose from. Consider using a [select](https://clarity.design/documentation/select) component instead.
-- **Must not** use for functionality like “accepting terms of service” or similar. Use a [checkbox](https://clarity.design/documentation/checkbox) instead.  
-- **Should** use appropriate [radio button states](https://clarity.design/documentation/radio#states).
+- Design teams **must** use radio buttons when only one item can be selected from a list.
+- *Design teams **must not** leave all radio buttons unselected. They should mark the first item or the most preferred item as selected by default.
+- Design teams **must** use radio buttons when the list includes at least two mutually exclusive options.
+- Design teams **must not** use radio buttons when more than six options are available. They should consider using a [select](https://clarity.design/documentation/select) component instead.
+- Design teams **must not** use radio buttons for functionality like “accepting terms of service” or similar. They should use a [checkbox](https://clarity.design/documentation/checkbox) instead.  
+- Design teams **should** use appropriate [radio button states](https://clarity.design/documentation/radio#states) to provide clear feedback on user interactions and enhance the overall user experience.
 
 ## Changelog
 
