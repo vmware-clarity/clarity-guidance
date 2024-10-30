@@ -27,7 +27,6 @@ Standard alerts support error, warning, info, and success statuses.
 - Design teams **may** use lightweight alerts in places where vertical space is scarce and information density is needed; otherwise, the default size should be used.
 - Design Teams **must** ensure that alerts reflect the user's context within the application, as this helps users quickly understand the relevance of the message and take appropriate action.
 
-
 ### Lightweight Alerts
 
 - Design Teams **should** use alerts inside containers and other components to maintain a cohesive layout and ensure that important messages are contextually relevant and easily accessible to users.
