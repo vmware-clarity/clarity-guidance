@@ -11,7 +11,6 @@ The [file picker](https://clarity.design/documentation/file-picker) component en
 
 ## Guidance
 
-
 - Design teams **should** use a compact layout in areas with limited vertical space where higher information density is needed; otherwise, vertical or horizontal layouts are recommended for better clarity and usability.
 - Design teams **should** use the appropriate [file picker states](https://clarity.design/documentation/file-picker#states) to provide clear feedback to users about their file selection and upload process, helping users make informed decisions and navigate the interaction effectively.
 - Design teams **should** use helper text to inform users about the accepted file formats for input, such as PNG, JPG, or PDF, ensuring users understand their options before uploading files.
