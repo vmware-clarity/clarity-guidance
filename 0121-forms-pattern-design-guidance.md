@@ -30,7 +30,7 @@ A [form](https://clarity.design/documentation/forms) is a collection of related 
 
 - Design teams **should** choose a vertical layout for narrow or mobile screens. This format ensures better readability and accessibility, allowing users to navigate through the content without excessive scrolling.
 
-### Validation Guidelines
+### Validation
 
 - Design teams **must** follow the [error message styling](https://clarity.design/documentation/forms#error-message-styling) guidelines to ensure that error messages are clearly communicated to users, which helps them quickly identify and correct issues in the form.
 - Design teams **must** ensure that error messages are clear and straightforward. The content **should** provide specific guidance on how to fix the error, helping users understand the necessary steps to correct their input.
