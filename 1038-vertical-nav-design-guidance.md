@@ -15,7 +15,7 @@ The [vertical nav](https://clarity.design/documentation/vertical-nav) component 
 - Design teams **must** use dividers and groups to separate logical clusters of navigation items, enhancing clarity and helping users quickly locate related links.
 - Design teams **must not** use vertical navigation with a header and a sub-navigation menu, as this creates too many navigation points and can confuse users. Keeping navigation straightforward improves usability and clarity.
 
-## Nav Icons
+### Icons
 
 - Design teams **must** maintain consistency in applying icons to top-level navigation items. Avoid using icons for some top navigation items while leaving others without, as this can create confusion and disrupt the user's navigation experience.
 - Design teams **must** apply icons consistently to top-level navigation items to enhance visual recognition and understanding.  Design teams **must not** apply icons to child links, as this can clutter the interface and create unnecessary complexity for users.
