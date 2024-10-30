@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-15
-updated: 2024-10-21
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Dropdown Design Guidance
@@ -25,4 +25,4 @@ The [dropdown](https://clarity.design/documentation/dropdown) component allows u
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-30**: Initial guidance
