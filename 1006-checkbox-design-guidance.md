@@ -7,7 +7,7 @@ updated: 2024-10-22
 
 # Checkbox Design Guidance
 
-The [checkbox](https://clarity.design/documentation/checkbox) control enables users to select one or more options from a list of multiple choices, providing a straightforward way to capture user preferences.```
+The [checkbox](https://clarity.design/documentation/checkbox) control enables users to select one or more options from a list of multiple choices, providing a straightforward way to capture user preferences.
 
 ## Guidance
 
