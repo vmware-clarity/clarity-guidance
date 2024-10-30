@@ -7,7 +7,7 @@ updated: 2024-10-22
 
 # Timeline Design Guidance
 
-The timeline component is a visual indicator that displays progress through a workflow. It can also guide users through specific processes or predefined steps, helping them understand their journey.
+The [timeline](https://clarity.design/documentation/timeline) component is a visual indicator that displays progress through a workflow. It can also guide users through specific processes or predefined steps, helping them understand their journey.
 
 ## Guidance
 
