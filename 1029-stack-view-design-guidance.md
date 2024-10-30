@@ -18,7 +18,7 @@ Design teams **may** use the stack view to display related key/value pairs, help
 
 ### Stack View Value Editing
 
-Design teams **must** place an edit button above the editable stack view, positioned to the right, to provide users with easy access to editing options.
+- Design teams **must** place an edit button above the editable stack view, positioned to the right, to provide users with easy access to editing options.
 - Design teams **must** ensure that clicking the edit button on an editable stack view opens a modal, allowing users to make changes without losing context.
 
 ### Stack View Labels
