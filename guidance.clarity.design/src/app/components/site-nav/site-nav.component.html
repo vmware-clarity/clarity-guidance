@@ -1,0 +1,14 @@
+<clr-vertical-nav class="site-nav" [clr-nav-level]="1">
+  @for (category of cipIndex.categories; track category) {
+    <clr-vertical-nav-group [clrVerticalNavGroupExpanded]="true">
+      {{ category | titlecase }}
+      <clr-vertical-nav-group-children>
+        @for (page of cipIndex.pages[category]; track page.number) {
+          <a clrVerticalNavLink [routerLink]="['/', page.number]" [routerLinkActive]="'active'">
+            <span class="cip-number">{{ page.number }}.</span> {{ page.title | appSiteNavRemovePageTitleSuffix }}
+          </a>
+        }
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+  }
+</clr-vertical-nav>
