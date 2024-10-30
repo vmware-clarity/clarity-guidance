@@ -241,16 +241,15 @@ function styleContent(document: Document) {
         { attributeName: 'cds-text', attributeValue: 'body' },
         { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
-      'li > ul, li > ol': [{ attributeName: 'cds-layout', attributeValue: 'm-y:md m-l:lg' }],
+      'li > ul, li > ol': [{ attributeName: 'cds-layout', attributeValue: '' }],
       ol: [
-        { attributeName: 'cds-text', attributeValue: 'body' },
-        { attributeName: 'cds-layout', attributeValue: 'm-t:md m-l:xs' },
+        { attributeName: 'cds-list', attributeValue: 'decimal' },
+        { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
       ul: [
-        { attributeName: 'cds-text', attributeValue: 'body' },
-        { attributeName: 'cds-layout', attributeValue: 'm-t:md m-l:xs' },
+        { attributeName: 'cds-list', attributeValue: 'circle' },
+        { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
-      li: [{ attributeName: 'cds-layout', attributeValue: 'm-t:xs' }],
       img: [{ attributeName: 'cds-layout', attributeValue: 'm-t:xxl' }],
       strong: [{ attributeName: 'cds-text', attributeValue: 'medium' }],
     };
