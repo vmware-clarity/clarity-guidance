@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-18
-updated: 2024-10-21
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Vertical Nav Design Guidance
@@ -31,4 +31,4 @@ The [vertical nav](https://clarity.design/documentation/vertical-nav) component 
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-30**: Initial guidance
