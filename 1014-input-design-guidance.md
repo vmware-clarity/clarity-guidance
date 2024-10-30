@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-15
-updated: 2024-10-25
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # Input Design Guidance
@@ -20,4 +20,4 @@ The [input](https://clarity.design/documentation/input) component allows users t
 
 ## Changelog
 
-- **2024-10-25**: Initial guidance
+- **2024-10-30**: Initial guidance
