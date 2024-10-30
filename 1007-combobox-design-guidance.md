@@ -26,7 +26,6 @@ The [combobox](https://clarity.design/documentation/combobox) is a versatile com
 - Design teams **should** include a label for the combobox to ensure accessibility. This helps users understand the purpose of the input and supports those using assistive technologies.
 - Design teams **should not** allow the length of the items in a combobox to exceed the width of the text field. This ensures that all options are visible and prevents layout issues, maintaining a clean and user-friendly interface.
 
-
 ## Changelog
 
 - **2024-10-22**: Initial guidance
