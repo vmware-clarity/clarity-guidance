@@ -1,8 +1,8 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-16
-updated: 2024-10-21
+state: approved
+created: 2024-10-30
+updated: 2024-10-30
 ---
 
 # List Design Guidance
@@ -23,4 +23,4 @@ There are three types of lists: unordered, ordered, and unstyled. Each type serv
 
 ## Changelog
 
-- **2024-10-21**: Initial guidance
+- **2024-10-30**: Initial guidance
