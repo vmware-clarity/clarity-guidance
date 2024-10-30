@@ -9,7 +9,6 @@ updated: 2024-10-21
 
 The [vertical nav](https://clarity.design/documentation/vertical-nav) component offers vertically-aligned navigation links. It accommodates as many links as needed, allowing users to scroll when the content exceeds the viewport.
 
-
 ## Guidance
 
 - Design teams **must** use the vertical nav to collapse and expand the navigation, allowing users to maximize content space and maintain focus on the task at hand.
