@@ -1,7 +1,7 @@
 ---
 category: component design guidance
-state: draft
-created: 2024-10-17
+state: approved
+created: 2024-10-30
 updated: 2024-10-30
 ---
 
