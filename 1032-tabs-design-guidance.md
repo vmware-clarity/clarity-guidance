@@ -33,7 +33,6 @@ updated: 2024-10-22
 - Design teams **must** show a clear relationship between the tabs to help users understand how the content is connected and navigate intuitively.
 - Design teams **should** favor nouns over verbs in tab labels, for example, "Settings," "Permissions," and "Performance," to create clearer, more scannable navigation.
 
-
 ## Changelog
 
 - **2024-10-21**: Initial guidance
