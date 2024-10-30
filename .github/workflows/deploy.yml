@@ -19,15 +19,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version-file: 'guiance.clarity.design/.nvmrc'
+          node-version-file: 'guidance.clarity.design/.nvmrc'
       - name: Install Dependencies
-        working-directory: guiance.clarity.design
+        working-directory: guidance.clarity.design
         run: npm ci
       - name: Build
-        working-directory: guiance.clarity.design
+        working-directory: guidance.clarity.design
         run: npm run build
       - name: Deploy
-        working-directory: guiance.clarity.design
+        working-directory: guidance.clarity.design
         run: npx netlify-cli deploy --site clarity-guidance --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
