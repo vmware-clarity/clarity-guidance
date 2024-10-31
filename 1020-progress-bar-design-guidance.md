@@ -14,8 +14,8 @@ A [progress bar](https://clarity.design/documentation/progress) is a linear indi
 ### Determinate Progress Bar
 
 - Design teams **must** use a "determinate progress bar" when the process has a known duration. Examples:
-    - File downloads or uploads, this allows users to see how much of the action is complete and how much remains, providing visual feedback and helping them stay focused on their task.
-    - A series of configuration steps that occur during an initialization process. This provides clarity on progress, guides users through anticipated actions, reduces frustration and errors, and visually reinforces that the initialization is actively in progress.
+  - File downloads or uploads, this allows users to see how much of the action is complete and how much remains, providing visual feedback and helping them stay focused on their task.
+  - A series of configuration steps that occur during an initialization process. This provides clarity on progress, guides users through anticipated actions, reduces frustration and errors, and visually reinforces that the initialization is actively in progress.
 - Design teams **must** explain what the progress bar is showing and why it might take time. For example, if uploading a file, include details such as the file name and size. This transparency helps users understand the ongoing process and sets appropriate expectations for completion time.
 - Design teams **must** avoid changing the styles of the progress bar for state indications, such as using green to signify success. This practice can be misleading for users with sight impairments, as they may not perceive the color change without accompanying information, such as a text label or icon.
 - Design teams **should** ensure that users can easily spot the progress bar, regardless of the device or interface. This enhances visibility and helps users track their progress effectively, improving overall usability.

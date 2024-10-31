@@ -7,7 +7,7 @@ updated: 2024-10-30
 
 # Label Design Guidance
 
- A [label](https://clarity.design/documentation/label) component provides a concise description or identifier for interface elements, like form fields or statuses, helping users quickly understand their purpose.
+A [label](https://clarity.design/documentation/label) component provides a concise description or identifier for interface elements, like form fields or statuses, helping users quickly understand their purpose.
 
 ## Guidance
 
@@ -16,7 +16,7 @@ updated: 2024-10-30
 - Design teams **must not** use multiple lines of text within a single label to keep the interface clear and easy to scan.
 - Design teams **should** use parentheses for any additional metadata required within the same label to keep the information organized and easy to read.
 - Design teams **should** use [clickable labels](https://clarity.design/documentation/label#clicking-labels) to perform actions related to the label, providing a more intuitive user experience.
-- Design teams **may** use a close icon at the right-most side of a label to dismiss it.  Design teams **must not** assign a separate action for a dismissible label, as its primary action is to dismiss the label.
+- Design teams **may** use a close icon at the right-most side of a label to dismiss it. Design teams **must not** assign a separate action for a dismissible label, as its primary action is to dismiss the label.
 - If a count or other number is related to the metadata displayed in the label, a badge **must** be used to clearly convey the information.
 
 ## Style and Color
