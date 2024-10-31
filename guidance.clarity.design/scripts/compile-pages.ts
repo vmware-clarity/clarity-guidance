@@ -126,6 +126,7 @@ import { CipPageComponent } from '../app/components/cip-page/cip-page.component'
   templateUrl: './${filename}.component.html',
   standalone: true,
   imports: [CipPageComponent],
+  preserveWhitespaces: true,
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
@@ -167,6 +168,7 @@ import { CipIndexComponent } from '../app/components/cip-index/cip-index.compone
   templateUrl: './${filename}.component.html',
   standalone: true,
   imports: [CipIndexComponent],
+  preserveWhitespaces: true,
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
