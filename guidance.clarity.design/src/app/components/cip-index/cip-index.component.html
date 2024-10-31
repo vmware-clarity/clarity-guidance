@@ -13,9 +13,7 @@
         <tr>
           <td class="cip-listing__number">{{ page.number }}</td>
           <td class="cip-listing__title">
-            <h3 cds-text="section" cds-layout="display:inline">
-              <a [routerLink]="['/', page.number]">{{ page.title }}</a>
-            </h3>
+            <a cds-text="link" [routerLink]="['/', page.number]">{{ page.title }}</a>
             @if (page.state === 'draft') {
               <span class="badge badge-danger">Draft</span>
             } @else if (page.state === 'review') {
