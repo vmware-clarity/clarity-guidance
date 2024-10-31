@@ -252,6 +252,7 @@ function styleContent(document: Document) {
       ],
       img: [{ attributeName: 'cds-layout', attributeValue: 'm-t:xxl' }],
       strong: [{ attributeName: 'cds-text', attributeValue: 'medium' }],
+      'a[href]': [{ attributeName: 'cds-text', attributeValue: 'link' }],
     };
 
     for (const [rawSelector, attributes] of Object.entries(defaultAttributes)) {
