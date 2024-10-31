@@ -42,7 +42,7 @@ Clarity offers two button sizes : default and compact
 
 - Design teams **must not** use two icons in the same button, as this can create confusion about the button's purpose and make it harder for users to understand the intended action.
 - Design teams **should** include text alongside the icons to clearly indicate the button's function, as this enhances user understanding and accessibility.
-- Design teams **should** place icons in buttons according to context: typically to the left of the text for in-context actions, but on the right for actions that lead users away from the current page. Always prioritize descriptive text alongside icons to enhance clarity and ensure a consistent user experience.  
+- Design teams **should** place icons in buttons according to context: typically to the left of the text for in-context actions, but on the right for actions that lead users away from the current page. Always prioritize descriptive text alongside icons to enhance clarity and ensure a consistent user experience.
 - Design teams **may** use only an icon without text if space is limited, but they **must** ensure that an accessible name is provided and highlighted in the design.
 - Design teams **should** use icons inside buttons to provide a visual indicator for the call to action.
 
