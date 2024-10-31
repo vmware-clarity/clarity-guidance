@@ -25,7 +25,7 @@ The [tree view](https://clarity.design/documentation/tree-view) component displa
 
 - Design teams **must** not use icons and checkboxes simultaneously in a tree view, as this can lead to excessive indentation and wasted space, negatively impacting usability and clarity. This approach also creates accessibility challenges, making it harder for all users, including those with visual impairments, to navigate and interact with the content effectively.
 - Design teams **must** maintain consistency in the use of checkboxes within a tree view to ensure a coherent user experience. Design teams **must not** apply checkboxes to only some items in a tree view, as this can create confusion and disrupt the visual hierarchy.
-- Design teams **must** use checkboxes in a tree view when multiple selections are allowed, enabling users to select more than one item efficiently and intuitively. 
+- Design teams **must** use checkboxes in a tree view when multiple selections are allowed, enabling users to select more than one item efficiently and intuitively.
 
 ## Changelog
 

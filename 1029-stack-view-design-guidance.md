@@ -14,7 +14,7 @@ The [stack view](https://clarity.design/documentation/stack-view) component disp
 ### Usage
 
 - Design teams **must** use the stack view to progressively display a large set of data (key/value pairs) or to allow users to reveal more complex or less frequently used data as needed, enhancing clarity and usability.
-Design teams **may** use the stack view to display related key/value pairs, helping users understand connections between the data while maintaining an organized layout.
+- Design teams **may** use the stack view to display related key/value pairs, helping users understand connections between the data while maintaining an organized layout.
 
 ### Labels
 

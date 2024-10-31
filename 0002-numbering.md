@@ -1,8 +1,8 @@
 ---
 category: general
 state: approved
-created: 2014-10-21
-updated: 2014-10-21
+created: 2024-10-21
+updated: 2024-10-21
 ---
 
 # Numbering
@@ -14,7 +14,7 @@ is based on [Google's API Numbering](https://google.aip.dev/2).
 ## Assigning CIP Numbers
 
 The Clarity team is responsible for assigning a number to each CIP when it is accepted as a draft for review.
-Importantly, *all* CIPs have numbers, not just approved ones. The [CIP Index](/) clearly clearly delineates which CIPs
+Importantly, _all_ CIPs have numbers, not just approved ones. The [CIP Index](/) clearly clearly delineates which CIPs
 are approved and binding and which are under discussion.
 
 The team **may** decide to reserve a specific of numbers for grouping CIPs. Beyond this, numbers are assigned arbitrarily.

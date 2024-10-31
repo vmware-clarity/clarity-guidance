@@ -13,8 +13,8 @@ updated: 2024-10-30
 
 - Design teams **must** place tabs in a single, non-scrollable row, positioned above their content to ensure clarity and ease of navigation.
 - Design teams **must not** use tabs in cards or modals, as this can create clutter and reduce usability within constrained spaces.
-- Design teams **must not** use more than seven tabs and **must** limit labels to one or two words to ensure all tabs fit within the container.  Design teams **may** use [tab overflow](https://clarity.design/documentation/tabs/code#overflow-tabs) when the tab group exceeds the available space or when space needs to be preserved.
-- Design teams **must not** use tabs to break user interactions into a series of steps. Serial workflows are better presented using a [stepper](https://clarity.design/documentation/stepper) or a [wizard](https://clarity.design/documentation/wizard). 
+- Design teams **must not** use more than seven tabs and **must** limit labels to one or two words to ensure all tabs fit within the container. Design teams **may** use [tab overflow](https://clarity.design/documentation/tabs/code#overflow-tabs) when the tab group exceeds the available space or when space needs to be preserved.
+- Design teams **must not** use tabs to break user interactions into a series of steps. Serial workflows are better presented using a [stepper](https://clarity.design/documentation/stepper) or a [wizard](https://clarity.design/documentation/wizard).
 - Design teams **should** use tabs for alternate views within a vertical navigation or main content area to help users switch between related content efficiently.
 - Design teams **should** use [vertical tabs](https://clarity.design/documentation/tabs/code#vertical-tabs) when tabs need to align along the side of the content for better structure in narrow layouts.
 

@@ -14,7 +14,8 @@
     "lint:eslint": "eslint .",
     "lint-fix": "npm-run-all lint-fix:*",
     "lint-fix:prettier": "prettier . --write",
-    "lint-fix:eslint": "eslint . --fix"
+    "lint-fix:eslint": "eslint . --fix",
+    "format-md-files": "prettier ../*.md --config ./.prettierrc.js --write"
   },
   "private": true,
   "dependencies": {

@@ -18,7 +18,7 @@ An [accordion](https://clarity.design/documentation/accordion) is a user interfa
 - Design teams **must** ensure that the accordion header is concise and clearly conveys the nature of the content within, allowing users to quickly understand what information is contained in each section.
 - Design teams **should** use accordions to present secondary information or to give an overview of a page's content, helping users easily navigate and access relevant details without overwhelming them.
 
-## Accessibility 
+## Accessibility
 
 - Design teams **must not** include clickable elements in the accordion header, as this can lead to confusion about the intended functionality and disrupt the user's interaction with the accordion.
 - Design teams **should** include only a title and brief information (if needed) in the accordion header to maintain clarity and focus, ensuring users can quickly understand the content within each section.

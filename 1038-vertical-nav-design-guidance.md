@@ -18,7 +18,7 @@ The [vertical nav](https://clarity.design/documentation/vertical-nav) component 
 ### Icons
 
 - Design teams **must** maintain consistency in applying icons to top-level navigation items. Avoid using icons for some top navigation items while leaving others without, as this can create confusion and disrupt the user's navigation experience.
-- Design teams **must** apply icons consistently to top-level navigation items to enhance visual recognition and understanding.  Design teams **must not** apply icons to child links, as this can clutter the interface and create unnecessary complexity for users.
+- Design teams **must** apply icons consistently to top-level navigation items to enhance visual recognition and understanding. Design teams **must not** apply icons to child links, as this can clutter the interface and create unnecessary complexity for users.
 - Design teams **must** place icons to the left of the top navigation labels to ensure a consistent layout and improve the overall usability of the navigation.
 - Design teams **should** use icons to describe navigation items, as they provide helpful context when the navigation is collapsed, enhancing user understanding and navigation efficiency.
 - Design teams **must** use semi-bold font weight for top-level navigation items, as this aligns with Clarity's design principles by creating a clear visual hierarchy and improving readability.
