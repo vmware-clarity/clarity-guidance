@@ -17,7 +17,10 @@
     "allowedDomains": [
       "https://unpkg.com",
       "https://guidance.clarity.design",
-      "https://42--clarity-guidance.netlify.app"
+      "https://storybook.clarity.design",
+      "https://clarity.design",
+      "https://42--clarity-guidance.netlify.app",
+      "https://cdn.jsdelivr.net"
     ]
   }
 }

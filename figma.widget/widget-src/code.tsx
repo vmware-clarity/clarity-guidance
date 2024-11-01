@@ -46,6 +46,7 @@ function Widget() {
 
                 if (found.length > 0) {
                     figma.currentPage.selection = found;
+                    figma.viewport.scrollAndZoomIntoView(found);
                 }
 
                 const iconIds = await figma.clientStorage.getAsync(iconIdsKey);
@@ -78,7 +79,7 @@ function Widget() {
                     figma.ui.postMessage({
                         type: "violations",
                         data: {
-                            key: "1001",
+                            key: "5001",
                             recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
                             rule: `${wrongColors.length} color violate NO hard coded HEX values. ${wrongColors}`
                         }
@@ -99,6 +100,7 @@ function Widget() {
 
                 if (hardcodedNodes.length > 0) {
                     figma.currentPage.selection = hardcodedNodes;
+                    figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
                 }
             }
 
@@ -116,7 +118,7 @@ function Widget() {
                     figma.ui.postMessage({
                         type: "violations",
                         data: {
-                            key: "1002",
+                            key: "5002",
                             recommendation: "Recommendation: Reattach Clarity components.",
                             rule: `${detachedNodes.length} detached Clarity components found and selected.`
                         }
@@ -149,6 +151,7 @@ function Widget() {
                     }
 
                     figma.currentPage.selection = newNodes;
+                    figma.viewport.scrollAndZoomIntoView(newNodes);
                 }
             }
 
@@ -279,6 +282,44 @@ widget.register(Widget)
 //     });
 // });
 
+figma.on("selectionchange", async () => {
+    console.log("selectionchange", figma.currentPage.selection);
+
+    const componentNodeKeys: { key: string, links:  { url: string; name: string; }[] }[] = [];
+
+    for (let i = 0; i < figma.currentPage.selection.length; i++) {
+        const node = figma.currentPage.selection[i];
+        if (node.type === "INSTANCE") {
+            const componentNode = await node.getMainComponentAsync();
+
+            if (componentNode && componentNode.parent?.type === 'COMPONENT_SET') {
+                console.log(componentNode?.parent.key);
+                console.log(componentNode?.parent);
+                console.log(await componentNode?.parent.getDevResourcesAsync());
+
+                const urls = [
+                    // ...componentNode.parent.documentationLinks.map(link => link.uri),
+                    ...(await componentNode?.parent.getDevResourcesAsync()).map(link => {
+                        return { url: link.url, name: link.name };
+                    })
+                ]
+                componentNodeKeys.push({
+                    key: componentNode.parent.key,
+                    links: urls
+                });
+            }
+        }
+
+    }
+
+
+    figma.ui.postMessage({
+        type: "selectionChange",
+        data: componentNodeKeys
+    });
+});
+
+
 figma.currentPage.on("nodechange", _event => {
     console.log("nodechange", _event)
 
@@ -329,13 +370,14 @@ figma.currentPage.on("nodechange", _event => {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        key: "1001",
+                        key: "5001",
                         recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
                         rule: `1 or more components violate NO hard coded HEX values. ${nodeSelection}`
                     }
                 });
 
                 figma.currentPage.selection = nodeSelection;
+                figma.viewport.scrollAndZoomIntoView(nodeSelection);
             } else {
                 figma.ui.postMessage({
                     type: "change",
@@ -356,13 +398,14 @@ figma.currentPage.on("nodechange", _event => {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        key: "1002",
+                        key: "5002",
                         recommendation: "Recommendation: Reattach Clarity components.",
                         rule: `${detachedNodes.length} detached Clarity components found and selected.`
                     }
                 });
 
                 figma.currentPage.selection = detachedNodes;
+                figma.viewport.scrollAndZoomIntoView(detachedNodes);
             } else {
                 figma.ui.postMessage({
                     type: "change",

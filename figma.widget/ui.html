@@ -1,15 +1,22 @@
-<link rel="stylesheet" href="https://unpkg.com/@cds/core/global.min.css" />
-<link rel="stylesheet" href="https://unpkg.com/@cds/core/styles/theme.dark.min.css" />
-<link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
+<!DOCTYPE html>
+<head>
+    <link rel="icon" href="../guidance.clarity.design/public/favicon.ico?v=2" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/@cds/core/global.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@cds/core/styles/theme.dark.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
+    <title>Widget</title>
+</head>
+
 
 
 <body cds-theme="light">
     <div class="content-area" style="padding: 0 16px" >
         <div>
-            <a class="btn btn-sm" target="_blank" href="https://guidance.clarity.design" id="showToastButton">CIP Home PAge</a>
+            <a class="btn btn-sm" href="https://guidance.clarity.design" target="_blank" id="showToastButton">CIP Home PAge</a>
             <button class="btn btn-sm" id="checkViolations">No Hex Values</button>
             <button class="btn btn-sm" id="detachedNodes">detached nodes</button>
-            <button class="btn btn-sm" id="find-icons">find icons</button>
+            <button class="btn btn-sm" id="show-selection-guidance">SHow Guidance</button>
+<!--            <button class="btn btn-sm" id="find-icons">find icons</button>-->
             <button class="btn btn-danger btn-sm" id="closeButton">Close</button>
         </div>
         <div id="showViolation" class="clr-row" style="display: none;">
@@ -45,148 +52,196 @@
             </div>
         </div>
 
+        <div id="guidance" class="clr-row" style="display: none;">
+            <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+                <div class="card">
+                    <div class="card-block">
+                        <div id="content" class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <script>
-      let iconsForChange = [];
+<script type="module">
+    import {marked} from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
-      const showToastButton = document.getElementById("showToastButton");
-      showToastButton.onclick = () => {
-          console.log(parent);
-        parent.postMessage({ pluginMessage: { type: "showToast" } }, "*");
-      };
+    const guidanceMap = {
+        "d998b0f409cc0f78e0e324f07c0a3b63f6c0b4a1": "1004-button-group-design-guidance",
+        "c9444889cbdde9ef8477e90f8e17c272a4b7c4a8": "1004-button-group-design-guidance",
+        "202a2280491014750988fb3718effd7bb7c205e8": "1004-button-group-design-guidance",
+        "74ce5710800e76cc171f66159214168fc18f4110": "1001-alert-design-guidance",
+        "7352dc183b8096c4b30208d504923ba81c506409": "1001-alert-design-guidance",
+    }
 
-      const closeButton = document.getElementById("closeButton");
-      closeButton.onclick = () => {
-        parent.postMessage({ pluginMessage: { type: "close" } }, "*");
-      };
+    // Set options
+    marked.use({
+        async: true,
+        pedantic: false,
+        breaks: true,
+        gfm: true,
+    });
 
-      const violationsCheckButton = document.getElementById("checkViolations");
-      violationsCheckButton.onclick = () => {
-          const showViolationCard = document.getElementById("showViolation");
-          showViolationCard.style.display = "none";
-          const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
-          violationFooterHexColors.style.display = "none";
-          const violationFooterDetached = document.getElementById("violationFooter-detached");
-          violationFooterDetached.style.display = "none";
+    let iconsForChange = [];
 
-          parent.postMessage({ pluginMessage: { type: "checkViolations" } }, "*");
-      };
+    const showToastButton = document.getElementById("showToastButton");
+    showToastButton.onclick = () => {
+        parent.postMessage({pluginMessage: {type: "showToast"}}, "*");
+    };
 
-      const detachedNodesCheckButton = document.getElementById("detachedNodes");
-      detachedNodesCheckButton.onclick = () => {
-          const showViolationCard = document.getElementById("showViolation");
-          showViolationCard.style.display = "none";
-          const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
-          violationFooterHexColors.style.display = "none";
-          const violationFooterDetached = document.getElementById("violationFooter-detached");
-          violationFooterDetached.style.display = "none";
+    const closeButton = document.getElementById("closeButton");
+    closeButton.onclick = () => {
+        parent.postMessage({pluginMessage: {type: "close"}}, "*");
+    };
 
-          parent.postMessage({ pluginMessage: { type: "find-select-detached-nodes" } }, "*");
-      };
+    const violationsCheckButton = document.getElementById("checkViolations");
+    violationsCheckButton.onclick = () => {
+        const showViolationCard = document.getElementById("showViolation");
+        showViolationCard.style.display = "none";
+        const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
+        violationFooterHexColors.style.display = "none";
+        const violationFooterDetached = document.getElementById("violationFooter-detached");
+        violationFooterDetached.style.display = "none";
 
-      const fixDetachedNodesCheckButton = document.getElementById("fix-detached-nodes");
-      fixDetachedNodesCheckButton.onclick = () => {
-          const showViolationCard = document.getElementById("showViolation");
-          showViolationCard.style.display = "none";
+        parent.postMessage({pluginMessage: {type: "checkViolations"}}, "*");
+    };
 
-          parent.postMessage({ pluginMessage: { type: "fix-detached-nodes" } }, "*");
-      };
+    const detachedNodesCheckButton = document.getElementById("detachedNodes");
+    detachedNodesCheckButton.onclick = () => {
+        const showViolationCard = document.getElementById("showViolation");
+        showViolationCard.style.display = "none";
+        const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
+        violationFooterHexColors.style.display = "none";
+        const violationFooterDetached = document.getElementById("violationFooter-detached");
+        violationFooterDetached.style.display = "none";
 
-      const selectHardcodedHexColorsButton = document.getElementById("select-hardcoded-hex-color");
-      selectHardcodedHexColorsButton.onclick = () => {
-          const showViolationCard = document.getElementById("showViolation");
-          showViolationCard.style.display = "none";
+        parent.postMessage({pluginMessage: {type: "find-select-detached-nodes"}}, "*");
+    };
 
-          parent.postMessage({ pluginMessage: { type: "select-hardcoded-hex-color" } }, "*");
-      };
+    const fixDetachedNodesCheckButton = document.getElementById("fix-detached-nodes");
+    fixDetachedNodesCheckButton.onclick = () => {
+        const showViolationCard = document.getElementById("showViolation");
+        showViolationCard.style.display = "none";
 
-      const findIconsButton = document.getElementById("find-icons");
-      findIconsButton.onclick = () => {
-          const showViolationCard = document.getElementById("showViolation");
-          const showIconsForChangeCard = document.getElementById("icons-for-change");
-          showViolationCard.style.display = "none";
-          showIconsForChangeCard.style.display = "none";
+        parent.postMessage({pluginMessage: {type: "fix-detached-nodes"}}, "*");
+    };
 
-          parent.postMessage({ pluginMessage: { type: "find-icons" } }, "*");
-      };
+    const selectHardcodedHexColorsButton = document.getElementById("select-hardcoded-hex-color");
+    selectHardcodedHexColorsButton.onclick = () => {
+        const showViolationCard = document.getElementById("showViolation");
+        showViolationCard.style.display = "none";
 
-      const selectNextIconButton = document.getElementById("select-next-icon");
-      selectNextIconButton.onclick = () => {
-          parent.postMessage({ pluginMessage: { type: "select-next-icon", iconId: iconsForChange.pop() } }, "*");
+        parent.postMessage({pluginMessage: {type: "select-hardcoded-hex-color"}}, "*");
+    };
 
-          const showIconsForChangeCard = document.getElementById("icons-for-change");
-          showIconsForChangeCard.querySelector('.card-text').innerHTML =  iconsForChange.length.toString();
-      };
+    // const findIconsButton = document.getElementById("find-icons");
+    // findIconsButton.onclick = () => {
+    //     const showViolationCard = document.getElementById("showViolation");
+    //     const showIconsForChangeCard = document.getElementById("icons-for-change");
+    //     showViolationCard.style.display = "none";
+    //     showIconsForChangeCard.style.display = "none";
+    //
+    //     parent.postMessage({pluginMessage: {type: "find-icons"}}, "*");
+    // };
 
-      window.onmessage = msg => {
-          console.log(msg)
-          if (msg.type !== "message") {
-              return;
-          }
+    const showSelectionGuidance = document.getElementById("show-selection-guidance");
+    showSelectionGuidance.onclick = () => {
+        document.getElementById("guidance").style.display = "block";
+    };
 
-          const showViolationCard = document.getElementById("showViolation");
-          const violationFooterDetached = document.getElementById("violationFooter-detached");
-          const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
-          if (msg.data.pluginMessage.type === "violations") {
-              console.log(msg.data.pluginMessage.data);
 
-              const data = msg.data.pluginMessage.data
+    const selectNextIconButton = document.getElementById("select-next-icon");
+    selectNextIconButton.onclick = () => {
+        parent.postMessage({pluginMessage: {type: "select-next-icon", iconId: iconsForChange.pop()}}, "*");
 
-              showViolationCard.querySelector('.card-header').innerHTML = `<a class="card-link" target="_blank" href="https://42--clarity-guidance.netlify.app/${data.key}">CIP - ${data.key}</a>`;
-              showViolationCard.querySelector('.card-title').innerHTML = data.rule;
-              showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
+        const showIconsForChangeCard = document.getElementById("icons-for-change");
+        showIconsForChangeCard.querySelector('.card-text').innerHTML =  iconsForChange.length.toString();
+    };
 
-              console.log(showViolationCard);
+    // const showGuidanceButton = document.getElementById("show-all-selected-guidances");
 
-              showViolationCard.style.display = "block";
+    window.onmessage = (msg) => {
+        console.log(msg)
+        if (msg.type !== "message") {
+            return;
+        }
 
-              if (data.key === "1002") {
-                  violationFooterDetached.style.display = "block";
-              }
+        if (msg.data.pluginMessage.type === "selectionChange") {
+            document.getElementById("guidance").style.display = "none";
+            msg.data.pluginMessage.data.forEach(async entry => {
+                const guidanceName = guidanceMap[entry.key];
 
-              if (data.key === "1001") {
-                  violationFooterHexColors.style.display = "block";
-              }
-          }
+                const result = await fetch(`https://cdn.jsdelivr.net/gh/vmware-clarity/clarity-guidance/${guidanceName}.md`)
+                const text = await result.text();
 
-          if (msg.data.pluginMessage.type === "change") {
-              console.log(msg.data.pluginMessage.data);
+                document.getElementById('content').innerHTML = entry.links.map(link => `<a class="btn btn-sm" href="${link.url}" target="_blank" id="showToastButton">${link.name}</a> `).join('')
+                    + await marked.parse(text);
+            });
+        }
 
-              const data = msg.data.pluginMessage.data;
+        const showViolationCard = document.getElementById("showViolation");
+        const violationFooterDetached = document.getElementById("violationFooter-detached");
+        const violationFooterHexColors = document.getElementById("violationFooter-hex-colors");
+        if (msg.data.pluginMessage.type === "violations") {
+            console.log(msg.data.pluginMessage.data);
 
-              if(data.hide) {
-                  showViolationCard.style.display = "none";
-                  violationFooterDetached.style.display = "none";
-                  violationFooterHexColors.style.display = "none";
-                  return;
-              }
+            const data = msg.data.pluginMessage.data
 
-              showViolationCard.querySelector('.card-header').innerHTML = `<a target="_blank" class="card-link" href="https://42--clarity-guidance.netlify.app/${data.key}">CIP - ${data.key}</a>`;
-              showViolationCard.querySelector('.card-title').innerHTML = data.rule;
-              showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
+            showViolationCard.querySelector('.card-header').innerHTML = `<a class="card-link" target="_blank" href="https://42--clarity-guidance.netlify.app/${data.key}">CIP - ${data.key}</a>`;
+            showViolationCard.querySelector('.card-title').innerHTML = data.rule;
+            showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
 
-              console.log(showViolationCard);
+            console.log(showViolationCard);
 
-              showViolationCard.style.display = "block";
+            showViolationCard.style.display = "block";
 
-              if (data.key === "1002") {
-                  violationFooterDetached.style.display = "block";
-              }
+            if (data.key === "1002") {
+                violationFooterDetached.style.display = "block";
+            }
 
-              if (data.key === "1001") {
-                  violationFooterHexColors.style.display = "block";
-              }
-          }
+            if (data.key === "1001") {
+                violationFooterHexColors.style.display = "block";
+            }
+        }
 
-          if (msg.data.pluginMessage.type === "found-icons") {
-              iconsForChange = msg.data.pluginMessage.data;
+        if (msg.data.pluginMessage.type === "change") {
+            console.log(msg.data.pluginMessage.data);
 
-              const showIconsForChangeCard = document.getElementById("icons-for-change");
-              showIconsForChangeCard.querySelector('.card-text').innerHTML = iconsForChange.length.toString();
+            const data = msg.data.pluginMessage.data;
 
-              showIconsForChangeCard.style.display = "block";
-          }
-      }
+            if(data.hide) {
+                showViolationCard.style.display = "none";
+                violationFooterDetached.style.display = "none";
+                violationFooterHexColors.style.display = "none";
+                return;
+            }
+
+            showViolationCard.querySelector('.card-header').innerHTML = `<a target="_blank" class="card-link" href="https://42--clarity-guidance.netlify.app/${data.key}">CIP - ${data.key}</a>`;
+            showViolationCard.querySelector('.card-title').innerHTML = data.rule;
+            showViolationCard.querySelector('.card-text').innerHTML = data.recommendation;
+
+            console.log(showViolationCard);
+
+            showViolationCard.style.display = "block";
+
+            if (data.key === "1002") {
+                violationFooterDetached.style.display = "block";
+            }
+
+            if (data.key === "1001") {
+                violationFooterHexColors.style.display = "block";
+            }
+        }
+
+        if (msg.data.pluginMessage.type === "found-icons") {
+            iconsForChange = msg.data.pluginMessage.data;
+
+            const showIconsForChangeCard = document.getElementById("icons-for-change");
+            showIconsForChangeCard.querySelector('.card-text').innerHTML = iconsForChange.length.toString();
+
+            showIconsForChangeCard.style.display = "block";
+        }
+    }
     </script>
 </body>
