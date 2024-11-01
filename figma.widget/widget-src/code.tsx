@@ -114,6 +114,7 @@ function Widget() {
                 if (detachedNodes.length > 0) {
                     console.log('parent', detachedNodes[0].parent);
                     figma.currentPage.selection = detachedNodes;
+                    figma.viewport.scrollAndZoomIntoView(detachedNodes);
 
                     figma.ui.postMessage({
                         type: "violations",
