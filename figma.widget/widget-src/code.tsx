@@ -88,7 +88,7 @@ function Widget() {
             }
 
             if (msg.type === 'select-hardcoded-hex-color') {
-                figma.currentPage.findAll(node => {
+                const hardcodedNodes = figma.currentPage.findAll(node => {
                     if (node.type === 'INSTANCE'
                         && (
                             (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
@@ -96,23 +96,25 @@ function Widget() {
                         )
                     ) {
                         node.resetOverrides();
+
+                        return true;
                     }
 
                     return false;
                 });
 
-                // console.log(hardcodedNodes);
-                //
-                // if (hardcodedNodes.length > 0) {
-                //     hardcodedNodes.forEach(node => {
-                //         if ("resetOverrides" in node) {
-                //             node.resetOverrides();
-                //         }
-                //     })
-                //
-                //     figma.currentPage.selection = hardcodedNodes;
-                //     figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
-                // }
+                console.log(hardcodedNodes);
+
+                if (hardcodedNodes.length > 0) {
+                    hardcodedNodes.forEach(node => {
+                        if ("resetOverrides" in node) {
+                            node.resetOverrides();
+                        }
+                    })
+
+                    figma.currentPage.selection = hardcodedNodes;
+                    figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
+                }
             }
 
             if (msg.type === 'find-select-detached-nodes') {
