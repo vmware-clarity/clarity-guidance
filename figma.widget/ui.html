@@ -44,7 +44,7 @@
                         <div class="card-text"></div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-sm btn-link" id="select-hardcoded-hex-color">Select hard coded hex node</button>
+                        <button class="btn btn-sm btn-link" id="select-hardcoded-hex-color">FIX hard coded hex colors</button>
                     </div>
                 </div>
             </div>
@@ -67,6 +67,9 @@
         <div id="guidance" class="clr-row" style="display: none;">
             <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
                 <div class="card">
+                    <div class="card-block">
+                        <div id="content-title" class="card-text"></div>
+                    </div>
                     <div class="card-block">
                         <div id="content" class="card-text"></div>
                     </div>
@@ -123,7 +126,7 @@
 
     const fixDetachedNodesCheckButton = document.getElementById("fix-detached-nodes");
     fixDetachedNodesCheckButton.onclick = () => {
-        const showViolationCard = document.getElementById("showViolation");
+        const showViolationCard = document.getElementById("show-detached-violation");
         showViolationCard.style.display = "none";
 
         parent.postMessage({pluginMessage: {type: "fix-detached-nodes"}}, "*");
@@ -131,9 +134,6 @@
 
     const selectHardcodedHexColorsButton = document.getElementById("select-hardcoded-hex-color");
     selectHardcodedHexColorsButton.onclick = () => {
-        const showViolationCard = document.getElementById("showViolation");
-        showViolationCard.style.display = "none";
-
         parent.postMessage({pluginMessage: {type: "select-hardcoded-hex-color"}}, "*");
     };
 
@@ -174,11 +174,11 @@
             msg.data.pluginMessage.data.forEach(async entry => {
                 const guidanceName = guidanceMap[entry.key];
 
-                const result = await fetch(`https://cdn.jsdelivr.net/gh/vmware-clarity/clarity-guidance/${guidanceName}.md`)
-                const text = await result.text();
+                const result = await fetch(`https://cdn.jsdelivr.net/gh/vmware-clarity/clarity-guidance/${guidanceName}.md`);
+                let text = (await result.text()).split("---").pop();
 
-                document.getElementById('content').innerHTML = entry.links.map(link => `<a class="btn btn-sm" href="${link.url}" target="_blank" id="showToastButton">${link.name}</a> `).join('')
-                    + await marked.parse(text);
+                document.getElementById('content-title').innerHTML = entry.links.map(link => `<a class="btn btn-sm" href="${link.url}" target="_blank" id="showToastButton">${link.name}</a> `).join('');
+                document.getElementById('content').innerHTML = await marked.parse(text);
             });
         }
 
@@ -209,8 +209,12 @@
 
             const data = msg.data.pluginMessage.data;
 
-            if(data.hide) {
+            if(data.hide === "5002") {
                 detachViolationCard.style.display = "none";
+                return;
+            }
+
+            if(data.hide === "5001") {
                 hexViolationCard.style.display = "none";
                 return;
             }

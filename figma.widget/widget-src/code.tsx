@@ -88,20 +88,31 @@ function Widget() {
             }
 
             if (msg.type === 'select-hardcoded-hex-color') {
-                const hardcodedNodes = figma.currentPage.findAll(node => {
-                    return node.type === 'INSTANCE'
+                figma.currentPage.findAll(node => {
+                    if (node.type === 'INSTANCE'
                         && (
                             (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
                             || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
-                        );
+                        )
+                    ) {
+                        node.resetOverrides();
+                    }
+
+                    return false;
                 });
 
-                console.log(hardcodedNodes);
-
-                if (hardcodedNodes.length > 0) {
-                    figma.currentPage.selection = hardcodedNodes;
-                    figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
-                }
+                // console.log(hardcodedNodes);
+                //
+                // if (hardcodedNodes.length > 0) {
+                //     hardcodedNodes.forEach(node => {
+                //         if ("resetOverrides" in node) {
+                //             node.resetOverrides();
+                //         }
+                //     })
+                //
+                //     figma.currentPage.selection = hardcodedNodes;
+                //     figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
+                // }
             }
 
             if (msg.type === 'find-select-detached-nodes') {
@@ -383,7 +394,7 @@ figma.currentPage.on("nodechange", _event => {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        hide: true
+                        hide: "5001"
                     }
                 });
             }
@@ -411,11 +422,10 @@ figma.currentPage.on("nodechange", _event => {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        hide: true
+                        hide: "5002"
                     }
                 });
             }
         }
     }))
-
 });
