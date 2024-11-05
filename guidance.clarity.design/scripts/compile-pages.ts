@@ -236,6 +236,10 @@ function styleContent(document: Document) {
         { attributeName: 'cds-text', attributeValue: 'body bold' },
         { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
+      'h1 + p': [
+        { attributeName: 'cds-text', attributeValue: 'subsection' },
+        { attributeName: 'cds-layout', attributeValue: 'm-t:xl' },
+      ],
       p: [
         { attributeName: 'cds-text', attributeValue: 'body' },
         { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
