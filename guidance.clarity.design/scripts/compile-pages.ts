@@ -198,6 +198,7 @@ function styleContent(document: Document) {
   styleTables(document);
   styleInlineCode(document);
   styleText(document);
+  styleKeywords(document);
   openExternalLinksInNewTab(document);
 
   function styleTables(document: Document) {
@@ -267,6 +268,25 @@ function styleContent(document: Document) {
         for (const element of Array.from(document.querySelectorAll(selector))) {
           element.setAttribute(attributeName, attributeValue);
         }
+      }
+    }
+  }
+
+  function styleKeywords(document: Document) {
+    const keywordColors: Record<string, string> = {
+      must: '--cds-alias-status-danger',
+      'must not': '--cds-alias-status-danger',
+      should: '--cds-alias-status-warning-dark',
+      'should not': '--cds-alias-status-warning-dark',
+      may: '--cds-alias-status-success',
+    };
+
+    for (const element of Array.from(document.querySelectorAll('strong'))) {
+      const text = element.textContent?.trim().toLowerCase();
+
+      if (text && keywordColors[text]) {
+        element.setAttribute('cds-text', 'bold');
+        element.setAttribute('style', `color: var(${keywordColors[text]})`);
       }
     }
   }
