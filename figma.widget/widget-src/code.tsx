@@ -54,7 +54,7 @@ function Widget() {
                 await figma.clientStorage.setAsync(iconIdsKey, iconIds);
             }
 
-            if (msg.type === 'checkViolations') {
+            if (msg.type === 'find-hex-errors') {
                 figma.notify('CIP - widget: Violations checking...');
                 const origSelection = figma.currentPage.selection;
 

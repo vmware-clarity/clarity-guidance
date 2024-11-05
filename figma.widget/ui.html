@@ -13,7 +13,8 @@
     <div class="content-area" style="padding: 0 16px" >
         <div>
             <a class="btn btn-sm" href="https://guidance.clarity.design" target="_blank" id="showToastButton">CIP Home PAge</a>
-            <button class="btn btn-sm" id="checkViolations">No Hex Values</button>
+            <button class="btn btn-sm" id="check-all-violations">FInd All VIolations</button>
+            <button class="btn btn-sm" id="find-hex-errors">No Hex Values</button>
             <button class="btn btn-sm" id="detachedNodes">detached nodes</button>
             <button class="btn btn-sm" id="show-selection-guidance">SHow Guidance</button>
 <!--            <button class="btn btn-sm" id="find-icons">find icons</button>-->
@@ -110,11 +111,20 @@
         parent.postMessage({pluginMessage: {type: "close"}}, "*");
     };
 
-    const violationsCheckButton = document.getElementById("checkViolations");
+    const violationsCheckButton = document.getElementById("check-all-violations");
     violationsCheckButton.onclick = () => {
         document.getElementById("show-hex-violation").style.display = "none";
+        document.getElementById("show-detached-violation").style.display = "none";
 
-        parent.postMessage({pluginMessage: {type: "checkViolations"}}, "*");
+        parent.postMessage({pluginMessage: {type: "find-hex-errors"}}, "*");
+        parent.postMessage({pluginMessage: {type: "find-select-detached-nodes"}}, "*");
+    };
+
+    const findHexErrorsButton = document.getElementById("find-hex-errors");
+    findHexErrorsButton.onclick = () => {
+        document.getElementById("show-hex-violation").style.display = "none";
+
+        parent.postMessage({pluginMessage: {type: "find-hex-errors"}}, "*");
     };
 
     const detachedNodesCheckButton = document.getElementById("detachedNodes");
@@ -170,7 +180,7 @@
         }
 
         if (msg.data.pluginMessage.type === "selectionChange") {
-            document.getElementById("guidance").style.display = "none";
+            // document.getElementById("guidance").style.display = "none";
             msg.data.pluginMessage.data.forEach(async entry => {
                 const guidanceName = guidanceMap[entry.key];
 
