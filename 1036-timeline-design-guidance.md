@@ -34,7 +34,7 @@ Timelines have two types of layouts: horizontal and vertical.
 - Design teams **must** use a spinner when loading or performing an action (e.g., in the processing state) to provide users with visual feedback and indicate that their request is being processed.
 - Design teams **must** disable buttons when loading or adjust buttons to reflect the contextual loading state, ensuring users understand that actions cannot be taken during this time.
 - Design teams **should** display the error message under the error icon in the error state to provide users with clear information about the issue.
-- Design teams **must not** use tooltips to display error messages, as this can hinder accessibility for users who rely on screen readers or keyboard navigation. Instead, error messages should be displayed visibly within the interface to ensure all users can access and understand the information.
+- Design teams **must not** use tooltips to display error messages, as this can hinder accessibility for users who rely on screen readers or keyboard navigation. Instead, error messages **should** be displayed visibly within the interface to ensure all users can access and understand the information.
 
 ## Content Guidelines
 

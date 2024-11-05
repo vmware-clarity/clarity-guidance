@@ -22,7 +22,7 @@ The [vertical nav](https://clarity.design/documentation/vertical-nav) component 
 - Design teams **must** place icons to the left of the top navigation labels to ensure a consistent layout and improve the overall usability of the navigation.
 - Design teams **should** use icons to describe navigation items, as they provide helpful context when the navigation is collapsed, enhancing user understanding and navigation efficiency.
 - Design teams **must** use semi-bold font weight for top-level navigation items, as this aligns with Clarity's design principles by creating a clear visual hierarchy and improving readability.
-- Design teams must use a caret on the right-hand side to expand and collapse navigation groups, providing users with clear visual indicators of available actions.
+- Design teams **must** use a caret on the right-hand side to expand and collapse navigation groups, providing users with clear visual indicators of available actions.
 - Design teams **must** use normal font weight for child links to ensure they are visually distinct from top-level navigation items and maintain a clear hierarchy. This approach aligns with Clarity's design principles by enhancing readability and usability.
 
 ## Content Guidelines
