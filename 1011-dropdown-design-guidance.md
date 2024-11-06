@@ -11,17 +11,17 @@ The [dropdown](https://clarity.design/documentation/dropdown) component allows u
 
 ## Guidance
 
-- Design teams **must** use a dropdown to facilitate immediate actions or navigate users outside of the current context, ensuring a seamless transition and clear user flow.
-- Design teams **must not** use a dropdown menu to hide primary actions, as these actions **should** be readily accessible and not concealed behind a dropdown.
-- Design teams **must not** use a dropdown menu to hide primary actions, as these actions **should** be readily accessible and not concealed behind a dropdown.
-- Design teams **should** use nested dropdowns to organize longer lists into categories, allowing users to click to reveal deeper levels and enhancing navigation efficiency.
+- Dropdowns **must** be used to facilitate immediate actions or navigate users outside the current context, ensuring seamless transition and clear user flow.
+- Dropdown menus **must not** be used to hide primary actions. Primary actions **should** be readily accessible and not be concealed behind a dropdown.
+- Dropdown menus **must not** be used to hide primary actions, as these actions **should** be readily accessible and not concealed behind a dropdown.
+- Dropdowns **should** utilize nested categories for longer lists. Nested dropdowns improve usability, readability, and discoverability
 - Design teams **must not** use a dropdown menu as a form control for user input. Instead, they **should** use a [select](https://clarity.design/documentation/select) component, which is better suited for handling form data and allows for clearer interaction and selection.
-- Design teams **should** limit nested dropdown menus to three levels to prevent confusion and maintain clarity, ensuring users can easily navigate without feeling overwhelmed.
-
+- Nested dropdown menus **should** be limited to three levels. Limiting levels prevents confusion, and maintains clarity.
+  
 ## Content Guidelines
 
-- Design teams **must** keep the descriptions of dropdown options as short as possible to enhance readability and ensure users can quickly understand their choices.
-- Design teams **should** phrase the label to clearly indicate the dropdown action, helping users understand what to expect when interacting with the dropdown.
+- Descriptions of dropdown options **must** be kept as short as possible to enhance readability and ensure users can quickly understand their choices.
+- Labels **should** be worded to clearly indicate the dropdown action, helping users understand what to expect when interacting with the dropdown.
 
 ## Changelog
 
