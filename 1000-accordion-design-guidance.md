@@ -11,18 +11,17 @@ An [accordion](https://clarity.design/documentation/accordion) is a user interfa
 
 ## Guidance
 
-- Design teams **must** use accordions to display large amounts of information without overwhelming users, allowing them to expand and collapse sections as needed.
-- Design teams **must not** use an accordion when all content is important to the user, as it might cause confusion or hinder access to essential information.
-- Design teams **must not** use an accordion when there is very little visible content on the page, as it can lead to unnecessary complexity and reduce usability.
-- Design teams **must not** include overly lengthy information in the accordion content, as this can overwhelm users and diminish the effectiveness of the accordion's collapsible design.
-- Design teams **must** ensure that the accordion header is concise and clearly conveys the nature of the content within, allowing users to quickly understand what information is contained in each section.
-- Design teams **should** use accordions to present secondary information or to give an overview of a page's content, helping users easily navigate and access relevant details without overwhelming them.
+- Accordions **must** be used to display large amounts of information, preventing user overload and enabling expansion and collapse of sections as needed.
+- Accordions **must not** be used when there is very little visible content on the page, as it can lead to unnecessary complexity and reduce usability.
+- Accordions **must not** be used when there is minimal visible content on the page, as they can introduce unnecessary complexity and diminish usability.
+- Accordions **should not** contain excessively lengthy information, as this may overwhelm users and undermine the collapsible design's purpose.
+- Accordion headers **must** be concise and clearly convey the content's nature, enabling users to quickly understand the information in each section.
 
 ## Accessibility
 
-- Design teams **must not** include clickable elements in the accordion header, as this can lead to confusion about the intended functionality and disrupt the user's interaction with the accordion.
-- Design teams **should** include only a title and brief information (if needed) in the accordion header to maintain clarity and focus, ensuring users can quickly understand the content within each section.
-- Design teams **must not** nest accordions more than two levels deep to prevent overwhelming users with excessive content hierarchy, which can lead to confusion and difficulty navigating the information.
+- Clickable elements **must not** be included in the accordion header, as this can lead to confusion about the intended functionality and disrupt the user's interaction with the accordion.
+- To maintain clarity and focus, titles **should** include only a title and brief information (if needed) in the accordion header, ensuring users can quickly understand the content within each section.
+- Accordions **must not** be nested more than two levels deep to prevent overwhelming users with excessive content hierarchy, which can lead to confusion and difficulty navigating the information.
 
 ## Changelog
 
