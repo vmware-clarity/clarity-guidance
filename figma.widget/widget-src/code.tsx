@@ -185,7 +185,7 @@ function Widget() {
                 // "figma.closePlugin()" will terminate the code.
                 () => {
                     return new Promise(() => {
-                        figma.showUI(__html__, {width: 560, height: 720});
+                        figma.showUI(__html__, {width: 360, height: 720 , themeColors: true});
 
                         // let count = 0;
                         // const iconIds = figma.currentPage.findAll(node => {

@@ -83,6 +83,12 @@
 <script type="module">
     import {marked} from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
+    document.body.onload = function () {
+        if(document.classList.contains('figma-dark')) {
+            document.getElementById("main-content-body").setAttribute('cds-theme', 'dark')
+        }
+    }
+
     const guidanceMap = {
         "d998b0f409cc0f78e0e324f07c0a3b63f6c0b4a1": "1004-button-group-design-guidance",
         "c9444889cbdde9ef8477e90f8e17c272a4b7c4a8": "1004-button-group-design-guidance",
