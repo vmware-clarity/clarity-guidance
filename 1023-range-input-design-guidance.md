@@ -11,11 +11,11 @@ A [range input](https://clarity.design/documentation/range) features a slider th
 
 ## Guidance
 
-- Design teams **must** include clear labels indicating the purpose of the slider to ensure users understand what value they are selecting.
-- Design teams **should** place a label above or beside the slider, rather than below it, to ensure it remains visible while users select a value.
-- Design teams **should** use [radio buttons](https://clarity.design/documentation/radio) or a [select](https://clarity.design/documentation/select) when only a few distinct choices are available, or a [number input](https://clarity.design/documentation/input) when precision is key. This ensures clarity, reduces cognitive load, and allows for more accurate user input.
-- Design teams **should** use appropriate [range input states](https://clarity.design/documentation/range#states) to provide visual feedback and enhance the user experience during interaction.
-- Design teams **may** use the range input component when it's okay to have a less precise input and the exact value doesn’t matter, allowing users to quickly pick a value from a wider range.
+- Sliders **must** have clear and descriptive labels indicating their purpose, ensuring users understand the selected value.
+- Sliders **should** have labels placed above or beside them, rather than below, to maintain visibility during user interaction.
+- [Radio buttons](https://clarity.design/documentation/radio) or a [select](https://clarity.design/documentation/select) **should** be used when only a few distinct choices are available. A [number input](https://clarity.design/documentation/input) **should** be used when precision is key. This ensures clarity, reduces cognitive load, and allows for more accurate user input.
+- Appropriate [range input states](https://clarity.design/documentation/range#states) **should** be used to provide visual feedback and enhance the user experience during interaction.
+- The range input component **may** be used when it's okay to have a less precise input and the exact value doesn’t matter, allowing users to quickly pick a value from a wider range.
 
 ## Changelog
 
