@@ -11,11 +11,11 @@ The page [header](https://clarity.design/documentation/header) component defines
 
 ## Guidance
 
-- Design teams **must** use one header per page, and it **must** be positioned at the start of the page to provide a consistent layout and enhance user navigation.
-- Design teams **must not** use a header at the top of smaller containers, such as popups or dialogs, to avoid confusion and maintain a clear distinction between page-level and contextual navigation.
-- Design teams **must not** overload the header with too many items; a maximum of four items **should** be used in the top-level navigation to ensure clarity and ease of use for users.
-- Design teams **should** incorporate the [search](https://clarity.design/documentation/header#search) feature, taking into account its importance and usefulness within the application to improve user efficiency and navigation.
-- Design teams **should** use right-side action area of header for global actions and top-level navigational items that are important, yet visited less frequently.
+- Each page **must** have only one header, placed at the top. This improves navigation, and readability.
+- Headers **must not** be used in smaller containers like popups or dialogs. This avoids confusion and clarifies page-level vs. contextual navigation.
+- Headers **must not** be overloaded with excessive items. Top-level navigation **should** be limited to four items. This ensures clarity and ease of use for users.
+- Considering its application importance, the [search](https://clarity.design/documentation/header#search) feature **should** be incorporated into the header to enhance user efficiency and navigation.
+- Headers **should** use the right-side action area for global actions and top-level navigation items that are important but less frequently visited. This optimizes header space, prioritizes key actions, and streamlines navigation.
 
 ## Content Guidelines
 
