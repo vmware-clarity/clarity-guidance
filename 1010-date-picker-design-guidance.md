@@ -11,10 +11,10 @@ The [date picker](https://clarity.design/documentation/datepicker) component ena
 
 ## Guidance
 
-- Design teams **must not** use the date picker for entering a date of birth; they **should** use an input component instead.
-- Design teams **must not** use the date picker to select a date that is more than 10 years in the future or past.
-- Design teams **must not** use the date picker when space is limited.
-- Design teams **must** keep the size of the date picker widget consistent, regardless of the text field width.
+- Date pickers **must not** be used for entering dates of birth. Instead, input components should be used. Using input components for dates of birth allows for easier entry and editing, especially for users with accessibility needs.
+- Date pickers **must not** be used for selecting dates more than 10 years in the future or past. Limiting date picker range improves usability, reduces errors, and accommodates common use cases.
+- Date pickers **must not** be used in space-constrained environments. Alternative input methods, like text inputs, are more suitable for limited spaces, ensuring usability and accessibility.
+- Date picker widgets **must** maintain a consistent size, regardless of text field width.  Consistent sizing ensures visual coherence, usability, and accessibility across various layout configurations.
 
 ## Changelog
 
