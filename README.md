@@ -15,7 +15,7 @@ CIPs are design documents that summarize Clarity's design decisions. They also p
 
 ### Curious about the basics?
 
-CIPs are a combination of design guidance and a system we use to manage and track that guidance. 
+CIPs are a combination of design guidance and a system we use to manage and track that guidance.
 
 ### Want to help?
 
@@ -25,4 +25,4 @@ Interested in helping with CIPs? Contribute by proposing new guidance, commentin
 
 ### Still have questions?
 
-(Broadcom employees only) Reach out to the Clarity team on our  chat support channel "VCF Clarity Support".
+(Broadcom employees only) Reach out to the Clarity team on our chat support channel "VCF Clarity Support".

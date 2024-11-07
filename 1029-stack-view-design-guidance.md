@@ -18,7 +18,7 @@ The [stack view](https://clarity.design/documentation/stack-view) component disp
 
 ### Labels
 
-- Concise labels (keys) that clearly indicate what information is associated with each label **must** be provided. 
+- Concise labels (keys) that clearly indicate what information is associated with each label **must** be provided.
 - Icons **must not** be used as labels in the stack view, as this can lead to confusion and reduce clarity in understanding the associated data.
 
 ### Value Editing
