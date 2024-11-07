@@ -5,7 +5,7 @@ created: 2024-11-07
 updated: 2024-11-07
 ---
 
-# Clarity Guidance - Legend 
+# Legend 
 
 * **Must**: Indicates a requirement that is non-negotiable. Compliance is essential, and failing to adhere to this guidance may lead to significant issues or inconsistencies.
 * **Must Not**: Indicates a restriction that must be strictly adhered to. Violating this rule can lead to confusion, negative impacts on usability, and diminished functionality.
