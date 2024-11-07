@@ -1,3 +1,10 @@
+---
+category: general
+state: approved
+created: 2024-11-07
+updated: 2024-11-07
+---
+
 # Clarity Guidance - Legend 
 
 * **Must**: Indicates a requirement that is non-negotiable. Compliance is essential, and failing to adhere to this guidance may lead to significant issues or inconsistencies.
