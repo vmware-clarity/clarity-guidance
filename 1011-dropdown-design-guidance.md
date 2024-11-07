@@ -17,7 +17,6 @@ The [dropdown](https://clarity.design/documentation/dropdown) component allows u
 - Dropdowns **should** utilize nested categories for longer lists. Nested dropdowns improve usability, readability, and discoverability
 - Design teams **must not** use a dropdown menu as a form control for user input. Instead, they **should** use a [select](https://clarity.design/documentation/select) component, which is better suited for handling form data and allows for clearer interaction and selection.
 - Nested dropdown menus **should** be limited to three levels. Limiting levels prevents confusion, and maintains clarity.
-  
 ## Content Guidelines
 
 - Descriptions of dropdown options **must** be kept as short as possible to enhance readability and ensure users can quickly understand their choices.
