@@ -11,11 +11,11 @@ The [table](https://clarity.design/documentation/table) is a component that use 
 
 ## Guidance
 
-- Design teams **must** use the table component wherever static data needs to be presented in a tabular format. This ensures consistency and alignment with the design system.
-- Design teams **must** alternatively use the [datagrid](https://clarity.design/documentation/datagrid) for advanced features such as sorting, filtering, pagination, or performing batch operations on structured data. This ensures functionality aligns with user needs and the design system.
-- Design teams **should** use a borderless table when presenting data with a clean and minimalistic appearance. This helps maintain a streamlined visual style while keeping the focus on the content.
-- Design teams **should** use compact tables when vertical space is limited, as this variant reduces row height and ensures better use of available space.
-- Design teams **may** use vertical tables when a header is not needed. The leftmost cells in the table can function as either data or header cells, depending on the context.
+- Table components **must** be used wherever static data needs to be presented in a tabular format. This ensures consistency and alignment with the design system.
+- For advanced features like sorting, filtering, pagination, or batch operations on structured data, the datagrid component **must** be used, ensuring alignment with user needs and the design system.
+- Borderless tables **should** be used when presenting data with a clean and minimalistic appearance. This helps maintain a streamlined visual style while keeping the focus on the content.
+- Compact tables **should** be used when vertical space is limited, as this variant reduces row height and ensures better use of available space.
+- Vertical tables **may** be used when a header is not needed. The leftmost cells in the table can function as either data or header cells, depending on the context.
 
 ## Changelog
 
