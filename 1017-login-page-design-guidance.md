@@ -11,9 +11,9 @@ The [login page](https://clarity.design/documentation/login) is a predefined for
 
 ## Guidance
 
-- Design teams **must** use the login page component for authentication flows to maintain consistency across applications, ensuring users have a seamless experience.
-- Design teams **must** follow the [password design guidance](/1019) for the password input to ensure security and usability in the authentication process.
-- Design teams **must not** specify whether the error occurred in the username or password field in the validation message, as this can compromise security and lead to unauthorized access attempts.
+- Login page component **must** be used for authentication flows to maintain consistency across applications, ensuring users have a seamless experience.
+- Password input **must** follow the [password design guidance](/1019) to ensure security and usability in the authentication process.
+- An error occurred message **must not** specify whether the error occurred in the username or password field in the validation message, as this can compromise security and lead to unauthorized access attempts.
 
 ## Changelog
 

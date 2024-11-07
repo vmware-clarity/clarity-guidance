@@ -11,10 +11,10 @@ The [side panel](https://clarity.design/documentation/side-panel) component prov
 
 ## Guidance
 
-- Design teams **must** use a side panel when more content or complex interactions are required than a modal can accommodate. Side panels are recommended for tertiary actions or sub-processes. Use a [modal](https://clarity.design/documentation/modal) when the information is more concise, and the interactions are simpler.
-- Design teams **must** keep side panels simple. They can include components like links, cards, images, or text, but avoid complex components such as tables or accordions to ensure clarity and usability.
-- Design teams **must** ensure users can easily exit the side panel and maintain control over their navigation by providing options to dismiss it, such as buttons for canceling or proceeding, along with a close button.
-- Design teams **must not** stack side panels, as this can make them difficult to dismiss and create confusion for users regarding their navigation.
+- Side panels **must** be used when more content or complex interactions are required than a modal can accommodate. Side panels are recommended for tertiary actions or sub-processes. Use a [modal](https://clarity.design/documentation/modal) when the information is more concise, and the interactions are simpler.
+- Side panels **must** be kept simple. They can include components like links, cards, images, or text, but avoid complex components such as tables or accordions to ensure clarity and usability.
+- Side panels **must** include clear dismissal options, such as cancel, proceed, and close buttons, allowing users to easily exit and maintain navigation control.
+- Side panels **must not** be stacked, as this can make them difficult to dismiss and create confusion for users regarding their navigation.
 
 ## Changelog
 
