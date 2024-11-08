@@ -11,7 +11,7 @@ module.exports = (env, argv) => ({
     devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
     entry: {
-        ui: ['./dist/polyfills.js', './dist/main.js', ], // The entry point for your UI code
+        ui: ['./dist/browser/polyfills.js', './dist/browser/main.js', ], // The entry point for your UI code
         code: './widget-src/code.tsx', // The entry point for your plugin code
     },
 
@@ -44,7 +44,7 @@ module.exports = (env, argv) => ({
     },
 
     // Webpack tries these extensions for you if you omit the extension like "import './file'"
-    resolve: { extensions: ['.ts', '.tsx', '.js'] },
+    resolve: { extensions: ['.ts', '.js'] },
 
     output: {
         filename: '[name].js',
@@ -58,7 +58,7 @@ module.exports = (env, argv) => ({
         }),
         new HtmlWebpackPlugin({
             inject: "body",
-            template: './dist/index.html',
+            template: './dist/browser/index.html',
             filename: 'ui.html',
             chunks: ['ui']
         }),

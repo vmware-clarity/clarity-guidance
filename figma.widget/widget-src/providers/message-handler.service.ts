@@ -36,7 +36,7 @@ export abstract class MessageHandlerService {
             let comp = set.findOne(node => node.type === 'COMPONENT') as ComponentNode;
             comp.createInstance();
         })
-        console.log(result);6
+        console.log(result);
       // figma..im(message.layout.id);
       // figma.currentPage.appendChild(message.layout)
       // figma.importComponentByKeyAsync(message.id)
