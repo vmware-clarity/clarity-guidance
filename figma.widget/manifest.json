@@ -12,7 +12,7 @@
   ],
   "containsWidget": true,
   "widgetApi": "1.0.0",
-  "ui": "ui.html",
+  "ui": "dist/ui.html",
   "networkAccess": {
     "allowedDomains": [
       "https://unpkg.com",
