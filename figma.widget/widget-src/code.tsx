@@ -1,9 +1,70 @@
 // This widget will open an Iframe window with buttons to show a toast message and close the window.
 
 const {widget} = figma;
-const {useEffect, Text} = widget
+const {useEffect, useSyncedState, usePropertyMenu, AutoLayout, Text} = widget
 
 const iconIdsKey ='iconIds';
+
+
+// function PropertyMenuWidget() {
+//     const [color, setColor] = useSyncedState("theme", "#e06666")
+//     const [fruit, setFruit] = useSyncedState("fruit", "mango")
+//     const fruitOptions = [{option: "mango", label: "Mango"}, {option: "apple", label: "Apple"}]
+//     usePropertyMenu(
+//         [
+//             {
+//                 itemType: 'action',
+//                 tooltip: 'Action',
+//                 propertyName: 'action',
+//             },
+//             {
+//                 itemType: 'separator',
+//             },
+//             {
+//                 itemType: 'color-selector',
+//                 propertyName: 'colors',
+//                 tooltip: 'Color selector',
+//                 selectedOption: color,
+//                 options: [{option: "#e06666", tooltip: "Red"}, {option: "#ffe599", tooltip: "Yellow"} ],
+//             },
+//             {
+//                 itemType: 'dropdown',
+//                 propertyName: 'fruits',
+//                 tooltip: 'Fruit selector',
+//                 selectedOption: fruit,
+//                 options: fruitOptions,
+//             },
+//             {
+//                 itemType: 'link',
+//                 propertyName: 'fruitLink',
+//                 tooltip: 'Learn about fruit!',
+//                 icon: null,
+//                 href: 'https://en.wikipedia.org/wiki/Fruit',
+//             },
+//         ],
+//         ({propertyName, propertyValue}) => {
+//             if (propertyName === "colors") {
+//                 setColor(propertyValue)
+//             } else if (propertyName === "fruits") {
+//                 setFruit(propertyValue)
+//             } else if (propertyName === "action") {
+//                 console.log(propertyName)
+//             }
+//         },
+//     )
+//     return (
+//         <AutoLayout
+//             verticalAlignItems={'center'}
+//             padding={16}
+//         >
+//             <Text fontSize={32} width={200} horizontalAlignText={'center'} fill={color}>
+//                 {fruitOptions.find(f => f.option === fruit).label}
+//             </Text>
+//         </AutoLayout>
+//     )
+// }
+//
+// widget.register(PropertyMenuWidget)
 
 function Widget() {
     useEffect(() => {

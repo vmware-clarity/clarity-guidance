@@ -15,3 +15,73 @@
     </div>
   </div>
 </div>
+
+
+<div class="content-area" style="padding: 0 16px" >
+    <div>
+        <a class="btn btn-sm" href="https://guidance.clarity.design" target="_blank" id="showToastButton">CIP Home PAge</a>
+        <button class="btn btn-sm" id="check-all-violations">FInd All VIolations</button>
+        <button class="btn btn-sm" id="find-hex-errors">No Hex Values</button>
+        <button class="btn btn-sm" id="detachedNodes">detached nodes</button>
+        <button class="btn btn-sm" id="show-selection-guidance">SHow Guidance</button>
+        <!--            <button class="btn btn-sm" id="find-icons">find icons</button>-->
+        <button class="btn btn-danger btn-sm" id="closeButton">Close</button>
+    </div>
+
+    <div id="show-detached-violation" class="clr-row" style="display: none;">
+        <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-block">
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-link" id="fix-detached-nodes">Fix Detachments</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="show-hex-violation" class="clr-row" style="display: none;">
+        <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-block">
+                    <div class="card-title"></div>
+                    <div class="card-text"></div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-link" id="select-hardcoded-hex-color">FIX hard coded hex colors</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--        <div id="icons-for-change" class="clr-row" style="display: none;">-->
+    <!--            <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">-->
+    <!--                <div class="card">-->
+    <!--                    <div class="card-header">Icon selection</div>-->
+    <!--                    <div class="card-block">-->
+    <!--                        <div class="card-title">Icon IDs</div>-->
+    <!--                        <div class="card-text"></div>-->
+    <!--                    </div>-->
+    <!--                    <div class="card-footer">-->
+    <!--                        <button class="btn btn-sm btn-link" id="select-next-icon">Select next icon</button>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <div id="guidance" class="clr-row" style="display: none;">
+        <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+            <div class="card">
+                <div class="card-block">
+                    <div id="content-title" class="card-text"></div>
+                </div>
+                <div class="card-block">
+                    <div id="content" class="card-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
