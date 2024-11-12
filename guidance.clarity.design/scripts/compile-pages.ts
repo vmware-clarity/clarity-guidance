@@ -126,6 +126,7 @@ import { CipPageComponent } from '../app/components/cip-page/cip-page.component'
   templateUrl: './${filename}.component.html',
   standalone: true,
   imports: [CipPageComponent],
+  preserveWhitespaces: true,
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
@@ -167,6 +168,7 @@ import { CipIndexComponent } from '../app/components/cip-index/cip-index.compone
   templateUrl: './${filename}.component.html',
   standalone: true,
   imports: [CipIndexComponent],
+  preserveWhitespaces: true,
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
@@ -196,6 +198,7 @@ function styleContent(document: Document) {
   styleTables(document);
   styleInlineCode(document);
   styleText(document);
+  styleKeywords(document);
   openExternalLinksInNewTab(document);
 
   function styleTables(document: Document) {
@@ -233,6 +236,10 @@ function styleContent(document: Document) {
         { attributeName: 'cds-text', attributeValue: 'body bold' },
         { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
+      'h1 + p': [
+        { attributeName: 'cds-text', attributeValue: 'subsection' },
+        { attributeName: 'cds-layout', attributeValue: 'm-t:xl' },
+      ],
       p: [
         { attributeName: 'cds-text', attributeValue: 'body' },
         { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
@@ -241,18 +248,18 @@ function styleContent(document: Document) {
         { attributeName: 'cds-text', attributeValue: 'body' },
         { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
-      'li > ul, li > ol': [{ attributeName: 'cds-layout', attributeValue: 'm-y:md m-l:lg' }],
+      'li > ul, li > ol': [{ attributeName: 'cds-layout', attributeValue: '' }],
       ol: [
-        { attributeName: 'cds-text', attributeValue: 'body' },
-        { attributeName: 'cds-layout', attributeValue: 'm-t:md m-l:xs' },
+        { attributeName: 'cds-list', attributeValue: 'decimal' },
+        { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
       ul: [
-        { attributeName: 'cds-text', attributeValue: 'body' },
-        { attributeName: 'cds-layout', attributeValue: 'm-t:md m-l:xs' },
+        { attributeName: 'cds-list', attributeValue: 'circle' },
+        { attributeName: 'cds-layout', attributeValue: 'm-t:md' },
       ],
-      li: [{ attributeName: 'cds-layout', attributeValue: 'm-t:xs' }],
       img: [{ attributeName: 'cds-layout', attributeValue: 'm-t:xxl' }],
       strong: [{ attributeName: 'cds-text', attributeValue: 'medium' }],
+      'a[href]': [{ attributeName: 'cds-text', attributeValue: 'link' }],
     };
 
     for (const [rawSelector, attributes] of Object.entries(defaultAttributes)) {
@@ -265,6 +272,25 @@ function styleContent(document: Document) {
         for (const element of Array.from(document.querySelectorAll(selector))) {
           element.setAttribute(attributeName, attributeValue);
         }
+      }
+    }
+  }
+
+  function styleKeywords(document: Document) {
+    const keywordColors: Record<string, string> = {
+      must: '--cds-alias-status-danger',
+      'must not': '--cds-alias-status-danger',
+      should: '--cds-alias-status-warning-dark',
+      'should not': '--cds-alias-status-warning-dark',
+      may: '--cds-alias-status-success',
+    };
+
+    for (const element of Array.from(document.querySelectorAll('strong'))) {
+      const text = element.textContent?.trim().toLowerCase();
+
+      if (text && keywordColors[text]) {
+        element.setAttribute('cds-text', 'bold');
+        element.setAttribute('style', `color: var(${keywordColors[text]})`);
       }
     }
   }
