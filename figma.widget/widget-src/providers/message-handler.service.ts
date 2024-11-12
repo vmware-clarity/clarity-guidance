@@ -1,48 +1,154 @@
+
 export abstract class MessageHandlerService {
-  static async handleMessage(message: any) {
-    // One way of distinguishing between different types of messages sent from
-    // your HTML page is to use an object with a "type" property like this.
-    if (message.type === "create-rectangles") {
-      const nodes = [];
-      for (let i = 0; i < message.count; i++) {
-        const rect = figma.createRectangle();
-        rect.x = i * 150;
-        rect.fills = [{ type: "SOLID", color: { r: 1, g: 0.5, b: 0 } }];
-        figma.currentPage.appendChild(rect);
-        nodes.push(rect);
-      }
-      figma.currentPage.selection = nodes;
-      figma.viewport.scrollAndZoomIntoView(nodes);
-    }
-    if (message.type === "insert-layout") {
-        const keys: any[] = message.componentKeys;
-        const promises: any[] = [];
-        keys.forEach((key) => {
-          switch (key[0]) {
-            case "COMPONENT":
-              promises.push(
-                  figma.importComponentByKeyAsync(key[1])
-              )
-              break;
-            case "COMPONENT_SET":
-              promises.push(
-                  figma.importComponentSetByKeyAsync(key[1])
-              )
-              break;
-          }
+    private static findHexError () {
+        figma.notify('CIP - widget: Violations checking...');
+        const origSelection = figma.currentPage.selection;
+
+        figma.currentPage.selection = figma.currentPage.findAll(node => {
+            return node.type === 'INSTANCE';
         });
-        const result = await Promise.all(promises);
-        result.forEach((set: ComponentSetNode) => {
-            let comp = set.findOne(node => node.type === 'COMPONENT') as ComponentNode;
-            comp.createInstance();
-        })
-        console.log(result);
-      // figma..im(message.layout.id);
-      // figma.currentPage.appendChild(message.layout)
-      // figma.importComponentByKeyAsync(message.id)
+
+        const wrongColors = figma.getSelectionColors()?.paints.filter(value => {
+            if (!value?.boundVariables?.color?.id) {
+                return value;
+            }
+        }).map(color => {
+            return JSON.stringify(color.color);
+        });
+
+        console.log(wrongColors);
+
+        figma.currentPage.selection = origSelection;
+        figma.notify('CIP - widget: Violations Check completed.');
+
+        if(wrongColors?.length) {
+            figma.ui.postMessage({
+                type: "violations",
+                data: {
+                    key: "5001",
+                    recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
+                    rule: `${wrongColors.length} color violate NO hard coded HEX values. ${wrongColors}`
+                }
+            });
+        }
+    };
+
+    private static selectHardcodedHexColor() {
+        const hardcodedNodes = figma.currentPage.findAll(node => {
+            if (node.type === 'INSTANCE'
+                && (
+                    (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
+                    || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
+                )
+            ) {
+                node.resetOverrides();
+
+                return true;
+            }
+
+            return false;
+        });
+
+        console.log(hardcodedNodes);
+
+        if (hardcodedNodes.length > 0) {
+            hardcodedNodes.forEach(node => {
+                if ("resetOverrides" in node) {
+                    node.resetOverrides();
+                }
+            })
+
+            figma.currentPage.selection = hardcodedNodes;
+            figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
+
+            figma.ui.postMessage({
+                type: "change",
+                data: {
+                    hide: "5001"
+                }
+            });
+        }
     }
-    // "a173097c8838c7f54c044ab461cc9d0f792105a4"
-    // Make sure to close the plugin when you're done. Otherwise the plugin will
-    // keep running, which shows the cancel button at the bottom of the screen.
+
+
+    private static findAndSelectDetachedNodes() {
+        const detachedNodes = figma.currentPage.findAll(node => {
+            return !!node.detachedInfo;
+        });
+
+        console.log(detachedNodes);
+
+        if (detachedNodes.length > 0) {
+            console.log('parent', detachedNodes[0].parent);
+            figma.currentPage.selection = detachedNodes;
+            figma.viewport.scrollAndZoomIntoView(detachedNodes);
+
+            figma.ui.postMessage({
+                type: "violations",
+                data: {
+                    key: "5002",
+                    recommendation: "Recommendation: Reattach Clarity components.",
+                    rule: `${detachedNodes.length} detached Clarity components found and selected.`
+                }
+            });
+        } else {
+            figma.notify('CIP - widget: No detached nodes found.');
+        }
+    }
+
+    private static async fixDetachedNodes() {
+        const detachedNodes = figma.currentPage.findAll(node => {
+            return !!node.detachedInfo;
+        });
+
+        if (detachedNodes.length > 0) {
+            const newNodes: InstanceNode[] = [];
+
+            for (let i = 0; i < detachedNodes.length; i++) {
+                const node = detachedNodes[i];
+                const result = await figma.importComponentByKeyAsync(node.detachedInfo.componentKey);
+
+                const instance = result.createInstance();
+                newNodes.push(instance);
+
+                instance.x = node.x
+                instance.y = node.y
+                node.parent?.appendChild(instance);
+
+                node.remove();
+            }
+
+            figma.currentPage.selection = newNodes;
+            figma.viewport.scrollAndZoomIntoView(newNodes);
+
+            figma.ui.postMessage({
+                type: "change",
+                data: {
+                    hide: "5002"
+                }
+            });
+        }
+    }
+
+  static async handleMessage(message: any) {
+      console.log('handleMessage',message);
+
+      switch (message.type) {
+          case'find-hex-errors':
+              MessageHandlerService.findHexError();
+          break;
+          case'select-hardcoded-hex-color':
+              MessageHandlerService.selectHardcodedHexColor();
+          break;
+          case'find-select-detached-nodes':
+              MessageHandlerService.findAndSelectDetachedNodes();
+          break;
+          case'fix-detached-nodes':
+              await MessageHandlerService.fixDetachedNodes();
+          break;
+          case'close':
+          default:
+              figma.closePlugin();
+      }
   }
 }
