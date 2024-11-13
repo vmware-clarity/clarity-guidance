@@ -33,43 +33,37 @@ export abstract class MessageHandlerService {
         }
     };
 
-    private static selectHardcodedHexColor() {
+    private static selectHardcodedHexColor(fix: boolean) {
         const hardcodedNodes = figma.currentPage.findAll(node => {
-            if (node.type === 'INSTANCE'
+            return node.type === 'INSTANCE'
                 && (
                     (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
                     || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
-                )
-            ) {
-                node.resetOverrides();
-
-                return true;
-            }
-
-            return false;
+                );
         });
 
         console.log(hardcodedNodes);
 
         if (hardcodedNodes.length > 0) {
-            hardcodedNodes.forEach(node => {
-                if ("resetOverrides" in node) {
-                    node.resetOverrides();
-                }
-            })
-
             figma.currentPage.selection = hardcodedNodes;
             figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
 
-            figma.ui.postMessage({
-                type: "change",
-                data: {
-                    hide: "5001"
-                }
-            });
+            if (fix) {
+                hardcodedNodes.forEach(node => {
+                    if ("resetOverrides" in node) {
+                        node.resetOverrides();
+                    }
+                });
+
+                figma.ui.postMessage({
+                    type: "change",
+                    data: {
+                        hide: "5001"
+                    }
+                });
+            }
         }
     }
-
 
     private static findAndSelectDetachedNodes() {
         const detachedNodes = figma.currentPage.findAll(node => {
@@ -94,6 +88,15 @@ export abstract class MessageHandlerService {
         } else {
             figma.notify('CIP - widget: No detached nodes found.');
         }
+    }
+
+    private static selectDetachedNodes() {
+        const detachedNodes = figma.currentPage.findAll(node => {
+            return !!node.detachedInfo;
+        });
+
+        figma.currentPage.selection = detachedNodes;
+        figma.viewport.scrollAndZoomIntoView(detachedNodes);
     }
 
     private static async fixDetachedNodes() {
@@ -134,18 +137,24 @@ export abstract class MessageHandlerService {
       console.log('handleMessage',message);
 
       switch (message.type) {
-          case'find-hex-errors':
+          case 'find-hex-errors':
               MessageHandlerService.findHexError();
           break;
-          case'select-hardcoded-hex-color':
-              MessageHandlerService.selectHardcodedHexColor();
+          case 'select-hardcoded-hex-color':
+              MessageHandlerService.selectHardcodedHexColor(false);
           break;
-          case'find-select-detached-nodes':
+          case 'fix-hardcoded-hex-color':
+              MessageHandlerService.selectHardcodedHexColor(true);
+              break;
+          case 'find-select-detached-nodes':
               MessageHandlerService.findAndSelectDetachedNodes();
           break;
-          case'fix-detached-nodes':
-              await MessageHandlerService.fixDetachedNodes();
+          case 'select-detached-nodes':
+              MessageHandlerService.selectDetachedNodes();
           break;
+          case 'fix-detached-nodes':
+              await MessageHandlerService.fixDetachedNodes();
+              break;
           case'close':
           default:
               figma.closePlugin();

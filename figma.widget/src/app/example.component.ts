@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import {NgForOf, NgIf} from "@angular/common";
 
@@ -19,9 +19,6 @@ export class ExampleComponent {
   hexTitle = '';
   detachedTitle = '';
   guidanceLinks: any[] = [];
-
-  @ViewChild('guidanceContentTitle') private guidanceContentTitle: ElementRef<HTMLElement> | undefined;
-
 
   private guidanceMap: any = {
     "d998b0f409cc0f78e0e324f07c0a3b63f6c0b4a1": "1004-button-group-design-guidance",
@@ -76,9 +73,17 @@ export class ExampleComponent {
     parent.postMessage({pluginMessage: {type: "fix-detached-nodes"}}, "*");
   }
 
-  selectHardcodedHexColors() {
+  selectDetachedNodes() {
+    parent.postMessage({pluginMessage: {type: "select-detached-nodes"}}, "*");
+  }
+
+  fixHardcodedHexColors() {
     this.showHexViolation = false;
 
+    parent.postMessage({pluginMessage: {type: "fix-hardcoded-hex-color"}}, "*");
+  }
+
+  selectHardcodedHexColors() {
     parent.postMessage({pluginMessage: {type: "select-hardcoded-hex-color"}}, "*");
   }
 

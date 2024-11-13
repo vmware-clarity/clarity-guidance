@@ -22,7 +22,8 @@
                 <div class="card-text">Recommendation: Reattach Clarity components.</div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-sm btn-link" (click)="fixDetachedNodes()">Fix Detachments</button>
+                <button class="btn btn-sm" (click)="selectDetachedNodes()">Select layers</button>
+                <button class="btn btn-sm" (click)="fixDetachedNodes()">Fix Detachments</button>
             </div>
         </div>
     </div>
@@ -41,7 +42,8 @@
                 <div class="card-text">Recommendation: Use Clarity components color tokens. Alias preferably.</div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-sm btn-link" (click)="selectHardcodedHexColors()">FIX hard coded hex colors</button>
+                <button class="btn btn-sm" (click)="selectHardcodedHexColors()">Select layers</button>
+                <button class="btn btn-sm" (click)="fixHardcodedHexColors()">FIX colors</button>
             </div>
         </div>
     </div>
@@ -65,7 +67,7 @@
     <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
         <div class="card">
             <div *ngIf="hasLinks" class="card-block">
-                <div class="card-text">
+                <div class="card-text header-buttons">
                     <a class="btn btn-sm" *ngFor="let link of guidanceLinks" [href]="link.url" target="_blank">
                         {{link.name}}
                     </a>
