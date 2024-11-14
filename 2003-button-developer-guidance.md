@@ -1,6 +1,6 @@
 ---
 category: component developer guidance
-state: approved
+state: draft
 created: 2024-11-13
 updated: 2024-11-14
 ---
