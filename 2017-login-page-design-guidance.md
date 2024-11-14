@@ -12,7 +12,7 @@ The [login page](https://clarity.design/documentation/login) is a predefined for
 ## Guidance
 
 - The Login page component **must** be used for authentication flows to maintain consistency across applications, ensuring users have a seamless experience.
-- Password input **must** follow the [password design guidance](/1019) to ensure security and usability in the authentication process.
+- Password input **must** follow the [password developer guidance](/2019) to ensure security and usability in the authentication process.
 
 ### Validation
 
