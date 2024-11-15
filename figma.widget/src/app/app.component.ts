@@ -1,12 +1,19 @@
 import {Component, OnDestroy} from '@angular/core';
 
-import { ExampleComponent } from './example.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+    styles: [
+    `
+      .main-container .content-container div.content-area {
+        padding: 12px;
+      }
+    `,
+    ],
   standalone: true,
-  imports: [ExampleComponent],
+  imports: [LandingPageComponent],
 })
 export class AppComponent implements OnDestroy {
     private mutationChanges: MutationObserver = new MutationObserver((mutations: MutationRecord[]) => {

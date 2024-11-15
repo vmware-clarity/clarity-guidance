@@ -1,24 +1,37 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, ViewEncapsulation} from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import {NgForOf, NgIf} from "@angular/common";
+import {ClarityIcons, colorPickerIcon, objectsIcon} from "@cds/core/icon";
 
 @Component({
-  selector: 'app-example',
-  templateUrl: './example.component.html',
-  styleUrls: ['./example.component.scss'],
+  selector: 'app-landing-page',
+  templateUrl: './landing-page.component.html',
+  styleUrls: ['./landing-page.component.scss'],
   standalone: true,
   // Load all components for demo purposes.
   // Don't do this in a real application. Load just the components you need so that your bundle is smaller.
   imports: [ClarityModule, NgIf, NgForOf],
+  encapsulation: ViewEncapsulation.None
 })
-export class ExampleComponent {
+export class LandingPageComponent {
+  showAccordion = true;
   showDetachedViolation = false;
   showHexViolation = false;
   showGuidance = false;
   toggleGuidance = false;
   hexTitle = '';
   detachedTitle = '';
-  guidanceLinks: any[] = [];
+  guidanceLinks: any[] = [{
+      url: 'https://guidance.clarity.design/1001',
+      name: 'Guidance'
+    },{
+      url: 'https://clarity.design/documentation/alert',
+      name: 'Clarity Design'
+    },{
+      url: 'https://storybook.clarity.design/?path=/story/alert',
+      name: 'Storybook'
+    },
+  ];
 
   private guidanceMap: any = {
     "d998b0f409cc0f78e0e324f07c0a3b63f6c0b4a1": "1004-button-group-design-guidance",
@@ -27,6 +40,14 @@ export class ExampleComponent {
     "74ce5710800e76cc171f66159214168fc18f4110": "1001-alert-design-guidance",
     "7352dc183b8096c4b30208d504923ba81c506409": "1001-alert-design-guidance",
   };
+
+  constructor() {
+    ClarityIcons.addIcons(
+        objectsIcon,
+        colorPickerIcon
+    );
+  }
+
 
   close() {
     parent.postMessage({pluginMessage: {type: "close"}}, "*");

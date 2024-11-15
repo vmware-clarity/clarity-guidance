@@ -3,93 +3,35 @@
 import {MessageHandlerService} from "./providers/message-handler.service";
 
 const {widget} = figma;
-const {useEffect, Text} = widget
-
-const iconIdsKey ='iconIds';
-
-
-// function PropertyMenuWidget() {
-//     const [color, setColor] = useSyncedState("theme", "#e06666")
-//     const [fruit, setFruit] = useSyncedState("fruit", "mango")
-//     const fruitOptions = [{option: "mango", label: "Mango"}, {option: "apple", label: "Apple"}]
-//     usePropertyMenu(
-//         [
-//             {
-//                 itemType: 'action',
-//                 tooltip: 'Action',
-//                 propertyName: 'action',
-//             },
-//             {
-//                 itemType: 'separator',
-//             },
-//             {
-//                 itemType: 'color-selector',
-//                 propertyName: 'colors',
-//                 tooltip: 'Color selector',
-//                 selectedOption: color,
-//                 options: [{option: "#e06666", tooltip: "Red"}, {option: "#ffe599", tooltip: "Yellow"} ],
-//             },
-//             {
-//                 itemType: 'dropdown',
-//                 propertyName: 'fruits',
-//                 tooltip: 'Fruit selector',
-//                 selectedOption: fruit,
-//                 options: fruitOptions,
-//             },
-//             {
-//                 itemType: 'link',
-//                 propertyName: 'fruitLink',
-//                 tooltip: 'Learn about fruit!',
-//                 icon: null,
-//                 href: 'https://en.wikipedia.org/wiki/Fruit',
-//             },
-//         ],
-//         ({propertyName, propertyValue}) => {
-//             if (propertyName === "colors") {
-//                 setColor(propertyValue)
-//             } else if (propertyName === "fruits") {
-//                 setFruit(propertyValue)
-//             } else if (propertyName === "action") {
-//                 console.log(propertyName)
-//             }
-//         },
-//     )
-//     return (
-//         <AutoLayout
-//             verticalAlignItems={'center'}
-//             padding={16}
-//         >
-//             <Text fontSize={32} width={200} horizontalAlignText={'center'} fill={color}>
-//                 {fruitOptions.find(f => f.option === fruit).label}
-//             </Text>
-//         </AutoLayout>
-//     )
-// }
-//
-// widget.register(PropertyMenuWidget)
+const {useEffect, AutoLayout, Text} = widget
 
 function Widget() {
     useEffect(() => {
         figma.ui.onmessage = MessageHandlerService.handleMessage.bind(figma);
     })
-
     return (
-        <Text
-            fontSize={24}
-            width={240}
-            onClick={
-                // Use async callbacks or return a promise to keep the Iframe window
-                // opened. Resolving the promise, closing the Iframe window, or calling
-                // "figma.closePlugin()" will terminate the code.
-                () => {
-                    return new Promise(() => {
-                        figma.showUI(__html__, {width: 360, height: 720 , themeColors: true});
-                    });
-                }
-            }
+        <AutoLayout
+            width={300}
+            height={100}
+            padding={12}
         >
-            Open Clarity Design Guidance
-        </Text>
+            <Text
+                fontSize={24}
+                width={240}
+                onClick={
+                    // Use async callbacks or return a promise to keep the Iframe window
+                    // opened. Resolving the promise, closing the Iframe window, or calling
+                    // "figma.closePlugin()" will terminate the code.
+                    () => {
+                        return new Promise(() => {
+                            figma.showUI(__html__, {width: 360, height: 720 , themeColors: true});
+                        });
+                    }
+                }
+            >
+                Open Clarity Design Guidance
+            </Text>
+        </AutoLayout>
     )
 }
 
