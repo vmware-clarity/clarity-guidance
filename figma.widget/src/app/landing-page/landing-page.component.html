@@ -30,133 +30,130 @@
     </div>
     <button style="margin: 0;" class="btn btn-primary-outline btn-block" (click)="showAccordion = !showAccordion">scan page</button>
     <hr style="width: 100%;margin: 0;"/>
-    <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
-        <div class="card">
-            <div class="card-header">
-                Guidance
-                <clr-dropdown *ngIf="hasLinks">
-                    <button class="btn btn-primary btn-sm" clrDropdownTrigger>
-                        MOre information
-                        <cds-icon shape="angle" direction="down"></cds-icon>
-                    </button>
-                    <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
-                        <label class="dropdown-header" aria-hidden="true">Learn more on:</label>
+    <div class="card">
+        <div class="card-header">
+            Guidance
+            <clr-dropdown *ngIf="hasLinks">
+                <button class="btn btn-primary btn-sm" clrDropdownTrigger>
+                    MOre information
+                    <cds-icon shape="angle" direction="down"></cds-icon>
+                </button>
+                <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+                    <label class="dropdown-header" aria-hidden="true">Learn more on:</label>
 
-                        <a clrDropdownItem *ngFor="let link of guidanceLinks" [href]="link.url" target="_blank">
-                            {{link.name}}
-                        </a>
-                    </clr-dropdown-menu>
-                </clr-dropdown>
-            </div>
-            <div class="card-block">
-                <clr-accordion *ngIf="showAccordion" class="accordion-guidance">
-                    <clr-accordion-panel>
-                        <clr-accordion-title>App-Level Alerts</clr-accordion-title>
-                        <clr-accordion-content *clrIfExpanded>
-                            <p cds-text="body" >App-level alerts support only error, warning, and info statuses. This ensures that users can quickly understand the nature of the message and take appropriate action.</p>
-                            <ul class="list" cds-layout="m-t:md">
-                                <li>App-level alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used exclusively for global application context, maintaining clarity and preventing confusion with local alerts.</li>
-                                <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be placed at the top of all content to ensure they are immediately visible to users.</li>
-                                <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must not</strong> be used to confirm successful operations, as this reduces their effectiveness for critical information.</li>
-                                <li>Success alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> appear in-context or as notification messages, providing clear and immediate feedback on user actions.</li>
-                            </ul>
-                        </clr-accordion-content>
-                    </clr-accordion-panel>
-                    <clr-accordion-panel>
-                        <clr-accordion-title>Standard Alerts</clr-accordion-title>
-                        <clr-accordion-content *clrIfExpanded>
-                            <p cds-text="body" >Standard alerts support error, warning, info, and success statuses.</p>
-                            <ul class="list" cds-layout="m-t:md">
-                                <li>Lightweight alers <strong cds-text="bold" style="color: var(--cds-alias-status-success);">may</strong> be used in places where vertical space is scarce and information density is needed; otherwise, the default size <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be used.</li>
-                                <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> reflect the user's context within the application, enabling users to quickly understand the message's relevance and take appropriate action.</li>
-                            </ul>
-                        </clr-accordion-content>
-                    </clr-accordion-panel>
-                    <clr-accordion-panel>
-                        <clr-accordion-title>Lightweight Alerts</clr-accordion-title>
-                        <clr-accordion-content *clrIfExpanded>
-                            <ul class="list" >
-                                <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be used inside containers and other components to maintain a cohesive layout and ensure that important messages are contextually relevant and easily accessible to users.</li>
-                                <li>Success alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used to deliver a static, persistent success message. This provides immediate feedback on the completion of an action, helping users understand that their task was successful.</li>
-                                <li>Info alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> used to provide context-specific information to the user. This helps clarify actions or statuses without overwhelming the user with too much information, ensuring they remain focused on their tasks. However, it’s important to avoid overusing info alerts or replacing essential content with them, as this could lead to confusion or distraction.</li>
-                                <li>Warning alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> used for messages that require the user's attention or acknowledgment but might not cause errors. This ensures that users are appropriately notified of important information that could affect their actions without implying a critical failure.</li>
-                                <li>Error alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used for errors, malfunctions, and critical issues, such as license expiration. This helps users immediately recognize serious problems that require urgent attention, ensuring that they can take necessary actions to resolve these issues promptly.</li>
-                            </ul>
-                        </clr-accordion-content>
-                    </clr-accordion-panel>
-                    <clr-accordion-panel>
-                        <clr-accordion-title>Alert in Modals</clr-accordion-title>
-                        <clr-accordion-content *clrIfExpanded>
-                            <p cds-text="body" >Standard alerts support error, warning, info, and success statuses.</p>
-                            <ul class="list" cds-layout="m-t:md">
-                                <li>More than one alert <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must not</strong> be used within a modal. Having multiple alerts can overwhelm users and dilute the message's urgency, making it harder for them to focus on the most critical information.</li>
-                            </ul>
-                        </clr-accordion-content>
-                    </clr-accordion-panel>
-                    <clr-accordion-panel>
-                        <clr-accordion-title>Alert in Cards</clr-accordion-title>
-                        <clr-accordion-content *clrIfExpanded>
-                            <ul class="list" >
-                                <li>Concise language <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used within the alert. This helps ensure that users can quickly understand the message without unnecessary cognitive load.</li>
-                                <li>Compact alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used to avoid focusing attention solely on the alert. This approach helps maintain user focus on the primary content while still providing necessary information without overwhelming the interface.</li>
-                                <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be placed at the very top of the card to attract the user's attention. This positioning ensures that users see critical messages immediately, reducing the risk of overlooking important information.</li>
-                                <li>Multiple alerts within cards <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be avoided, as this distracts the user and dilutes the importance of the alert being displayed. Keeping the alert singular maintains focus on the critical message, ensuring users can easily understand the most relevant information without confusion.</li>
-                            </ul>
-                        </clr-accordion-content>
-                    </clr-accordion-panel>
-                    <clr-accordion-panel>
-                        <clr-accordion-title>Alert Group</clr-accordion-title>
-                        <clr-accordion-content *clrIfExpanded>
-                            <ul class="list" >
-                                <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be grouped by type (error, warning, info, and success) and display them in order of urgency. This approach helps users quickly identify the most critical issues that need their attention, facilitating more effective decision-making.</li>
-                            </ul>
-                        </clr-accordion-content>
-                    </clr-accordion-panel>
-                </clr-accordion>
-                <div *ngIf="!showAccordion" class="card-text">
-                    <article>
-                        <h3 id="app-level-alerts" cds-text="section" cds-layout="m-t:lg">App-Level Alerts</h3>
-                        <p cds-text="body" cds-layout="m-t:md">App-level alerts support only error, warning, and info statuses. This ensures that users can quickly understand the nature of the message and take appropriate action.</p>
-                        <ul cds-list="circle" cds-layout="m-t:md">
+                    <a clrDropdownItem *ngFor="let link of guidanceLinks" [href]="link.url" target="_blank">
+                        {{link.name}}
+                    </a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+        <div class="card-block">
+            <clr-accordion *ngIf="showAccordion" class="accordion-guidance">
+                <clr-accordion-panel>
+                    <clr-accordion-title>App-Level Alerts</clr-accordion-title>
+                    <clr-accordion-content *clrIfExpanded>
+                        <p cds-text="body" >App-level alerts support only error, warning, and info statuses. This ensures that users can quickly understand the nature of the message and take appropriate action.</p>
+                        <ul class="list" cds-layout="m-t:md">
                             <li>App-level alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used exclusively for global application context, maintaining clarity and preventing confusion with local alerts.</li>
                             <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be placed at the top of all content to ensure they are immediately visible to users.</li>
                             <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must not</strong> be used to confirm successful operations, as this reduces their effectiveness for critical information.</li>
                             <li>Success alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> appear in-context or as notification messages, providing clear and immediate feedback on user actions.</li>
                         </ul>
-                        <h3 id="standard-alerts" cds-text="section" cds-layout="m-t:lg">Standard Alerts</h3>
-                        <p cds-text="body" cds-layout="m-t:md">Standard alerts support error, warning, info, and success statuses.</p>
-                        <ul cds-list="circle" cds-layout="m-t:md">
+                    </clr-accordion-content>
+                </clr-accordion-panel>
+                <clr-accordion-panel>
+                    <clr-accordion-title>Standard Alerts</clr-accordion-title>
+                    <clr-accordion-content *clrIfExpanded>
+                        <p cds-text="body" >Standard alerts support error, warning, info, and success statuses.</p>
+                        <ul class="list" cds-layout="m-t:md">
                             <li>Lightweight alers <strong cds-text="bold" style="color: var(--cds-alias-status-success);">may</strong> be used in places where vertical space is scarce and information density is needed; otherwise, the default size <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be used.</li>
                             <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> reflect the user's context within the application, enabling users to quickly understand the message's relevance and take appropriate action.</li>
                         </ul>
-                        <h3 id="lightweight-alerts" cds-text="section" cds-layout="m-t:lg">Lightweight Alerts</h3>
-                        <ul cds-list="circle" cds-layout="m-t:md">
+                    </clr-accordion-content>
+                </clr-accordion-panel>
+                <clr-accordion-panel>
+                    <clr-accordion-title>Lightweight Alerts</clr-accordion-title>
+                    <clr-accordion-content *clrIfExpanded>
+                        <ul class="list" >
                             <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be used inside containers and other components to maintain a cohesive layout and ensure that important messages are contextually relevant and easily accessible to users.</li>
                             <li>Success alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used to deliver a static, persistent success message. This provides immediate feedback on the completion of an action, helping users understand that their task was successful.</li>
                             <li>Info alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> used to provide context-specific information to the user. This helps clarify actions or statuses without overwhelming the user with too much information, ensuring they remain focused on their tasks. However, it’s important to avoid overusing info alerts or replacing essential content with them, as this could lead to confusion or distraction.</li>
                             <li>Warning alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> used for messages that require the user's attention or acknowledgment but might not cause errors. This ensures that users are appropriately notified of important information that could affect their actions without implying a critical failure.</li>
                             <li>Error alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used for errors, malfunctions, and critical issues, such as license expiration. This helps users immediately recognize serious problems that require urgent attention, ensuring that they can take necessary actions to resolve these issues promptly.</li>
                         </ul>
-                        <h3 id="alert-in-modals" cds-text="section" cds-layout="m-t:lg">Alert in Modals</h3>
-                        <ul cds-list="circle" cds-layout="m-t:md">
+                    </clr-accordion-content>
+                </clr-accordion-panel>
+                <clr-accordion-panel>
+                    <clr-accordion-title>Alert in Modals</clr-accordion-title>
+                    <clr-accordion-content *clrIfExpanded>
+                        <p cds-text="body" >Standard alerts support error, warning, info, and success statuses.</p>
+                        <ul class="list" cds-layout="m-t:md">
                             <li>More than one alert <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must not</strong> be used within a modal. Having multiple alerts can overwhelm users and dilute the message's urgency, making it harder for them to focus on the most critical information.</li>
                         </ul>
-                        <h3 id="alert-in-cards" cds-text="section" cds-layout="m-t:lg">Alert in Cards</h3>
-                        <ul cds-list="circle" cds-layout="m-t:md">
+                    </clr-accordion-content>
+                </clr-accordion-panel>
+                <clr-accordion-panel>
+                    <clr-accordion-title>Alert in Cards</clr-accordion-title>
+                    <clr-accordion-content *clrIfExpanded>
+                        <ul class="list" >
                             <li>Concise language <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used within the alert. This helps ensure that users can quickly understand the message without unnecessary cognitive load.</li>
                             <li>Compact alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used to avoid focusing attention solely on the alert. This approach helps maintain user focus on the primary content while still providing necessary information without overwhelming the interface.</li>
                             <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be placed at the very top of the card to attract the user's attention. This positioning ensures that users see critical messages immediately, reducing the risk of overlooking important information.</li>
                             <li>Multiple alerts within cards <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be avoided, as this distracts the user and dilutes the importance of the alert being displayed. Keeping the alert singular maintains focus on the critical message, ensuring users can easily understand the most relevant information without confusion.</li>
                         </ul>
-                        <h3 id="alert-group" cds-text="section" cds-layout="m-t:lg">Alert Group</h3>
-                        <ul cds-list="circle" cds-layout="m-t:md">
+                    </clr-accordion-content>
+                </clr-accordion-panel>
+                <clr-accordion-panel>
+                    <clr-accordion-title>Alert Group</clr-accordion-title>
+                    <clr-accordion-content *clrIfExpanded>
+                        <ul class="list" >
                             <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be grouped by type (error, warning, info, and success) and display them in order of urgency. This approach helps users quickly identify the most critical issues that need their attention, facilitating more effective decision-making.</li>
                         </ul>
-                    </article>
-                </div>
-
+                    </clr-accordion-content>
+                </clr-accordion-panel>
+            </clr-accordion>
+            <div *ngIf="!showAccordion" class="card-text">
+                <article>
+                    <h3 id="app-level-alerts" cds-text="section" cds-layout="m-t:lg">App-Level Alerts</h3>
+                    <p cds-text="body" cds-layout="m-t:md">App-level alerts support only error, warning, and info statuses. This ensures that users can quickly understand the nature of the message and take appropriate action.</p>
+                    <ul cds-list="circle" cds-layout="m-t:md">
+                        <li>App-level alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used exclusively for global application context, maintaining clarity and preventing confusion with local alerts.</li>
+                        <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be placed at the top of all content to ensure they are immediately visible to users.</li>
+                        <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must not</strong> be used to confirm successful operations, as this reduces their effectiveness for critical information.</li>
+                        <li>Success alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> appear in-context or as notification messages, providing clear and immediate feedback on user actions.</li>
+                    </ul>
+                    <h3 id="standard-alerts" cds-text="section" cds-layout="m-t:lg">Standard Alerts</h3>
+                    <p cds-text="body" cds-layout="m-t:md">Standard alerts support error, warning, info, and success statuses.</p>
+                    <ul cds-list="circle" cds-layout="m-t:md">
+                        <li>Lightweight alers <strong cds-text="bold" style="color: var(--cds-alias-status-success);">may</strong> be used in places where vertical space is scarce and information density is needed; otherwise, the default size <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be used.</li>
+                        <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> reflect the user's context within the application, enabling users to quickly understand the message's relevance and take appropriate action.</li>
+                    </ul>
+                    <h3 id="lightweight-alerts" cds-text="section" cds-layout="m-t:lg">Lightweight Alerts</h3>
+                    <ul cds-list="circle" cds-layout="m-t:md">
+                        <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be used inside containers and other components to maintain a cohesive layout and ensure that important messages are contextually relevant and easily accessible to users.</li>
+                        <li>Success alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used to deliver a static, persistent success message. This provides immediate feedback on the completion of an action, helping users understand that their task was successful.</li>
+                        <li>Info alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> used to provide context-specific information to the user. This helps clarify actions or statuses without overwhelming the user with too much information, ensuring they remain focused on their tasks. However, it’s important to avoid overusing info alerts or replacing essential content with them, as this could lead to confusion or distraction.</li>
+                        <li>Warning alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> used for messages that require the user's attention or acknowledgment but might not cause errors. This ensures that users are appropriately notified of important information that could affect their actions without implying a critical failure.</li>
+                        <li>Error alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used for errors, malfunctions, and critical issues, such as license expiration. This helps users immediately recognize serious problems that require urgent attention, ensuring that they can take necessary actions to resolve these issues promptly.</li>
+                    </ul>
+                    <h3 id="alert-in-modals" cds-text="section" cds-layout="m-t:lg">Alert in Modals</h3>
+                    <ul cds-list="circle" cds-layout="m-t:md">
+                        <li>More than one alert <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must not</strong> be used within a modal. Having multiple alerts can overwhelm users and dilute the message's urgency, making it harder for them to focus on the most critical information.</li>
+                    </ul>
+                    <h3 id="alert-in-cards" cds-text="section" cds-layout="m-t:lg">Alert in Cards</h3>
+                    <ul cds-list="circle" cds-layout="m-t:md">
+                        <li>Concise language <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used within the alert. This helps ensure that users can quickly understand the message without unnecessary cognitive load.</li>
+                        <li>Compact alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be used to avoid focusing attention solely on the alert. This approach helps maintain user focus on the primary content while still providing necessary information without overwhelming the interface.</li>
+                        <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be placed at the very top of the card to attract the user's attention. This positioning ensures that users see critical messages immediately, reducing the risk of overlooking important information.</li>
+                        <li>Multiple alerts within cards <strong cds-text="bold" style="color: var(--cds-alias-status-warning-dark);">should</strong> be avoided, as this distracts the user and dilutes the importance of the alert being displayed. Keeping the alert singular maintains focus on the critical message, ensuring users can easily understand the most relevant information without confusion.</li>
+                    </ul>
+                    <h3 id="alert-group" cds-text="section" cds-layout="m-t:lg">Alert Group</h3>
+                    <ul cds-list="circle" cds-layout="m-t:md">
+                        <li>Alerts <strong cds-text="bold" style="color: var(--cds-alias-status-danger);">must</strong> be grouped by type (error, warning, info, and success) and display them in order of urgency. This approach helps users quickly identify the most critical issues that need their attention, facilitating more effective decision-making.</li>
+                    </ul>
+                </article>
             </div>
+
         </div>
     </div>
-
 </div>
