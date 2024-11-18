@@ -47,7 +47,7 @@ async function main() {
   const pages: Page[] = [];
 
   for (const pageFilePath of glob.sync('../*.md')) {
-    const { page, componentClass, componentTemplate } = await compilePage(pageFilePath);
+    const { page, componentClass, componentTemplate, figmaJson } = await compilePage(pageFilePath);
 
     if (pages.find(({ number }) => number === page.number)) {
       throw new Error(`Duplicate page number: ${page.number}`);
@@ -57,6 +57,10 @@ async function main() {
 
     writeText(`${page.filename}.component.ts`, componentClass);
     writeText(`${page.filename}.component.html`, componentTemplate);
+
+    if (page.number) {
+      writeJson(path.join('figma-plugin-json', `${page.number?.toString().padStart(4, '0')}.json`), figmaJson);
+    }
   }
 
   pages.sort((a, b) => (a.number || 0) - (b.number || 0));
@@ -100,6 +104,7 @@ async function compilePage(pageFilePath: string) {
   styleContent(document);
 
   const { componentClass, componentTemplate } = number ? generateCipPageComponent() : generateReadmePageComponent();
+  const figmaJson = generateFigmaJson();
 
   const page: Page = {
     filename,
@@ -113,6 +118,7 @@ async function compilePage(pageFilePath: string) {
     page,
     componentClass,
     componentTemplate,
+    figmaJson,
   };
 
   function generateCipPageComponent() {
@@ -187,6 +193,13 @@ export class PageComponent implements OnInit {
 `;
 
     return { componentClass, componentTemplate };
+  }
+
+  function generateFigmaJson() {
+    return {
+      // todo: update this with what is actually needed, whatever structure is needed for the Figma plugin
+      html: document.body.outerHTML,
+    };
   }
 
   function escapeHtmlForComponentTemplate(html: string) {
