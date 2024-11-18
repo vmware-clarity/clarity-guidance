@@ -2,7 +2,7 @@
 category: component design guidance
 state: approved
 created: 2024-10-30
-updated: 2024-10-30
+updated: 2024-11-18
 ---
 
 # Button Design Guidance
@@ -70,3 +70,4 @@ Buttons have built-in loading and disabled states. There are three sub-states wi
 ## Changelog
 
 - **2024-10-30**: Initial guidance
+- **2024-11-18**: Guidelines for disabled buttons
