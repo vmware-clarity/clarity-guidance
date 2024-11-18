@@ -1,8 +1,8 @@
 ---
 category: component developer guidance
 state: draft
-created: 2024-10-11
-updated: 2024-10-22
+created: 2024-11-15
+updated: 2024-11-18
 ---
 
 # Label Developer Guidance
@@ -29,4 +29,4 @@ A [label](https://clarity.design/documentation/label) component provides a conci
 
 ## Changelog
 
-- **2024-10-30**: Initial guidance
+- **2024-11-15**: Initial guidance
