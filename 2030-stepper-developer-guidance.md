@@ -1,8 +1,8 @@
 ---
 category: component developer guidance
 state: approved
-created: 2024-11-11
-updated: 2024-11-11
+created: 2024-11-18
+updated: 2024-11-18
 ---
 
 # Stepper Design Guidance
