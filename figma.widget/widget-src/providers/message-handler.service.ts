@@ -1,33 +1,71 @@
-
 export abstract class MessageHandlerService {
-    private static findHexError () {
-        figma.notify('CIP - widget: Violations checking...');
-        const origSelection = figma.currentPage.selection;
+    private static async isCdsColorVariable (id: string) {
+        const result = figma.variables.getVariableById(id);
 
-        figma.currentPage.selection = figma.currentPage.findAll(node => {
+        return !!(result && result.name.indexOf('--cds-') === -1);
+    };
+
+    private static findHexError () {
+        const nodes = figma.currentPage.findAll((node) => {
             return node.type === 'INSTANCE';
         });
 
-        const wrongColors = figma.getSelectionColors()?.paints.filter(value => {
-            if (!value?.boundVariables?.color?.id) {
-                return value;
+        const found = []
+        for (const node of nodes) {
+            let result = false;
+            if (node.fills
+                && node.fills[0]
+                && node.fills[0].boundVariables
+                && node.fills[0].boundVariables.color) {
+                result = MessageHandlerService.isCdsColorVariable(node.fills[0].boundVariables.color.id);
+            } else {
+                found.push(node);
+                continue;
             }
-        }).map(color => {
-            return JSON.stringify(color.color);
-        });
 
-        console.log(wrongColors);
+            if (result) {
+                found.push(node);
+                continue;
+            }
 
-        figma.currentPage.selection = origSelection;
+            if (node.strokes
+                && node.strokes[0]
+                && node.strokes[0].boundVariables
+                && node.strokes[0].boundVariables.borderColor) {
+                result = MessageHandlerService.isCdsColorVariable(node.strokes[0].boundVariables.borderColor.id);
+            } else {
+                console.log(node);
+                found.push(node);
+                continue;
+            }
+
+            if (result) {
+                found.push(node);
+            }
+        }
+
+        console.log(found);
+
+        // const wrongColors = figma.getSelectionColors()?.paints.filter(value => {
+        //     if (!value?.boundVariables?.color?.id) {
+        //         return value;
+        //     }
+        // }).map(color => {
+        //     return JSON.stringify(color.color);
+        // });
+        //
+        // console.log(wrongColors);
+
+        // figma.currentPage.selection = origSelection;
         figma.notify('CIP - widget: Violations Check completed.');
 
-        if(wrongColors?.length) {
+        if(nodes.length > 0) {
             figma.ui.postMessage({
                 type: "violations",
                 data: {
                     key: "5001",
                     recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
-                    rule: `${wrongColors.length} color violate NO hard coded HEX values. ${wrongColors}`
+                    rule: `color violate NO hard coded HEX values.`
                 }
             });
         }

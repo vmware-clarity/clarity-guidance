@@ -1,14 +1,24 @@
-<div class="page-container">
-    <div class="clarity-logo"></div>
-    <div class="title" cds-text="section" >
-        Add Clarity to your designs!
+<div class="container-wrapper">
+    <div *ngIf="!search" class="page-container">
+        <div class="clarity-logo"></div>
+        <div class="title" cds-text="section" >
+            Add Clarity to your designs!
+        </div>
+        <div class="description" cds-text="body">
+            Scan your file for missing tokens, detached symbols and get additional guidance.
+        </div>
+        <button class="btn btn-primary scan-button" (click)="checkViolations()">scan page</button>
+        <div class="separator"><span>OR</span></div>
+        <div class="description">Click on a Clarity component for guidance.</div>
     </div>
-    <div class="description" cds-text="body">
-        Scan your file for missing tokens, detached symbols and get additional guidance.
+    <div *ngIf="search" class="search-container">
+        <clr-spinner></clr-spinner>
+        <div  class="title" cds-text="section">Scan in progress</div>
+        <div class="description" cds-text="body">
+            Searching for missing tokens and detached symbols...
+        </div>
     </div>
-    <button class="btn btn-primary scan-button" (click)="checkViolations()">scan page</button>
-    <div class="separator"><span>OR</span></div>
-    <div class="description">Click on a Clarity component for guidance.</div>
+    <results-component></results-component>
     <div class="footer">
         <a href="https://clarity.design" target="_blank">clarity.design</a>
     </div>

@@ -1,0 +1,27 @@
+<div class="clr-row">
+    <div *ngFor="let violation of violations" class="clr-col-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="card-title">
+                    <cds-icon shape="color-picker"></cds-icon>
+                    {{ violation.layerName }}
+                </div>
+                <div class="card-text">
+                    HEX value instead of token.
+                    <a [href]="violation.guidanceUrl + violation.type">Learn more
+                        <cds-icon shape="pop-out"></cds-icon>
+                    </a>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm" (click)="selectLayer(violation.layerId)">Select layer</button>
+                <button class="btn btn-sm" *ngIf="violation.type === '5001'"
+                        (click)="fixDetachedNode(violation.layerId)">reattach instance
+                </button>
+                <button class="btn btn-sm" *ngIf="violation.type === '5002'"
+                        (click)="fixHardcodedHexColors(violation.layerId)">revert to original
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

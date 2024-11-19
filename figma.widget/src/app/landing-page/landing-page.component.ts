@@ -2,6 +2,7 @@ import {Component, HostListener, ViewEncapsulation} from '@angular/core';
 import { ClarityModule } from '@clr/angular';
 import {NgForOf, NgIf} from "@angular/common";
 import {ClarityIcons, colorPickerIcon, objectsIcon} from "@cds/core/icon";
+import {ResultsComponent} from "../results/results.component";
 
 @Component({
   selector: 'app-landing-page',
@@ -10,10 +11,11 @@ import {ClarityIcons, colorPickerIcon, objectsIcon} from "@cds/core/icon";
   standalone: true,
   // Load all components for demo purposes.
   // Don't do this in a real application. Load just the components you need so that your bundle is smaller.
-  imports: [ClarityModule, NgIf, NgForOf],
+  imports: [ClarityModule, NgIf, NgForOf, ResultsComponent],
   encapsulation: ViewEncapsulation.None
 })
 export class LandingPageComponent {
+  search = false;
   showAccordion = true;
   showDetachedViolation = false;
   showHexViolation = false;
@@ -54,15 +56,8 @@ export class LandingPageComponent {
   }
 
   checkViolations(){
-    this.findHexErrors();
-    this.detachedNodesCheck();
-  }
-
-  findHexErrors(){
+    this.search = true;
     parent.postMessage({pluginMessage: {type: "find-hex-errors"}}, "*");
-  }
-
-  detachedNodesCheck(){
     parent.postMessage({pluginMessage: {type: "find-select-detached-nodes"}}, "*");
   }
 
@@ -76,10 +71,12 @@ export class LandingPageComponent {
 
     switch (message.data.pluginMessage.type) {
       case'selectionChange':
+        this.search = false;
         this.selectionChange(message.data.pluginMessage.data);
         break;
       case'violations':
         this.violations(message.data.pluginMessage.data);
+        this.search = false;
         break;
       case 'change':
         this.change(message.data.pluginMessage.data);
@@ -113,7 +110,7 @@ export class LandingPageComponent {
   }
 
   selectionChange(data: any) {
-    console.log(data)
+    console.log(data);
     if (data.length === 0) {
       this.showGuidance = false;
     }
