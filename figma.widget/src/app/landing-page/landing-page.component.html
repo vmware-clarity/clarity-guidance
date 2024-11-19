@@ -18,7 +18,10 @@
             Searching for missing tokens and detached symbols...
         </div>
     </div>
-    <results-component></results-component>
+    <results-component
+        [hex-violations]="hexViolations"
+        [detached-nodes]="detachedViolations"
+    ></results-component>
     <div class="footer">
         <a href="https://clarity.design" target="_blank">clarity.design</a>
     </div>

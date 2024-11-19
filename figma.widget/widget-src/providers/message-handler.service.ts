@@ -1,3 +1,5 @@
+import {Violation} from "../../src/app/models/models";
+
 export abstract class MessageHandlerService {
     private static async isCdsColorVariable (id: string) {
         const result = figma.variables.getVariableById(id);
@@ -5,67 +7,33 @@ export abstract class MessageHandlerService {
         return !!(result && result.name.indexOf('--cds-') === -1);
     };
 
-    private static findHexError () {
-        const nodes = figma.currentPage.findAll((node) => {
-            return node.type === 'INSTANCE';
+    private static findHexErrors() {
+        const hardcodedNodes = figma.currentPage.findAll(node => {
+            return node.type === 'INSTANCE'
+                && (
+                    (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
+                    || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
+                );
         });
 
-        const found = []
-        for (const node of nodes) {
-            let result = false;
-            if (node.fills
-                && node.fills[0]
-                && node.fills[0].boundVariables
-                && node.fills[0].boundVariables.color) {
-                result = MessageHandlerService.isCdsColorVariable(node.fills[0].boundVariables.color.id);
-            } else {
-                found.push(node);
-                continue;
-            }
-
-            if (result) {
-                found.push(node);
-                continue;
-            }
-
-            if (node.strokes
-                && node.strokes[0]
-                && node.strokes[0].boundVariables
-                && node.strokes[0].boundVariables.borderColor) {
-                result = MessageHandlerService.isCdsColorVariable(node.strokes[0].boundVariables.borderColor.id);
-            } else {
-                console.log(node);
-                found.push(node);
-                continue;
-            }
-
-            if (result) {
-                found.push(node);
-            }
+        const found: Violation[] = []
+        for (const node of hardcodedNodes) {
+           found.push({
+               layerId: node.id,
+               type: "5001",
+               guidanceUrl: "https://guidance.clarity.design/",
+               layerName: node.name,
+           })
         }
 
         console.log(found);
 
-        // const wrongColors = figma.getSelectionColors()?.paints.filter(value => {
-        //     if (!value?.boundVariables?.color?.id) {
-        //         return value;
-        //     }
-        // }).map(color => {
-        //     return JSON.stringify(color.color);
-        // });
-        //
-        // console.log(wrongColors);
-
-        // figma.currentPage.selection = origSelection;
-        figma.notify('CIP - widget: Violations Check completed.');
-
-        if(nodes.length > 0) {
+        if(found.length > 0) {
             figma.ui.postMessage({
                 type: "violations",
                 data: {
                     key: "5001",
-                    recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
-                    rule: `color violate NO hard coded HEX values.`
+                    violations: found
                 }
             });
         }
@@ -110,21 +78,24 @@ export abstract class MessageHandlerService {
 
         console.log(detachedNodes);
 
-        if (detachedNodes.length > 0) {
-            console.log('parent', detachedNodes[0].parent);
-            figma.currentPage.selection = detachedNodes;
-            figma.viewport.scrollAndZoomIntoView(detachedNodes);
+        const found: Violation[] = []
+        for (const node of detachedNodes) {
+            found.push({
+                layerId: node.id,
+                type: "5002",
+                guidanceUrl: "https://guidance.clarity.design/",
+                layerName: node.name,
+            })
+        }
 
+        if (found.length > 0) {
             figma.ui.postMessage({
                 type: "violations",
                 data: {
                     key: "5002",
-                    recommendation: "Recommendation: Reattach Clarity components.",
-                    rule: `${detachedNodes.length} detached Clarity components found and selected.`
+                    violations: found
                 }
             });
-        } else {
-            figma.notify('CIP - widget: No detached nodes found.');
         }
     }
 
@@ -171,13 +142,25 @@ export abstract class MessageHandlerService {
         }
     }
 
+    private static async selectNode(nodeId: string) {
+        const node = figma.currentPage.findAll(node => {
+            return node.id === nodeId;
+        });
+
+        figma.currentPage.selection = node;
+        figma.viewport.scrollAndZoomIntoView(node);
+    }
+
   static async handleMessage(message: any) {
       console.log('handleMessage',message);
 
       switch (message.type) {
           case 'find-hex-errors':
-              MessageHandlerService.findHexError();
+              MessageHandlerService.findHexErrors();
           break;
+          case 'select-node':
+              MessageHandlerService.selectNode(message.nodeId);
+              break;
           case 'select-hardcoded-hex-color':
               MessageHandlerService.selectHardcodedHexColor(false);
           break;

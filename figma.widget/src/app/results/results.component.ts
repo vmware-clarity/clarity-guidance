@@ -1,6 +1,6 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
 import { ClarityModule } from '@clr/angular';
-import {NgForOf, NgIf} from "@angular/common";
+import {NgIf} from "@angular/common";
 import {Violation } from "../models/models";
 import {ViolationCardComponent} from "./violation-card/violation-card.component";
 
@@ -18,7 +18,7 @@ export class ResultsComponent {
   _hexErrors: Violation[] = [];
   _detachedNodes: Violation[] = [];
 
-  @Input('hex-errors')
+  @Input('hex-violations')
   get hexErrors(): Violation[] {
     return this._hexErrors;
   }

@@ -3,6 +3,7 @@ import { ClarityModule } from '@clr/angular';
 import {NgForOf, NgIf} from "@angular/common";
 import {ClarityIcons, colorPickerIcon, objectsIcon} from "@cds/core/icon";
 import {ResultsComponent} from "../results/results.component";
+import {Violation} from "../models/models";
 
 @Component({
   selector: 'app-landing-page',
@@ -23,6 +24,8 @@ export class LandingPageComponent {
   toggleGuidance = false;
   hexTitle = '';
   detachedTitle = '';
+  hexViolations: Violation[] = [];
+  detachedViolations: Violation[] = [];
   guidanceLinks: any[] = [{
       url: 'https://guidance.clarity.design/1001',
       name: 'Guidance'
@@ -151,11 +154,15 @@ export class LandingPageComponent {
     if (data.key === "5002") {
       this.detachedTitle = data.rule;
       this.showDetachedViolation = true;
+
+      this.detachedViolations = data.violations
     }
 
     if (data.key === "5001") {
       this.hexTitle = data.rule;
       this.showHexViolation = true;
+
+      this.hexViolations = data.violations
     }
   }
 }

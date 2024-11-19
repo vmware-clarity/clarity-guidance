@@ -24,14 +24,29 @@ export class ViolationCardComponent {
     }
 
     selectLayer(nodeId: string) {
-        parent.postMessage({pluginMessage: {type: "select-node"}}, "*");
+        parent.postMessage({
+            pluginMessage: {
+                type: "select-node",
+                nodeId: nodeId
+            }
+        }, "*");
     }
 
     fixDetachedNode(nodeId: string) {
-        parent.postMessage({pluginMessage: {type: "fix-detached-node"}}, "*");
+        parent.postMessage({
+            pluginMessage: {
+                type: "fix-detached-node",
+                nodeId: nodeId
+            }
+        }, "*");
     }
 
     fixHardcodedHexColors(nodeId: string) {
-        parent.postMessage({pluginMessage: {type: "fix-hardcoded-hex-color"}}, "*");
+        parent.postMessage({
+            pluginMessage: {
+                type: "fix-hardcoded-hex-color",
+                nodeId: nodeId
+            }
+        }, "*");
     }
 }
