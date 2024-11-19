@@ -63,7 +63,7 @@ Buttons have built-in loading and disabled states. There are three sub-states wi
 
 ### Disabled Buttons
 
-- Disabled buttons **should** not have tooltips, as they are inactive and excluded from tab indexes, making tooltips inaccessible to both mouse and keyboard users.
+- Disabled buttons **must** not trigger a tooltip because they are inactive and excluded from tab indexes making tooltips inaccessible to both mouse and keyboard users. A separate button (possibly with an info icon) *may* be placed next to the disabled button to trigger a tooltip.
 - Applications **should** provide clear visual indicators of why a button is disabled, either through contextual information on the page or by using alternative design patterns that maintain interactivity.
 - Designers **should** consider alternative ways to communicate why an action is unavailable, such as inline error messages or helper text near the relevant form fields or interactive elements.
 
