@@ -34,7 +34,7 @@ export class ResultsComponent {
     this._detachedNodes = errors;
   }
 
-  getAllViolations(): Violation[] {
+  get allViolations(): Violation[] {
     return [...this._hexErrors, ...this._detachedNodes];
   }
 }

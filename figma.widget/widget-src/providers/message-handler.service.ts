@@ -7,6 +7,28 @@ export abstract class MessageHandlerService {
         return !!(result && result.name.indexOf('--cds-') === -1);
     };
 
+    private static findErrors() {
+        const result = {};
+        const foundHexErrors = MessageHandlerService.findHexErrors();
+
+        if(foundHexErrors.length > 0) {
+            result[5001] = foundHexErrors;
+        }
+
+        const foundDetachedNodes = MessageHandlerService.findAndSelectDetachedNodes();
+
+        if(foundDetachedNodes.length > 0) {
+            result[5002] = foundDetachedNodes;
+        }
+
+        figma.ui.postMessage({
+            type: "violations",
+            data: {
+                violations: result
+            }
+        });
+    }
+
     private static findHexErrors() {
         const hardcodedNodes = figma.currentPage.findAll(node => {
             return node.type === 'INSTANCE'
@@ -27,16 +49,7 @@ export abstract class MessageHandlerService {
         }
 
         console.log(found);
-
-        if(found.length > 0) {
-            figma.ui.postMessage({
-                type: "violations",
-                data: {
-                    key: "5001",
-                    violations: found
-                }
-            });
-        }
+        return found;
     };
 
     private static selectHardcodedHexColor(fix: boolean) {
@@ -88,15 +101,7 @@ export abstract class MessageHandlerService {
             })
         }
 
-        if (found.length > 0) {
-            figma.ui.postMessage({
-                type: "violations",
-                data: {
-                    key: "5002",
-                    violations: found
-                }
-            });
-        }
+        return found;
     }
 
     private static selectDetachedNodes() {
@@ -155,8 +160,8 @@ export abstract class MessageHandlerService {
       console.log('handleMessage',message);
 
       switch (message.type) {
-          case 'find-hex-errors':
-              MessageHandlerService.findHexErrors();
+          case 'find-errors':
+              MessageHandlerService.findErrors();
           break;
           case 'select-node':
               MessageHandlerService.selectNode(message.nodeId);
@@ -167,9 +172,6 @@ export abstract class MessageHandlerService {
           case 'fix-hardcoded-hex-color':
               MessageHandlerService.selectHardcodedHexColor(true);
               break;
-          case 'find-select-detached-nodes':
-              MessageHandlerService.findAndSelectDetachedNodes();
-          break;
           case 'select-detached-nodes':
               MessageHandlerService.selectDetachedNodes();
           break;

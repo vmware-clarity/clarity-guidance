@@ -1,27 +1,20 @@
-<div class="results-wrapper">
-    <div cds-layout="section">
-        <button class="btn btn-icon btn-link-neutral"><cds-icon shape="angle" direction="left" /></button>
-        Results
-    </div>
-
-    <clr-tabs>
-        <clr-tab *ngIf="(getAllViolations()).length">
-            <button clrTabLink>All</button>
-            <clr-tab-content *clrIfActive>
-                <app-violation-card [violations]="getAllViolations()"></app-violation-card>
-            </clr-tab-content>
-        </clr-tab>
-        <clr-tab *ngIf="hexErrors.length">
-            <button clrTabLink>Missing tokens <span class="badge">{{hexErrors.length}}</span></button>
-            <clr-tab-content *clrIfActive>
-                <app-violation-card [violations]="hexErrors"></app-violation-card>
-            </clr-tab-content>
-        </clr-tab>
-        <clr-tab *ngIf="detachedNodes.length">
-            <button clrTabLink>Symbols <span class="badge ">{{detachedNodes.length}}</span></button>
-            <clr-tab-content *clrIfActive>
-                <app-violation-card [violations]="detachedNodes"></app-violation-card>
-            </clr-tab-content>
-        </clr-tab>
-    </clr-tabs>
-</div>
+<clr-tabs>
+    <clr-tab *ngIf="allViolations.length">
+        <button clrTabLink>All</button>
+        <clr-tab-content *clrIfActive>
+            <app-violation-card [violations]="allViolations"></app-violation-card>
+        </clr-tab-content>
+    </clr-tab>
+    <clr-tab *ngIf="hexErrors.length">
+        <button clrTabLink>Missing tokens <span class="badge">{{hexErrors.length}}</span></button>
+        <clr-tab-content *clrIfActive>
+            <app-violation-card [violations]="hexErrors"></app-violation-card>
+        </clr-tab-content>
+    </clr-tab>
+    <clr-tab *ngIf="detachedNodes.length">
+        <button clrTabLink>Symbols <span class="badge ">{{detachedNodes.length}}</span></button>
+        <clr-tab-content *clrIfActive>
+            <app-violation-card [violations]="detachedNodes"></app-violation-card>
+        </clr-tab-content>
+    </clr-tab>
+</clr-tabs>

@@ -17,15 +17,35 @@ import {Violation} from "../models/models";
 })
 export class LandingPageComponent {
   search = false;
-  showAccordion = true;
-  showDetachedViolation = false;
-  showHexViolation = false;
   showGuidance = false;
-  toggleGuidance = false;
-  hexTitle = '';
-  detachedTitle = '';
+
+  showViolations = false;
   hexViolations: Violation[] = [];
   detachedViolations: Violation[] = [];
+
+  // hexViolations: Violation[] = [{
+  //   "layerId": "2o472304923:43223",
+  //   "type": "5001",
+  //   "guidanceUrl": "https://guidance.clarity.design/",
+  //   "layerName": "guidance 1",
+  // }, {
+  //   "layerId": "2o472304923:43223",
+  //   "type": "5001",
+  //   "guidanceUrl": "https://guidance.clarity.design/",
+  //   "layerName": "guidance 1",
+  // }];
+  // detachedViolations: Violation[] = [{
+  //   "layerId": "2o472304923:43223",
+  //   "type": "5002",
+  //   "guidanceUrl": "https://guidance.clarity.design/",
+  //   "layerName": "guidance 1",
+  // }, {
+  //   "layerId": "2o472304923:43223",
+  //   "type": "5002",
+  //   "guidanceUrl": "https://guidance.clarity.design/",
+  //   "layerName": "guidance 1",
+  // }];
+
   guidanceLinks: any[] = [{
       url: 'https://guidance.clarity.design/1001',
       name: 'Guidance'
@@ -53,15 +73,14 @@ export class LandingPageComponent {
     );
   }
 
-
-  close() {
-    parent.postMessage({pluginMessage: {type: "close"}}, "*");
+  get hasViolations(): boolean {
+    return !!(this.hexViolations.length || this.detachedViolations.length);
   }
 
   checkViolations(){
     this.search = true;
-    parent.postMessage({pluginMessage: {type: "find-hex-errors"}}, "*");
-    parent.postMessage({pluginMessage: {type: "find-select-detached-nodes"}}, "*");
+
+    parent.postMessage({pluginMessage: {type: "find-errors"}}, "*");
   }
 
   @HostListener('window:message', ['$event'])
@@ -74,7 +93,6 @@ export class LandingPageComponent {
 
     switch (message.data.pluginMessage.type) {
       case'selectionChange':
-        this.search = false;
         this.selectionChange(message.data.pluginMessage.data);
         break;
       case'violations':
@@ -86,26 +104,6 @@ export class LandingPageComponent {
         break;
       default:
     }
-  }
-
-  fixDetachedNodes() {
-    this.showDetachedViolation = false;
-
-    parent.postMessage({pluginMessage: {type: "fix-detached-nodes"}}, "*");
-  }
-
-  selectDetachedNodes() {
-    parent.postMessage({pluginMessage: {type: "select-detached-nodes"}}, "*");
-  }
-
-  fixHardcodedHexColors() {
-    this.showHexViolation = false;
-
-    parent.postMessage({pluginMessage: {type: "fix-hardcoded-hex-color"}}, "*");
-  }
-
-  selectHardcodedHexColors() {
-    parent.postMessage({pluginMessage: {type: "select-hardcoded-hex-color"}}, "*");
   }
 
   get hasLinks () {
@@ -128,9 +126,6 @@ export class LandingPageComponent {
 
       this.guidanceLinks = entry.links as any[];
 
-      this.toggleGuidance = guidanceName.startsWith('1001');
-      console.log(this.toggleGuidance)
-
       this.showGuidance = guidanceName.startsWith('1001') || guidanceName.startsWith('1004');
       console.log(this.showGuidance)
     }
@@ -138,12 +133,12 @@ export class LandingPageComponent {
 
   change(data: any) {
     if(data.hide === "5002") {
-      this.showDetachedViolation = false;
+      this.detachedViolations = [];
       return;
     }
 
     if(data.hide === "5001") {
-      this.showHexViolation = false;
+      this.hexViolations = [];
       return;
     }
 
@@ -151,18 +146,21 @@ export class LandingPageComponent {
   }
 
   violations(data: any) {
-    if (data.key === "5002") {
-      this.detachedTitle = data.rule;
-      this.showDetachedViolation = true;
+    if (data.violations[5002]) {
+      this.showResults()
 
-      this.detachedViolations = data.violations
+      this.detachedViolations = data.violations[5002];
     }
 
-    if (data.key === "5001") {
-      this.hexTitle = data.rule;
-      this.showHexViolation = true;
+    if (data.violations[5001]) {
+      this.showResults()
 
-      this.hexViolations = data.violations
+      this.hexViolations = data.violations[5001];
     }
+  }
+
+  showResults() {
+    this.showViolations = true;
+    this.showGuidance = false;
   }
 }
