@@ -198,15 +198,18 @@ export class PageComponent implements OnInit {
   function generateFigmaJson() {
     const result = [];
 
-    for(let i = 0; i < document.body.children.length;i++) {
-      if (document.body.children[i].tagName === "H3") {
-        let content = document.body.children[i+1].outerHTML.replaceAll('cds-list="circle"', 'class="list"');
+    for (let i = 0; i < document.body.children.length; i++) {
+      if (document.body.children[i].tagName === 'H3') {
+        let content = document.body.children[i + 1].outerHTML
+          .replaceAll('cds-layout="m-t:md"', '')
+          .replaceAll('cds-list="circle"', 'class="list"');
 
-        if (document.body.children[i+1].tagName === "P"
-          && document.body.children[i+2]
-          && document.body.children[i+2].tagName === "UL"
+        if (
+          document.body.children[i + 1].tagName === 'P' &&
+          document.body.children[i + 2] &&
+          document.body.children[i + 2].tagName === 'UL'
         ) {
-          content += document.body.children[i+2].outerHTML.replaceAll('cds-list="circle"', 'class="list"');
+          content += document.body.children[i + 2].outerHTML.replaceAll('cds-list="circle"', 'class="list"');
         }
 
         result.push({

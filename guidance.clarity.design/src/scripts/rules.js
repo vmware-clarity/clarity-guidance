@@ -7,9 +7,9 @@
 
 const rules = {
   1001: {
-    recommendation: "Recommendation: Reattach Clarity components.",
-    rule: `${detachedNodes.length} detached Clarity components found and selected.`
-  }
+    recommendation: 'Recommendation: Reattach Clarity components.',
+    rule: `${detachedNodes.length} detached Clarity components found and selected.`,
+  },
 };
 
 const inventoryItems = [];
@@ -26,8 +26,6 @@ for (let i = 0; i < 200; i++) {
   });
 }
 
-
 function randomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
