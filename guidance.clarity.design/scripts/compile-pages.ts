@@ -127,7 +127,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { CipPageComponent } from '../app/components/cip-page/cip-page.component';
-  
+
 @Component({
   templateUrl: './${filename}.component.html',
   standalone: true,
@@ -136,7 +136,7 @@ import { CipPageComponent } from '../app/components/cip-page/cip-page.component'
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
-  
+
   ngOnInit() {
     this.title.setTitle('${title} | Clarity Guidance');
   }
@@ -169,7 +169,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { CipIndexComponent } from '../app/components/cip-index/cip-index.component';
-  
+
 @Component({
   templateUrl: './${filename}.component.html',
   standalone: true,
@@ -178,7 +178,7 @@ import { CipIndexComponent } from '../app/components/cip-index/cip-index.compone
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
-  
+
   ngOnInit() {
     this.title.setTitle('Clarity Guidance');
   }
@@ -196,10 +196,27 @@ export class PageComponent implements OnInit {
   }
 
   function generateFigmaJson() {
-    return {
-      // todo: update this with what is actually needed, whatever structure is needed for the Figma plugin
-      html: document.body.outerHTML,
-    };
+    const result = [];
+
+    for(let i = 0; i < document.body.children.length;i++) {
+      if (document.body.children[i].tagName === "H3") {
+        let content = document.body.children[i+1].outerHTML.replaceAll('cds-list="circle"', 'class="list"');
+
+        if (document.body.children[i+1].tagName === "P"
+          && document.body.children[i+2]
+          && document.body.children[i+2].tagName === "UL"
+        ) {
+          content += document.body.children[i+2].outerHTML.replaceAll('cds-list="circle"', 'class="list"');
+        }
+
+        result.push({
+          title: document.body.children[i].textContent,
+          content: content,
+        });
+      }
+    }
+
+    return result;
   }
 
   function escapeHtmlForComponentTemplate(html: string) {

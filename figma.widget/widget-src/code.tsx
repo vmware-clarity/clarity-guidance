@@ -53,7 +53,7 @@ widget.register(Widget)
 figma.on("selectionchange", async () => {
     console.log("selectionchange", figma.currentPage.selection);
 
-    const componentNodeKeys: { key: string, links:  { url: string; name: string; }[] }[] = [];
+    const componentNodeKeys: { key: string, links: { url: string; name: string; }[] }[] = [];
 
     for (let i = 0; i < figma.currentPage.selection.length; i++) {
         const node = figma.currentPage.selection[i];
@@ -161,7 +161,7 @@ figma.currentPage.on("nodechange", _event => {
                     type: "change",
                     data: {
                         violations: {
-                            5002: MessageHandlerService.createViolations("5002", detachedNodes)
+                            5002: MessageHandlerService.createViolations("5002", detachedNodes),
                         }
                     }
                 });
