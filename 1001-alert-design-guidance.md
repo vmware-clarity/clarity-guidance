@@ -2,7 +2,7 @@
 category: component design guidance
 state: approved
 created: 2024-10-30
-updated: 2024-10-30
+updated: 2024-11-20
 ---
 
 # Alert Design Guidance
@@ -24,16 +24,16 @@ App-level alerts support only error, warning, and info statuses. This ensures th
 
 Standard alerts support error, warning, info, and success statuses.
 
-- Lightweight alers **may** be used in places where vertical space is scarce and information density is needed; otherwise, the default size **should** be used.
-- Alerts **must** reflect the user's context within the application, enabling users to quickly understand the message's relevance and take appropriate action.
-
-### Lightweight Alerts
-
 - Alerts **should** be used inside containers and other components to maintain a cohesive layout and ensure that important messages are contextually relevant and easily accessible to users.
 - Success alerts **must** be used to deliver a static, persistent success message. This provides immediate feedback on the completion of an action, helping users understand that their task was successful.
 - Info alerts **must** used to provide context-specific information to the user. This helps clarify actions or statuses without overwhelming the user with too much information, ensuring they remain focused on their tasks. However, it’s important to avoid overusing info alerts or replacing essential content with them, as this could lead to confusion or distraction.
 - Warning alerts **must** used for messages that require the user's attention or acknowledgment but might not cause errors. This ensures that users are appropriately notified of important information that could affect their actions without implying a critical failure.
 - Error alerts **must** be used for errors, malfunctions, and critical issues, such as license expiration. This helps users immediately recognize serious problems that require urgent attention, ensuring that they can take necessary actions to resolve these issues promptly.
+
+### Lightweight Alerts
+
+- Lightweight alerts **may** be used in places where vertical space is scarce and information density is needed; otherwise, the default size **should** be used.
+- Alerts **must** reflect the user's context within the application, enabling users to quickly understand the message's relevance and take appropriate action.
 
 ### Alert in Modals
 
