@@ -1,5 +1,5 @@
 <clr-tabs>
-    <clr-tab *ngIf="allViolations.length">
+    <clr-tab>
         <button clrTabLink>All</button>
         <clr-tab-content *clrIfActive>
             <app-violation-card [violations]="allViolations"></app-violation-card>

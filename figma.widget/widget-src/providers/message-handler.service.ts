@@ -1,8 +1,8 @@
 import {Violation} from "../../src/app/models/models";
 
 export abstract class MessageHandlerService {
-    private static async isCdsColorVariable (id: string) {
-        const result = figma.variables.getVariableById(id);
+    public static async isCdsColorVariable (id: string) {
+        const result = await figma.variables.getVariableByIdAsync(id);
 
         return !!(result && result.name.indexOf('--cds-') === -1);
     };
@@ -38,21 +38,43 @@ export abstract class MessageHandlerService {
                 );
         });
 
-        const found: Violation[] = []
-        for (const node of hardcodedNodes) {
-           found.push({
-               layerId: node.id,
-               type: "5001",
-               guidanceUrl: "https://guidance.clarity.design/",
-               layerName: node.name,
-           })
-        }
 
-        console.log(found);
-        return found;
+        return this.createViolations("5001", hardcodedNodes);
     };
 
-    private static selectHardcodedHexColor(fix: boolean) {
+    private static fixHardcodedHexColor(nodeId: string) {
+        const hardcodedNodes = figma.currentPage.findAll(node => {
+            return node.type === 'INSTANCE'
+                && node.id === nodeId
+                && (
+                    (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
+                    || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
+                );
+        });
+
+        console.log(hardcodedNodes);
+        this.resetOverrides(hardcodedNodes);
+    }
+
+    private static resetOverrides(nodes: SceneNode[]) {
+        if (nodes.length > 0) {
+            nodes.forEach(node => {
+                if ("resetOverrides" in node) {
+                    node.resetOverrides();
+                }
+            });
+
+            figma.ui.postMessage({
+                type: "change",
+                data: {
+                    hide: "5001",
+                    nodeIds: nodes.map(node => node.id)
+                }
+            });
+        }
+    }
+
+    private static fixHardcodedHexColors() {
         const hardcodedNodes = figma.currentPage.findAll(node => {
             return node.type === 'INSTANCE'
                 && (
@@ -63,25 +85,7 @@ export abstract class MessageHandlerService {
 
         console.log(hardcodedNodes);
 
-        if (hardcodedNodes.length > 0) {
-            figma.currentPage.selection = hardcodedNodes;
-            figma.viewport.scrollAndZoomIntoView(hardcodedNodes);
-
-            if (fix) {
-                hardcodedNodes.forEach(node => {
-                    if ("resetOverrides" in node) {
-                        node.resetOverrides();
-                    }
-                });
-
-                figma.ui.postMessage({
-                    type: "change",
-                    data: {
-                        hide: "5001"
-                    }
-                });
-            }
-        }
+        this.resetOverrides(hardcodedNodes);
     }
 
     private static findAndSelectDetachedNodes() {
@@ -90,12 +94,15 @@ export abstract class MessageHandlerService {
         });
 
         console.log(detachedNodes);
+        return this.createViolations("5002", detachedNodes);
+    }
 
+    public static createViolations(type : "5002" | "5001", detachedNodes: SceneNode[]) {
         const found: Violation[] = []
         for (const node of detachedNodes) {
             found.push({
                 layerId: node.id,
-                type: "5002",
+                type: type,
                 guidanceUrl: "https://guidance.clarity.design/",
                 layerName: node.name,
             })
@@ -104,29 +111,13 @@ export abstract class MessageHandlerService {
         return found;
     }
 
-    private static selectDetachedNodes() {
-        const detachedNodes = figma.currentPage.findAll(node => {
-            return !!node.detachedInfo;
-        });
-
-        figma.currentPage.selection = detachedNodes;
-        figma.viewport.scrollAndZoomIntoView(detachedNodes);
-    }
-
-    private static async fixDetachedNodes() {
-        const detachedNodes = figma.currentPage.findAll(node => {
-            return !!node.detachedInfo;
-        });
-
-        if (detachedNodes.length > 0) {
-            const newNodes: InstanceNode[] = [];
-
-            for (let i = 0; i < detachedNodes.length; i++) {
-                const node = detachedNodes[i];
+    private static async recreateNodeInstance(nodes: SceneNode[]) {
+        if (nodes.length > 0) {
+            for (let i = 0; i < nodes.length; i++) {
+                const node = nodes[i];
                 const result = await figma.importComponentByKeyAsync(node.detachedInfo.componentKey);
 
                 const instance = result.createInstance();
-                newNodes.push(instance);
 
                 instance.x = node.x
                 instance.y = node.y
@@ -135,19 +126,35 @@ export abstract class MessageHandlerService {
                 node.remove();
             }
 
-            figma.currentPage.selection = newNodes;
-            figma.viewport.scrollAndZoomIntoView(newNodes);
-
             figma.ui.postMessage({
                 type: "change",
                 data: {
-                    hide: "5002"
+                    hide: "5002",
+                    nodeIds: nodes.map(node => node.id)
                 }
             });
         }
     }
 
-    private static async selectNode(nodeId: string) {
+    private static async fixDetachedNode(nodeId: string) {
+        const detachedNodes = figma.currentPage.findAll(node => {
+            return node.id === nodeId && !!node.detachedInfo;
+        });
+
+        console.log(detachedNodes);
+
+        await MessageHandlerService.recreateNodeInstance(detachedNodes);
+    }
+
+    private static async fixDetachedNodes() {
+        const detachedNodes = figma.currentPage.findAll(node => {
+            return !!node.detachedInfo;
+        });
+
+        await MessageHandlerService.recreateNodeInstance(detachedNodes);
+    }
+
+    private static selectNode(nodeId: string) {
         const node = figma.currentPage.findAll(node => {
             return node.id === nodeId;
         });
@@ -166,17 +173,17 @@ export abstract class MessageHandlerService {
           case 'select-node':
               MessageHandlerService.selectNode(message.nodeId);
               break;
-          case 'select-hardcoded-hex-color':
-              MessageHandlerService.selectHardcodedHexColor(false);
-          break;
-          case 'fix-hardcoded-hex-color':
-              MessageHandlerService.selectHardcodedHexColor(true);
+          case 'fix-hardcoded-hex-colors':
+              MessageHandlerService.fixHardcodedHexColors();
               break;
-          case 'select-detached-nodes':
-              MessageHandlerService.selectDetachedNodes();
+          case 'fix-hardcoded-hex-color':
+              MessageHandlerService.fixHardcodedHexColor(message.nodeId);
           break;
           case 'fix-detached-nodes':
               await MessageHandlerService.fixDetachedNodes();
+              break;
+          case 'fix-detached-node':
+              await MessageHandlerService.fixDetachedNode(message.nodeId);
               break;
           case'close':
           default:

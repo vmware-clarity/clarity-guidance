@@ -88,66 +88,63 @@ figma.on("selectionchange", async () => {
 figma.currentPage.on("nodechange", _event => {
     console.log("nodechange", _event)
 
-    const nodeSelection: any[] = [];
+    const nodes: any[] = [];
     _event.nodeChanges.forEach((nodeChange => {
         if (nodeChange.type === "PROPERTY_CHANGE") {
-            nodeChange.properties.forEach(property => {
+            nodeChange.properties.forEach( async property => {
                 console.log(nodeChange.node);
                 if (property === "fills") {
 
                     console.log(nodeChange.node.fills);
 
                     if (!nodeChange.node.fills[0].boundVariables.color) {
-                        nodeSelection.push(nodeChange.node);
+                        nodes.push(nodeChange.node);
                         return;
                     }
 
-                    figma.variables.getVariableByIdAsync(nodeChange.node.fills[0].boundVariables.color.id).then(result => {
-                        console.log('color var ', result);
+                   const isCdsColorVariable = await MessageHandlerService
+                       .isCdsColorVariable(nodeChange.node.fills[0].boundVariables.color.id);
 
-                        if (result && result.name.indexOf('--cds-') === -1) {
-                            nodeSelection.push(nodeChange.node);
-                            return;
-                        }
-                    });
+                   if (!isCdsColorVariable) {
+                       nodes.push(nodeChange.node);
+                       return;
+                   }
                 }
+
                 if (property === "strokes") {
                     console.log(nodeChange.node.strokes);
 
                     if (!nodeChange.node.strokes[0].boundVariables.color) {
-                        nodeSelection.push(nodeChange.node);
+                        nodes.push(nodeChange.node);
                         return;
                     }
 
-                    figma.variables.getVariableByIdAsync(nodeChange.node.strokes[0].boundVariables.color.id).then(result => {
-                        console.log(result.name);
 
-                        if (result && result.name.indexOf('--cds-') === -1) {
-                            nodeSelection.push(nodeChange.node);
-                            return;
-                        }
-                    });
+                    const isCdsColorVariable = await MessageHandlerService
+                        .isCdsColorVariable(nodeChange.node.strokes[0].boundVariables.color.id);
+
+                    if (!isCdsColorVariable) {
+                        nodes.push(nodeChange.node);
+                        return;
+                    }
                 }
             });
 
-            if (nodeSelection.length > 0) {
-                figma.notify('CIP - widget: Hardcoded values found.');
+            if (nodes.length > 0) {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        key: "5001",
-                        recommendation: "Recommendation: Use Clarity components color tokens. Alias preferably.",
-                        rule: `1 or more components violate NO hard coded HEX values. ${nodeSelection}`
+                        violations: {
+                           5001: MessageHandlerService.createViolations("5001", nodes)
+                        }
                     }
                 });
-
-                figma.currentPage.selection = nodeSelection;
-                figma.viewport.scrollAndZoomIntoView(nodeSelection);
             } else {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        hide: "5001"
+                        hide: "5001",
+                        nodeIds: [nodeChange.node.id]
                     }
                 });
             }
@@ -163,19 +160,17 @@ figma.currentPage.on("nodechange", _event => {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        key: "5002",
-                        recommendation: "Recommendation: Reattach Clarity components.",
-                        rule: `${detachedNodes.length} detached Clarity components found and selected.`
+                        violations: {
+                            5002: MessageHandlerService.createViolations("5002", detachedNodes)
+                        }
                     }
                 });
-
-                figma.currentPage.selection = detachedNodes;
-                figma.viewport.scrollAndZoomIntoView(detachedNodes);
             } else {
                 figma.ui.postMessage({
                     type: "change",
                     data: {
-                        hide: "5002"
+                        hide: "5002",
+                        nodeIds: [nodeChange.node.id]
                     }
                 });
             }

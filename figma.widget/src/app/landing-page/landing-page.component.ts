@@ -17,34 +17,11 @@ import {Violation} from "../models/models";
 })
 export class LandingPageComponent {
   search = false;
-  showGuidance = false;
+  showGuidance = true;
 
   showViolations = false;
   hexViolations: Violation[] = [];
   detachedViolations: Violation[] = [];
-
-  // hexViolations: Violation[] = [{
-  //   "layerId": "2o472304923:43223",
-  //   "type": "5001",
-  //   "guidanceUrl": "https://guidance.clarity.design/",
-  //   "layerName": "guidance 1",
-  // }, {
-  //   "layerId": "2o472304923:43223",
-  //   "type": "5001",
-  //   "guidanceUrl": "https://guidance.clarity.design/",
-  //   "layerName": "guidance 1",
-  // }];
-  // detachedViolations: Violation[] = [{
-  //   "layerId": "2o472304923:43223",
-  //   "type": "5002",
-  //   "guidanceUrl": "https://guidance.clarity.design/",
-  //   "layerName": "guidance 1",
-  // }, {
-  //   "layerId": "2o472304923:43223",
-  //   "type": "5002",
-  //   "guidanceUrl": "https://guidance.clarity.design/",
-  //   "layerName": "guidance 1",
-  // }];
 
   guidanceLinks: any[] = [{
       url: 'https://guidance.clarity.design/1001',
@@ -133,12 +110,16 @@ export class LandingPageComponent {
 
   change(data: any) {
     if(data.hide === "5002") {
-      this.detachedViolations = [];
+      this.detachedViolations = this.detachedViolations.filter(
+          (violation) => !data.nodeIds.includes(violation.layerId)
+      );
       return;
     }
 
     if(data.hide === "5001") {
-      this.hexViolations = [];
+      this.hexViolations = this.hexViolations.filter(
+          (violation) => !data.nodeIds.includes(violation.layerId)
+      );
       return;
     }
 
@@ -149,18 +130,25 @@ export class LandingPageComponent {
     if (data.violations[5002]) {
       this.showResults()
 
-      this.detachedViolations = data.violations[5002];
+      this.detachedViolations = this.detachedViolations.concat(data.violations[5002]);
+
+      // this.detachedViolations = this.detachedViolations.concat(data.violations[5002].filter(
+      //     (violation2: Violation) =>
+      //         !this.detachedViolations.some(violation1 => violation1.layerId === violation2.layerId)));
     }
 
     if (data.violations[5001]) {
       this.showResults()
 
-      this.hexViolations = data.violations[5001];
+      this.hexViolations = this.hexViolations.concat(data.violations[5001]);
+
+      // this.hexViolations = this.hexViolations.concat(data.violations[5001].filter(
+      //     (violation2: Violation) =>
+      //         !this.hexViolations.some(violation1 => violation1.layerId === violation2.layerId)));
     }
   }
 
   showResults() {
     this.showViolations = true;
-    this.showGuidance = false;
   }
 }

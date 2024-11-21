@@ -1,9 +1,9 @@
 <div class="container-wrapper">
     <div *ngIf="!search && !showViolations" class="page-container">
         <div class="clarity-logo"></div>
-        <div  *ngIf="!hasViolations"  class="title" cds-text="section" >
+        <h4  *ngIf="!hasViolations"  class="title" cds-text="section" >
             Add Clarity to your designs!
-        </div>
+        </h4>
         <div  *ngIf="!hasViolations" class="description" cds-text="body">
             Scan your file for missing tokens, detached symbols and get additional guidance.
         </div>
@@ -33,8 +33,8 @@
         <button *ngIf="hasViolations" class="btn btn-block scan-button" (click)="showResults()">show details</button>
         <div class="separator"><span *ngIf="!showGuidance">OR</span></div>
         <div *ngIf="!showGuidance" class="description">Click on a Clarity component for guidance.</div>
-        <div *ngIf="showGuidance">
-            <div>
+        <div *ngIf="showGuidance" class="guidance-container">
+            <h4  class="guidance-header">
                 Guidance
                 <clr-dropdown *ngIf="hasLinks">
                     <button class="btn btn-primary btn-sm" clrDropdownTrigger>
@@ -49,7 +49,7 @@
                         </a>
                     </clr-dropdown-menu>
                 </clr-dropdown>
-            </div>
+            </h4>
             <clr-accordion>
                 <clr-accordion-panel>
                     <clr-accordion-title>App-Level Alerts</clr-accordion-title>
