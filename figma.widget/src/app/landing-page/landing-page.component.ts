@@ -16,7 +16,7 @@ import {EscapeHtmlPipe} from "../pipes/keepHtml.pipe";
 })
 export class LandingPageComponent {
   search = false;
-  showGuidance = true;
+  showGuidance = false;
 
   showViolations = false;
   hexViolations: Violation[] = [];
@@ -88,7 +88,7 @@ export class LandingPageComponent {
       const entry = data[i];
       const guidanceName = this.guidanceMap[entry.key];
 
-      const result = await fetch(`http://localhost:4200/figma-plugin-json/${guidanceName}.json`);
+      const result = await fetch(`https://42--clarity-guidance.netlify.app/figma-plugin-json/${guidanceName}.json`);
       this.guidance = (await result.json());
 
       this.guidanceLinks = entry.links as any[];
