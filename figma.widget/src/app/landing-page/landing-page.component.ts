@@ -17,6 +17,7 @@ import {EscapeHtmlPipe} from "../pipes/keepHtml.pipe";
 export class LandingPageComponent {
   search = false;
   showGuidance = false;
+  afterScanning = false;
 
   showViolations = false;
   hexViolations: Violation[] = [];
@@ -29,8 +30,8 @@ export class LandingPageComponent {
     "d998b0f409cc0f78e0e324f07c0a3b63f6c0b4a1": "1004",
     "c9444889cbdde9ef8477e90f8e17c272a4b7c4a8": "1004",
     "202a2280491014750988fb3718effd7bb7c205e8": "1004",
-    "74ce5710800e76cc171f66159214168fc18f4110": "1001",
-    "7352dc183b8096c4b30208d504923ba81c506409": "1001",
+    "74ce5710800e76cc171f66159214168fc18f4110": "1018",
+    "7352dc183b8096c4b30208d504923ba81c506409": "1018",
   };
 
   constructor() {
@@ -46,6 +47,8 @@ export class LandingPageComponent {
 
   checkViolations(){
     this.search = true;
+    this.hexViolations = [];
+    this.detachedViolations = [];
 
     parent.postMessage({pluginMessage: {type: "find-errors"}}, "*");
   }
@@ -65,6 +68,7 @@ export class LandingPageComponent {
       case'violations':
         this.violations(message.data.pluginMessage.data);
         this.search = false;
+        this.afterScanning = true;
         break;
       case 'change':
         this.change(message.data.pluginMessage.data);
@@ -93,8 +97,7 @@ export class LandingPageComponent {
 
       this.guidanceLinks = entry.links as any[];
 
-      this.showGuidance = guidanceName.startsWith('1001') || guidanceName.startsWith('1004');
-      console.log(this.showGuidance)
+      this.showGuidance = true;
     }
   }
 
@@ -121,20 +124,14 @@ export class LandingPageComponent {
       this.showResults()
 
       this.detachedViolations = this.detachedViolations.concat(data.violations[5002]);
-
-      // this.detachedViolations = this.detachedViolations.concat(data.violations[5002].filter(
-      //     (violation2: Violation) =>
-      //         !this.detachedViolations.some(violation1 => violation1.layerId === violation2.layerId)));
     }
 
     if (data.violations[5001]) {
       this.showResults()
 
-      this.hexViolations = this.hexViolations.concat(data.violations[5001]);
-
-      // this.hexViolations = this.hexViolations.concat(data.violations[5001].filter(
-      //     (violation2: Violation) =>
-      //         !this.hexViolations.some(violation1 => violation1.layerId === violation2.layerId)));
+      this.hexViolations = this.hexViolations.concat(data.violations[5001].filter(
+          (violation2: Violation) =>
+              !this.hexViolations.some(violation1 => violation1.layerId === violation2.layerId)));
     }
   }
 

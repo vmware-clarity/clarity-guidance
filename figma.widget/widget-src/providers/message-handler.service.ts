@@ -33,26 +33,19 @@ export abstract class MessageHandlerService {
         const hardcodedNodes = figma.currentPage.findAll(node => {
             return node.type === 'INSTANCE'
                 && (
-                    (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
-                    || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
+                    (node.strokes && node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
+                    || (node.fills && node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
                 );
         });
-
 
         return this.createViolations("5001", hardcodedNodes);
     }
 
     private static fixHardcodedHexColor(nodeId: string) {
         const hardcodedNodes = figma.currentPage.findAll(node => {
-            return node.type === 'INSTANCE'
-                && node.id === nodeId
-                && (
-                    (node.strokes.length > 0 && !node.strokes[0]?.boundVariables?.color)
-                    || (node.fills.length > 0 && !node.fills[0]?.boundVariables?.color)
-                );
+            return node.id === nodeId
         });
 
-        console.log(hardcodedNodes);
         this.resetOverrides(hardcodedNodes);
     }
 
@@ -83,8 +76,6 @@ export abstract class MessageHandlerService {
                 );
         });
 
-        console.log(hardcodedNodes);
-
         this.resetOverrides(hardcodedNodes);
     }
 
@@ -93,7 +84,6 @@ export abstract class MessageHandlerService {
             return !!node.detachedInfo;
         });
 
-        console.log(detachedNodes);
         return this.createViolations("5002", detachedNodes);
     }
 
@@ -140,8 +130,6 @@ export abstract class MessageHandlerService {
         const detachedNodes = figma.currentPage.findAll(node => {
             return node.id === nodeId && !!node.detachedInfo;
         });
-
-        console.log(detachedNodes);
 
         await MessageHandlerService.recreateNodeInstance(detachedNodes);
     }

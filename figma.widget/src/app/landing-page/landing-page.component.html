@@ -1,13 +1,15 @@
 <div class="container-wrapper">
     <div *ngIf="!search && !showViolations" class="page-container">
-        <div class="clarity-logo"></div>
-        <h4  *ngIf="!hasViolations"  class="title" cds-text="section" >
-            Add Clarity to your designs!
+        <div
+             [class.clarity-logo]="hasViolations || !afterScanning"
+             [class.no-issues-found-logo]="!hasViolations && afterScanning"
+        ></div>
+        <h4 *ngIf="!hasViolations" class="title" cds-text="section" >
+            {{afterScanning ? 'No issues found on this page.' : 'Add Clarity to your designs!'}}
         </h4>
-        <div  *ngIf="!hasViolations" class="description" cds-text="body">
-            Scan your file for missing tokens, detached symbols and get additional guidance.
+        <div *ngIf="!hasViolations" class="description" cds-text="body">
+            {{afterScanning ? 'Well done! You have no issues on this page.' : 'Scan your file for missing tokens, detached symbols and get additional guidance.'}}
         </div>
-        <button  *ngIf="!hasViolations" class="btn btn-primary btn-block scan-button" (click)="checkViolations()">scan page</button>
         <div *ngIf="hasViolations" class="clr-row">
             <div *ngIf="hexViolations.length" class="clr-col-6">
                 <div class="card">
@@ -30,6 +32,7 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-primary btn-block scan-button" (click)="checkViolations()">scan page</button>
         <button *ngIf="hasViolations" class="btn btn-block scan-button" (click)="showResults()">show details</button>
         <div class="separator"><span *ngIf="!showGuidance">OR</span></div>
         <div *ngIf="!showGuidance" class="description">Click on a Clarity component for guidance.</div>
@@ -50,7 +53,17 @@
                     </clr-dropdown-menu>
                 </clr-dropdown>
             </h4>
-            <clr-accordion>
+            <div *ngIf="guidance.length === 1" class="clr-row">
+                <div class="clr-col-12">
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="card-text" [innerHtml]='guidance[0].content | keepHtml'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <clr-accordion *ngIf="guidance.length > 1">
                 <clr-accordion-panel *ngFor="let guidance of guidance">
                     <clr-accordion-title>{{guidance.title}}</clr-accordion-title>
                     <clr-accordion-content *clrIfExpanded [innerHtml]='guidance.content | keepHtml'></clr-accordion-content>
@@ -78,9 +91,15 @@
             </span>
         </div>
         <results-component
+            *ngIf="hasViolations"
             [hex-violations]="hexViolations"
             [detached-nodes]="detachedViolations"
         ></results-component>
+            <div  *ngIf="!hasViolations" class="all-fixed-icon"></div>
+            <h4  *ngIf="!hasViolations" class="title" cds-text="section">All fixed!</h4>
+            <div  *ngIf="!hasViolations" class="description" cds-text="body">
+                Well done! You have no issues on this page.
+            </div>
     </div>
     <div class="footer">
         <a href="https://clarity.design" target="_blank">clarity.design</a>
