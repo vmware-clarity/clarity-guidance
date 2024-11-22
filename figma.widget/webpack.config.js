@@ -11,7 +11,11 @@ module.exports = (env, argv) => ({
     devtool: argv.mode === 'production' ? false : 'inline-source-map',
 
     entry: {
-        ui: ['./dist/browser/polyfills.js', './dist/browser/main.js', ], // The entry point for your UI code
+        ui: [
+            './dist/browser/polyfills.js',
+            './dist/browser/main.js',
+            './dist/browser/styles.css',
+        ], // The entry point for your UI code
         code: './widget-src/code.tsx', // The entry point for your plugin code
     },
 

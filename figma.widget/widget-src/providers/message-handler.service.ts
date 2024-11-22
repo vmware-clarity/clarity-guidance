@@ -5,7 +5,7 @@ export abstract class MessageHandlerService {
         const result = await figma.variables.getVariableByIdAsync(id);
 
         return !!(result && result.name.indexOf('--cds-') === -1);
-    };
+    }
 
     private static findErrors() {
         const result = {};
@@ -40,7 +40,7 @@ export abstract class MessageHandlerService {
 
 
         return this.createViolations("5001", hardcodedNodes);
-    };
+    }
 
     private static fixHardcodedHexColor(nodeId: string) {
         const hardcodedNodes = figma.currentPage.findAll(node => {
