@@ -106,6 +106,7 @@ export class LandingPageComponent {
       this.detachedViolations = this.detachedViolations.filter(
           (violation) => !data.nodeIds.includes(violation.layerId)
       );
+
       return;
     }
 
@@ -113,6 +114,7 @@ export class LandingPageComponent {
       this.hexViolations = this.hexViolations.filter(
           (violation) => !data.nodeIds.includes(violation.layerId)
       );
+
       return;
     }
 

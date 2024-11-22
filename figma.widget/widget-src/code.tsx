@@ -165,6 +165,14 @@ figma.currentPage.on("nodechange", _event => {
                         }
                     }
                 });
+
+                figma.ui.postMessage({
+                    type: "change",
+                    data: {
+                        hide: "5001",
+                        nodeIds: [nodeChange.node.id]
+                    }
+                });
             } else {
                 figma.ui.postMessage({
                     type: "change",
