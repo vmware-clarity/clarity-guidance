@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Violation} from "../../models/models";
+import {constants, Violation} from "../../models/models";
 import {angleIcon, ClarityIcons, colorPickerIcon, objectsIcon, popOutIcon} from "@cds/core/icon";
 import {ClrIconModule} from "@clr/angular";
 import {NgForOf, NgIf} from "@angular/common";
@@ -13,6 +13,7 @@ import {NgForOf, NgIf} from "@angular/common";
 })
 export class ViolationCardComponent {
     @Input('violations') violations: Violation[] = [];
+    constants = constants;
 
     constructor() {
         ClarityIcons.addIcons(

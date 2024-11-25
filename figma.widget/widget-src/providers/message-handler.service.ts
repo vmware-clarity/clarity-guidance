@@ -93,7 +93,6 @@ export abstract class MessageHandlerService {
             found.push({
                 layerId: node.id,
                 type: type,
-                guidanceUrl: "https://guidance.clarity.design/",
                 layerName: node.name,
             })
         }

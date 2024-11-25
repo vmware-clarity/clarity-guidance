@@ -9,7 +9,7 @@
                 <div class="card-text">
                     <span *ngIf="violation.type === '5001'">HEX value instead of token. </span>
                     <span *ngIf="violation.type === '5002'">Detached symbol. </span>
-                    <a class="learn-more" [href]="violation.guidanceUrl + violation.type">Learn more<cds-icon shape="pop-out"></cds-icon>
+                    <a class="learn-more" target="_blank" [href]="constants.guidanceUrl + violation.type">Learn more<cds-icon shape="pop-out"></cds-icon>
                     </a>
                 </div>
             </div>

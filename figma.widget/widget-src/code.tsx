@@ -1,6 +1,7 @@
 // This widget will open an Iframe window with buttons to show a toast message and close the window.
 
 import {MessageHandlerService} from "./providers/message-handler.service";
+import {Guidance} from "../src/app/models/models";
 
 const {widget} = figma;
 const {useEffect, AutoLayout, Text} = widget
@@ -37,23 +38,13 @@ function Widget() {
 
 widget.register(Widget)
 
-// figma.loadAllPagesAsync().then(r => {
-//     console.log(r)
-//     figma.on("documentchange", _event => {
-//         console.log(_event)
-//         console.log(figma.currentPage.on())
-//         // When a change happens in the document
-//         // send a message to the plugin to look for changes.'
-//         figma.ui.postMessage({
-//             type: "change"
-//         });
-//     });
-// });
-
 figma.on("selectionchange", async () => {
     console.log("selectionchange", figma.currentPage.selection);
 
-    const componentNodeKeys: { key: string, links: { url: string; name: string; }[] }[] = [];
+    const componentGuidance: Guidance = {
+        key: '',
+        links: []
+    };
 
     for (let i = 0; i < figma.currentPage.selection.length; i++) {
         const node = figma.currentPage.selection[i];
@@ -61,26 +52,22 @@ figma.on("selectionchange", async () => {
             const componentNode = await node.getMainComponentAsync();
 
             if (componentNode && componentNode.parent?.type === 'COMPONENT_SET') {
+                componentGuidance.key = componentNode.parent.key;
 
-                const urls = [
-                    // ...componentNode.parent.documentationLinks.map(link => link.uri),
+                componentGuidance.links = [
                     ...(await componentNode?.parent.getDevResourcesAsync()).map(link => {
                         return { url: link.url, name: link.name };
                     })
-                ]
-                componentNodeKeys.push({
-                    key: componentNode.parent.key,
-                    links: urls
-                });
+                ];
+
+                break;
             }
         }
-
     }
-
 
     figma.ui.postMessage({
         type: "selectionChange",
-        data: componentNodeKeys
+        data: componentGuidance
     });
 });
 

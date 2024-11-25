@@ -3,7 +3,7 @@ import { ClarityModule } from '@clr/angular';
 import {NgForOf, NgIf} from "@angular/common";
 import {ClarityIcons, colorPickerIcon, objectsIcon} from "@cds/core/icon";
 import {ResultsComponent} from "../results/results.component";
-import {Violation} from "../models/models";
+import {constants, Guidance, GuidanceLink, Violation} from "../models/models";
 import {EscapeHtmlPipe} from "../pipes/keepHtml.pipe";
 
 @Component({
@@ -23,16 +23,16 @@ export class LandingPageComponent {
   hexViolations: Violation[] = [];
   detachedViolations: Violation[] = [];
 
-  guidanceLinks: any[] = [];
+  guidanceLinks: GuidanceLink[] = [];
   guidance: any[] = [];
 
-  private guidanceMap: any = {
-    "d998b0f409cc0f78e0e324f07c0a3b63f6c0b4a1": "1004",
-    "c9444889cbdde9ef8477e90f8e17c272a4b7c4a8": "1004",
-    "202a2280491014750988fb3718effd7bb7c205e8": "1004",
-    "74ce5710800e76cc171f66159214168fc18f4110": "1018",
-    "7352dc183b8096c4b30208d504923ba81c506409": "1018",
-  };
+  // private guidanceMap: any = {
+  //   "d998b0f409cc0f78e0e324f07c0a3b63f6c0b4a1": "1004",
+  //   "c9444889cbdde9ef8477e90f8e17c272a4b7c4a8": "1004",
+  //   "202a2280491014750988fb3718effd7bb7c205e8": "1004",
+  //   "74ce5710800e76cc171f66159214168fc18f4110": "1018",
+  //   "7352dc183b8096c4b30208d504923ba81c506409": "1018",
+  // };
 
   constructor() {
     ClarityIcons.addIcons(
@@ -81,21 +81,30 @@ export class LandingPageComponent {
     return this.guidanceLinks.length > 0;
   }
 
-  async selectionChange(data: any) {
+  async selectionChange(data: Guidance) {
     console.log(data);
-    if (data.length === 0) {
+    if (data.key === '') {
       this.showGuidance = false;
       this.guidance = [];
+
+      return;
     }
 
-    for (let i = 0; i < data.length; i++) {
-      const entry = data[i];
-      const guidanceName = this.guidanceMap[entry.key];
+    this.guidanceLinks = data.links as GuidanceLink[];
 
-      const result = await fetch(`https://42--clarity-guidance.netlify.app/figma-plugin-json/${guidanceName}.json`);
+    const guidanceLink = this.guidanceLinks.find(link => {
+      return link.url.includes(constants.guidanceUrl);
+    });
+
+    if (guidanceLink) {
+      // guidance link structure https://guidance.clarity.design/XXXX where XXXX is the guidance KEY
+      const key = guidanceLink.url.substring(guidanceLink.url.lastIndexOf('/'));
+
+      // compile the json access link https://guidance.clarity.design/figma-plugin-json/XXXX.json
+      console.log(`${constants.guidanceUrl}figma-plugin-json${key}.json`);
+
+      const result = await fetch(`${constants.guidanceUrl}figma-plugin-json${key}.json`);
       this.guidance = (await result.json());
-
-      this.guidanceLinks = entry.links as any[];
 
       this.showGuidance = true;
     }

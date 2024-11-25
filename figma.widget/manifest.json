@@ -15,14 +15,11 @@
   "ui": "dist/ui.html",
   "networkAccess": {
     "allowedDomains": [
-      "https://unpkg.com",
       "https://guidance.clarity.design",
       "https://storybook.clarity.design",
       "https://clarity.design"
     ],
     "devAllowedDomains": [
-      "https://42--clarity-guidance.netlify.app",
-      "https://cdn.jsdelivr.net",
       "http://localhost:4200"
     ]
   }
