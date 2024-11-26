@@ -2,6 +2,7 @@
 
 compiled-content/
 !compiled-content/.gitkeep
+!compiled-content/figma-plugin-json/.gitkeep
 
 # Compiled output
 /dist

@@ -27,6 +27,11 @@
               {
                 "glob": "**/*",
                 "input": "./public"
+              },
+              {
+                "glob": "**/*.json",
+                "input": "./src/compiled-content/figma-plugin-json",
+                "output": "/figma-plugin-json"
               }
             ],
             "styles": ["./src/styles.scss"],
