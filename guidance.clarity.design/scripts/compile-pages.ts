@@ -47,7 +47,7 @@ async function main() {
   const pages: Page[] = [];
 
   for (const pageFilePath of glob.sync('../*.md')) {
-    const { page, componentClass, componentTemplate } = await compilePage(pageFilePath);
+    const { page, componentClass, componentTemplate, figmaJson } = await compilePage(pageFilePath);
 
     if (pages.find(({ number }) => number === page.number)) {
       throw new Error(`Duplicate page number: ${page.number}`);
@@ -57,6 +57,10 @@ async function main() {
 
     writeText(`${page.filename}.component.ts`, componentClass);
     writeText(`${page.filename}.component.html`, componentTemplate);
+
+    if (page.number) {
+      writeJson(path.join('figma-plugin-json', `${page.number?.toString().padStart(4, '0')}.json`), figmaJson);
+    }
   }
 
   pages.sort((a, b) => (a.number || 0) - (b.number || 0));
@@ -100,6 +104,7 @@ async function compilePage(pageFilePath: string) {
   styleContent(document);
 
   const { componentClass, componentTemplate } = number ? generateCipPageComponent() : generateReadmePageComponent();
+  const figmaJson = generateFigmaJson();
 
   const page: Page = {
     filename,
@@ -113,6 +118,7 @@ async function compilePage(pageFilePath: string) {
     page,
     componentClass,
     componentTemplate,
+    figmaJson,
   };
 
   function generateCipPageComponent() {
@@ -121,7 +127,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { CipPageComponent } from '../app/components/cip-page/cip-page.component';
-  
+
 @Component({
   templateUrl: './${filename}.component.html',
   standalone: true,
@@ -130,7 +136,7 @@ import { CipPageComponent } from '../app/components/cip-page/cip-page.component'
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
-  
+
   ngOnInit() {
     this.title.setTitle('${title} | Clarity Guidance');
   }
@@ -163,7 +169,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import { CipIndexComponent } from '../app/components/cip-index/cip-index.component';
-  
+
 @Component({
   templateUrl: './${filename}.component.html',
   standalone: true,
@@ -172,7 +178,7 @@ import { CipIndexComponent } from '../app/components/cip-index/cip-index.compone
 })
 export class PageComponent implements OnInit {
   private readonly title = inject(Title);
-  
+
   ngOnInit() {
     this.title.setTitle('Clarity Guidance');
   }
@@ -187,6 +193,51 @@ export class PageComponent implements OnInit {
 `;
 
     return { componentClass, componentTemplate };
+  }
+
+  function generateFigmaJson() {
+    const result = [];
+
+    for (let i = 0; i < document.body.children.length; i++) {
+      if (document.body.children[i].tagName === 'H2') {
+        if (document.body.children[i].textContent === 'Changelog') {
+          continue;
+        }
+
+        if (document.body.children[i + 1].tagName === 'P' || document.body.children[i + 1].tagName === 'UL') {
+          const content = document.body.children[i + 1].outerHTML
+            .replaceAll('cds-layout="m-t:md"', '')
+            .replaceAll('cds-list="circle"', 'class="list"');
+
+          const title =
+            document.body.children[i].textContent === 'Guidance' ? 'General' : document.body.children[i].textContent;
+
+          result.push({
+            title: title,
+            content: content,
+          });
+        }
+      } else if (document.body.children[i].tagName === 'H3') {
+        let content = document.body.children[i + 1].outerHTML
+          .replaceAll('cds-layout="m-t:md"', '')
+          .replaceAll('cds-list="circle"', 'class="list"');
+
+        if (
+          document.body.children[i + 1].tagName === 'P' &&
+          document.body.children[i + 2] &&
+          document.body.children[i + 2].tagName === 'UL'
+        ) {
+          content += document.body.children[i + 2].outerHTML.replaceAll('cds-list="circle"', 'class="list"');
+        }
+
+        result.push({
+          title: document.body.children[i].textContent,
+          content: content,
+        });
+      }
+    }
+
+    return result;
   }
 
   function escapeHtmlForComponentTemplate(html: string) {

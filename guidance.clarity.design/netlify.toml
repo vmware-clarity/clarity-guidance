@@ -1,6 +1,11 @@
 [build]
   publish = "dist/guidance.clarity.design/browser"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Access-Control-Allow-Origin = "*"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
