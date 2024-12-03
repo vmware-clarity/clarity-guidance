@@ -11,8 +11,8 @@ Charts in Clarity.
 
 ## Guidance
 
-- Design teams **should** use follow the [charts documentation](https://clarity.design/documentation/charts).
-- Design teams **should** use use [charts color palettes](https://clarity.design/documentation/charts/colors) to keep designs consistent and on-brand.
+- Design teams **should** follow the [charts documentation](https://clarity.design/documentation/charts).
+- Design teams **should** use [charts color palettes](https://clarity.design/documentation/charts/colors) to keep designs consistent and on-brand.
 
 ## Accessibility
 
