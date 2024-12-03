@@ -7,7 +7,7 @@ updated: 2014-12-03
 
 # Grid
 
-Using the grid in Clarity.
+Grid layout in Clarity.
 
 ## Guidance
 
