@@ -5,7 +5,7 @@ created: 2024-10-22
 updated: 2024-12-03
 ---
 
-# Datalist Design Guidance
+# Datagrid Design Guidance
 
 [Datagrid](https://clarity.design/documentation/datagrid) organizes large volumes of data in columns and rows allowing users to scan, compare, and perform other actions.
 
