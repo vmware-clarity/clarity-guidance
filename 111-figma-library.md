@@ -15,5 +15,5 @@ Consuming Clarity Components in Figma.
 
 ## Changelog
 
-- **2024-12-03**: Moved to foundation.
+- **2024-12-03**: Moved to Foundation block.
 - **2024-10-22**: Initial guidance
