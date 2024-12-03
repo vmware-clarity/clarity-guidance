@@ -5,7 +5,7 @@ created: 2014-12-03
 updated: 2014-12-03
 ---
 
-# Layouts
+# Charts
 
 Charts in Clarity.
 
