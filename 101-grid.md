@@ -1,0 +1,18 @@
+---
+category: Foundation
+state: draft
+created: 2014-12-03
+updated: 2014-12-03
+---
+
+# Grid
+
+Using the grid in Clarity.
+
+## Guidance
+
+- Design teams **should** use the [grid layout](https://clarity.design/documentation/grid) to align content consistently.
+
+## Changelog
+
+- **2024-12-03**: Initial guidance

@@ -1,8 +1,8 @@
 ---
-category: pattern design guidance
+category: Design Patterns
 state: approved
 created: 2024-10-30
-updated: 2024-10-30
+updated: 2024-12-03
 ---
 
 # Forms Pattern Design Guidance
@@ -42,4 +42,5 @@ A [form](https://clarity.design/documentation/forms) is a collection of related 
 
 ## Changelog
 
+- **2024-12-03**: Moved to design patterns section
 - **2024-10-30**: Initial guidance

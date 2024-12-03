@@ -2,7 +2,7 @@
 category: general
 state: approved
 created: 2024-10-21
-updated: 2024-10-21
+updated: 2024-12-03
 ---
 
 # Numbering
@@ -25,7 +25,7 @@ In general, the team will simply use the next available number.
 Currently recognized blocks of guidance numbers are:
 
 - **1-99**: Reserved for Meta-Guidance (generally process-related)
-- **100-199**: General Design System Guidance and Patterns (fonts, icons, spacing)
+- **100-199**: Foundation (color, typography, icons, spacing)
 - **1000-1999**: Designer Guidance
 - **2000-2999**: Developer Guidance
 - **3000-4999**: Design Patterns
@@ -33,4 +33,5 @@ Currently recognized blocks of guidance numbers are:
 
 ## Changelog
 
-- **2024-10-21**: initial version
+- **2024-12-03**: Changed 100-199 to Foundation
+- **2024-10-21**: Initial version

@@ -2,12 +2,12 @@
 category: Design
 state: draft
 created: 2014-10-22
-updated: 2014-10-22
+updated: 2014-12-03
 ---
 
-# Clarity design components 
+# Clarity Figma Library
 
-Design teams consuming Clarity Components in figma.
+Consuming Clarity Components in Figma.
 
 ## Guidance
 
@@ -15,4 +15,5 @@ Design teams consuming Clarity Components in figma.
 
 ## Changelog
 
+- **2024-12-03**: Moved to foundation.
 - **2024-10-22**: Initial guidance
