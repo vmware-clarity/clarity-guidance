@@ -1,8 +1,8 @@
 ---
 category: Foundation
 state: draft
-created: 2014-10-22
-updated: 2014-12-03
+created: 2024-10-22
+updated: 2024-12-03
 ---
 
 # Clarity Figma Library
