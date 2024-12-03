@@ -1,5 +1,5 @@
 ---
-category: Design Patterns
+category: design patterns
 state: draft
 created: 2024-12-03
 updated: 2024-12-03

@@ -1,5 +1,5 @@
 ---
-category: Foundation
+category: foundation
 state: draft
 created: 2024-10-22
 updated: 2024-12-03
