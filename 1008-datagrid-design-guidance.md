@@ -20,10 +20,10 @@ updated: 2024-12-03
 - Pagination **should** be used when the comparison of the datasets in different pages is not important and you would like the user to reach a specific page quickly by using the page navigation options (entering the page number or clicking on the first, next, previous, or last buttons).
 - Infinite/virtual scroll **should** be used when the comparison of the datasets is important and you do not want the focus of the users to shift across the pages.
 - The detail pane **should** be used to show additional details for a record. A detail pane allows you to show the full content of the record in a larger scrollable space.
+- Datagrid column headers **should** not contain complex content.
+- Datagrid column headers **should** be short and concise. One or two words when possible to communicate the essence of what the column contains.
 - Expandable rows **may** be used when you have additional information for a row or row cells that do not need to be shown at all times.
 - Expandable rows **may** replace the original row data with a customized view or layout that includes most or all of the original row data.
-- Datagrid column headers **should** be short and concise. One or two words when possible to communicate the essence of what the column contains.
-- The contents of datagrid cells or column headers **may** be as complex as you need them to be, with nested components and interpolation.
 
 ## Accessibility
 
