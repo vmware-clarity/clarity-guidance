@@ -1,8 +1,8 @@
 ---
 category: component design guidance
 state: approved
-created: 2024-10-22
-updated: 2024-12-03
+created: 2024-12-05
+updated: 2024-12-05
 ---
 
 # Datagrid Design Guidance
@@ -31,4 +31,4 @@ updated: 2024-12-03
 
 ## Changelog
 
-- **2024-10-22**: Initial guidance
+- **2024-12-05**: Initial guidance
