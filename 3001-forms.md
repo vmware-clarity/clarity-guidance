@@ -1,11 +1,11 @@
 ---
-category: pattern design guidance
+category: design patterns
 state: approved
 created: 2024-10-30
-updated: 2024-10-30
+updated: 2024-12-03
 ---
 
-# Forms Pattern Design Guidance
+# Forms
 
 A [form](https://clarity.design/documentation/forms) is a collection of related input controls that enables users to provide data or configure options. Forms consist of various control components, including [checkboxes](https://clarity.design/documentation/checkbox), [dropdowns](https://clarity.design/documentation/dropdown), [input fields](https://clarity.design/documentation/input), [radio buttons](https://clarity.design/documentation/radio), [toggle switches](https://clarity.design/documentation/toggle-switch), and more, facilitating effective data entry and user interaction.
 
@@ -42,4 +42,5 @@ A [form](https://clarity.design/documentation/forms) is a collection of related 
 
 ## Changelog
 
+- **2024-12-03**: Moved to Design Patterns block
 - **2024-10-30**: Initial guidance
