@@ -7,7 +7,7 @@ updated: 2024-10-30
 
 # Radio Button Design Guidance
 
-A [radio button](https://clarity.design/documentation/radio) is a form element that allows users to select one option from a group, ensuring clear choice among mutually exclusive options.```
+A [radio button](https://clarity.design/documentation/radio) is a form element that allows users to select one option from a group, ensuring clear choice among mutually exclusive options.
 
 ## Guidance
 
