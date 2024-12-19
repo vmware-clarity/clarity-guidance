@@ -2,7 +2,7 @@
 category: component design guidance
 state: approved
 created: 2024-10-30
-updated: 2024-10-30
+updated: 2024-11-18
 ---
 
 # Button Design Guidance
@@ -61,6 +61,13 @@ Buttons have built-in loading and disabled states. There are three sub-states wi
 - Applications **should** display a success state upon completing actions, providing clear feedback to users that their requests were processed successfully.
 - Applications **should** display loading, error, and success (states) that prevent subsequent interactions, avoiding confusion and informing users of ongoing or completed processes.
 
+### Disabled Buttons
+
+- Disabled buttons **must** not trigger a tooltip because they are inactive and excluded from tab indexes making tooltips inaccessible to both mouse and keyboard users. A separate button (possibly with an info icon) *may* be placed next to the disabled button to trigger a tooltip.
+- Applications **should** provide clear visual indicators of why a button is disabled, either through contextual information on the page or by using alternative design patterns that maintain interactivity.
+- Designers **should** consider alternative ways to communicate why an action is unavailable, such as inline error messages or helper text near the relevant form fields or interactive elements.
+
 ## Changelog
 
 - **2024-10-30**: Initial guidance
+- **2024-11-18**: Guidelines for disabled buttons
